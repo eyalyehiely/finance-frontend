@@ -15,7 +15,7 @@ function ExpensesTableCard() {
       event.preventDefault();
     }
 
-    axios.post('/api/expenses/fetch_expenses_table/', {},{
+    axios.post('/expenses/fetch_expenses_table/', {},{
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${token}`,

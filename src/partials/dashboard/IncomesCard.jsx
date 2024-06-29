@@ -11,7 +11,7 @@ function IncomesCard() {
       event.preventDefault();
     }
 
-    axios.post('/api/incomes/fetch_user_incomes/', {}, {
+    axios.post('/incomes/fetch_user_incomes/', {}, {
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${token}`,

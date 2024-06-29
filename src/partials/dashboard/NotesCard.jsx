@@ -8,7 +8,7 @@ function NotesCard() {
   const [notes, setNotes] = useState('אין הודעות חדשות'); // Default note when no condition is met
   const [expenses,setExpenses] = useState([]);
 
-  axios.post('/api/expenses/fetch_user_expenses/',{},{
+  axios.post('/expenses/fetch_user_expenses/',{},{
     headers: {
       'content-type': 'application/json',
       Authorization: `Bearer ${token}`,
