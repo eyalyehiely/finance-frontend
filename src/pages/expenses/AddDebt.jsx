@@ -90,7 +90,7 @@ function AddDebt() {
             </Form.Group>
 
             <Form.Group controlId="formDebtName">
-              <Form.Label>שם החוב</Form.Label>
+              <Form.Label>שם החוב<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="text"
                 name="name"

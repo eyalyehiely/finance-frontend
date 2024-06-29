@@ -97,7 +97,7 @@ function AddSaving() {
 
 
             <Form.Group controlId="formInterest">
-              <Form.Label>ריבית</Form.Label>
+              <Form.Label>ריבית<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="interest"

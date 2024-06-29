@@ -52,7 +52,7 @@ function AddCreditCard() {
 
   return (
     <>
-      <Button onClick={handleShow} color="outline-primary">
+      <Button onClick={handleShow} variant="outline-primary">
       <span>
         <svg
           xmlns="http://www.w3.org/2000/svg"

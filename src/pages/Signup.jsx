@@ -68,14 +68,15 @@ function Signup() {
           icon: "success",
           button: "אישור",
         }).then(() => {
-          window.location.href = '/signin';
+          window.location.href = '/';
         });
       }).catch((error) => {
         console.error(error);
         swal({
           title: "שגיאה",
           icon: "warning",
-          button: "אישור",
+          timer:2000,
+          button: false,
         });
       });
   };
