@@ -190,12 +190,12 @@ function ExpensesTable() {
                             </svg>
                           </button>
                           <button
-                            className="text-rose-500 hover:text-rose-600 rounded-full"
+                            className="text-rose-500 hover:text-rose-600 square-full"
                             onClick={cancelEdit}
                           >
                             <span className="sr-only">Cancel</span>
                             <svg className="w-10 h-6 fill-current" viewBox="0 0 32 32">
-                              <path d="M4 8h24v2H4zM4 16h24v2H4zM4 24h24v2H4z" />
+                              <path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2Zm7 19a1 1 0 0 1-1.414 1.414L16 17.414l-5.586 5.586A1 1 0 0 1 9 21.586l5.586-5.586L9 10.414A1 1 0 0 1 10.414 9l5.586 5.586 5.586-5.586A1 1 0 0 1 23 10.414l-5.586 5.586Z" />
                             </svg>
                           </button>
                         </>
