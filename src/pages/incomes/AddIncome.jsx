@@ -63,7 +63,7 @@ function AddIncome() {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formSource">
-              <Form.Label>סוג הכנסה</Form.Label>
+              <Form.Label>סוג הכנסה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="source"
@@ -79,7 +79,7 @@ function AddIncome() {
             </Form.Group>
 
             <Form.Group controlId="formAmount">
-              <Form.Label>סכום</Form.Label>
+              <Form.Label>סכום<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="amount"
@@ -90,7 +90,7 @@ function AddIncome() {
             </Form.Group>
 
             <Form.Group controlId="formDate">
-              <Form.Label>תאריך</Form.Label>
+              <Form.Label>תאריך<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="date"
                 name="date"

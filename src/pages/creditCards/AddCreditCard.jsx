@@ -77,7 +77,7 @@ function AddCreditCard() {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formName">
-              <Form.Label>שם האשראי</Form.Label>
+              <Form.Label>שם האשראי<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="name"
@@ -114,7 +114,7 @@ function AddCreditCard() {
 
 
             <Form.Group controlId="formCreditType">
-              <Form.Label>סוג הכרטיס</Form.Label>
+              <Form.Label>סוג הכרטיס<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as='select'
                 name="credit_type"
@@ -129,7 +129,7 @@ function AddCreditCard() {
             </Form.Group>
 
             <Form.Group controlId="formLineOfCredit">
-              <Form.Label>מסגרת אשראי</Form.Label>
+              <Form.Label>מסגרת אשראי<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="line_of_credit"
@@ -142,7 +142,7 @@ function AddCreditCard() {
             </Form.Group>
 
             <Form.Group controlId="formLastFourDigits">
-              <Form.Label>4 ספרות אחרונות</Form.Label>
+              <Form.Label>4 ספרות אחרונות<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="last_four_digits"
@@ -155,7 +155,7 @@ function AddCreditCard() {
 
             </Form.Group>
             <Form.Group controlId="formStatus">
-              <Form.Label>סטטוס</Form.Label>
+              <Form.Label>סטטוס<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="status"

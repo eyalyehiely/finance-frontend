@@ -103,7 +103,7 @@ function AddExpense() {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formExpenseName">
-              <Form.Label>שם ההוצאה</Form.Label>
+              <Form.Label>שם ההוצאה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="name"
@@ -114,7 +114,7 @@ function AddExpense() {
             </Form.Group>
 
             <Form.Group controlId="formExpenseType">
-              <Form.Label>סוג ההוצאה</Form.Label>
+              <Form.Label>סוג ההוצאה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="expense_type"
@@ -129,7 +129,7 @@ function AddExpense() {
             </Form.Group>
 
             <Form.Group controlId="formPaymentMethod">
-              <Form.Label>דרך תשלום</Form.Label>
+              <Form.Label>דרך תשלום<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="payment_method"
@@ -149,7 +149,7 @@ function AddExpense() {
             {isCreditCard()}
 
             <Form.Group controlId="formCategory">
-              <Form.Label>קטגוריה</Form.Label>
+              <Form.Label>קטגוריה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="category"
@@ -170,7 +170,7 @@ function AddExpense() {
             </Form.Group>
 
             <Form.Group controlId="formPrice">
-              <Form.Label>סכום</Form.Label>
+              <Form.Label>סכום<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="price"
@@ -181,7 +181,7 @@ function AddExpense() {
             </Form.Group>
 
             <Form.Group controlId="formDateAndTime">
-              <Form.Label>תאריך ההוצאה</Form.Label>
+              <Form.Label>תאריך ההוצאה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="datetime-local"
                 name="date_and_time"

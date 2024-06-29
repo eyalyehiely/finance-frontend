@@ -89,7 +89,7 @@ function EditUser({ card }) {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formFirstName">
-              <Form.Label>שם פרטי</Form.Label>
+              <Form.Label>שם פרטי<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="first_name"
@@ -100,7 +100,7 @@ function EditUser({ card }) {
             </Form.Group>
 
             <Form.Group controlId="formLastName">
-              <Form.Label>שם משפחה</Form.Label>
+              <Form.Label>שם משפחה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="last_name"
@@ -111,7 +111,7 @@ function EditUser({ card }) {
             </Form.Group>
 
             <Form.Group controlId="formEmail">
-              <Form.Label>אימייל</Form.Label>
+              <Form.Label>אימייל<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="email"
@@ -122,7 +122,7 @@ function EditUser({ card }) {
             </Form.Group>
 
             <Form.Group controlId="formGender">
-              <Form.Label>מגדר</Form.Label>
+              <Form.Label>מגדר<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="gender"
@@ -139,7 +139,7 @@ function EditUser({ card }) {
             </Form.Group>
             
             <Form.Group controlId="formLifeStatus">
-              <Form.Label>סטטוס</Form.Label>
+              <Form.Label>סטטוס<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="life_status"
@@ -155,7 +155,7 @@ function EditUser({ card }) {
             </Form.Group>
 
             <Form.Group controlId="formNumChildren">
-              <Form.Label>מספר ילדים</Form.Label>
+              <Form.Label>מספר ילדים<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="num_of_children"
@@ -166,7 +166,7 @@ function EditUser({ card }) {
             </Form.Group>
 
             <Form.Group controlId="formPhoneNumber">
-              <Form.Label>מספר טלפון</Form.Label>
+              <Form.Label>מספר טלפון<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="phone_number"
@@ -177,7 +177,7 @@ function EditUser({ card }) {
             </Form.Group>
 
             <Form.Group controlId="formBirthDate">
-              <Form.Label>תאריך לידה</Form.Label>
+              <Form.Label>תאריך לידה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="birth_date"
@@ -188,7 +188,7 @@ function EditUser({ card }) {
             </Form.Group>
 
             <Form.Group controlId="formProfession">
-              <Form.Label>מקצוע</Form.Label>
+              <Form.Label>מקצוע<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="profession"
@@ -199,7 +199,7 @@ function EditUser({ card }) {
             </Form.Group>
 
             <Form.Group controlId="formAddress">
-              <Form.Label>כתובת</Form.Label>
+              <Form.Label>עיר מגורים<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="address"

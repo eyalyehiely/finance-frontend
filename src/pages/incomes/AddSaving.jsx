@@ -85,7 +85,7 @@ function AddSaving() {
             </Form.Group>
 
             <Form.Group controlId="formAmount">
-              <Form.Label>סכום</Form.Label>
+              <Form.Label>סכום<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="amount"
@@ -109,7 +109,7 @@ function AddSaving() {
 
 
             <Form.Group controlId="formStartingData">
-              <Form.Label>תאריך התחלה</Form.Label>
+              <Form.Label>תאריך התחלה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="date"
                 name="starting_date"
@@ -121,7 +121,7 @@ function AddSaving() {
 
 
             <Form.Group controlId="formFinishData">
-              <Form.Label>תאריך סיום</Form.Label>
+              <Form.Label>תאריך סיום<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="date"
                 name="finish_date"

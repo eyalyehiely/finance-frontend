@@ -71,7 +71,7 @@ function AddDebt() {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formType">
-              <Form.Label>סוג החוב</Form.Label>
+              <Form.Label>סוג החוב<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="type"
@@ -101,7 +101,7 @@ function AddDebt() {
             </Form.Group>
 
             <Form.Group controlId="formAmount">
-              <Form.Label>סכום החוב</Form.Label>
+              <Form.Label>סכום החוב<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="amount"
@@ -112,7 +112,7 @@ function AddDebt() {
             </Form.Group>
 
             <Form.Group controlId="formLineOfDebt">
-              <Form.Label>מסגרת החוב</Form.Label>
+              <Form.Label>מסגרת החוב<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="line_of_debt"
@@ -123,7 +123,7 @@ function AddDebt() {
             </Form.Group>
 
             <Form.Group controlId="formInterest">
-              <Form.Label>ריבית</Form.Label>
+              <Form.Label>ריבית<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="interest"
@@ -134,7 +134,7 @@ function AddDebt() {
             </Form.Group>
 
             <Form.Group controlId="formStartingDate">
-              <Form.Label>תאריך התחלה</Form.Label>
+              <Form.Label>תאריך התחלה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="date"
                 name="starting_date"
@@ -145,7 +145,7 @@ function AddDebt() {
             </Form.Group>
 
             <Form.Group controlId="formFinishDate">
-              <Form.Label>תאריך סיום</Form.Label>
+              <Form.Label>תאריך סיום<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="date"
                 name="finish_date"
