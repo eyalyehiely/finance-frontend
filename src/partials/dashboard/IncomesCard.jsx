@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Icon from '../../images/icon-01.svg';
-import axios from 'axios';
+import axios from '../../functions/axiosConfig'
 
 function IncomesCard() {
   const [amount, setAmount] = useState(null);
@@ -11,7 +11,7 @@ function IncomesCard() {
       event.preventDefault();
     }
 
-    axios.post('http://localhost:8000/api/incomes/fetch_user_incomes/', {}, {
+    axios.post('/api/incomes/fetch_user_incomes/', {}, {
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${token}`,

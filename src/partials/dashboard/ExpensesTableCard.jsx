@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../../functions/axiosConfig'
 
 function ExpensesTableCard() {
   const [expenses, setExpenses] = useState([]);
@@ -15,7 +15,7 @@ function ExpensesTableCard() {
       event.preventDefault();
     }
 
-    axios.post('http://localhost:8000/api/expenses/fetch_expenses_table/', {},{
+    axios.post('/api/expenses/fetch_expenses_table/', {},{
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${token}`,

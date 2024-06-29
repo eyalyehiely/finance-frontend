@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import getActiveCreditCards from '../../functions/credit_cards/getActiveCreditCards';
-import axios from 'axios';
+import axios from '../../functions/axiosConfig'
 
 function NotesCard() {
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
@@ -8,7 +8,7 @@ function NotesCard() {
   const [notes, setNotes] = useState('אין הודעות חדשות'); // Default note when no condition is met
   const [expenses,setExpenses] = useState([]);
 
-  axios.post('http://localhost:8000/api/expenses/fetch_user_expenses/',{},{
+  axios.post('/api/expenses/fetch_user_expenses/',{},{
     headers: {
       'content-type': 'application/json',
       Authorization: `Bearer ${token}`,
