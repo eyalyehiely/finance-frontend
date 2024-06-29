@@ -67,7 +67,7 @@ function AddSaving() {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formSavingType">
-              <Form.Label>סוג הכנסה</Form.Label>
+              <Form.Label>סוג החסכון<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="saving_type"

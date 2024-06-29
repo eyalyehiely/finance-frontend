@@ -33,25 +33,20 @@ function AllIncomes() {
             <div className="sm:flex sm:justify-between sm:items-center mb-5">
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-start gap-2">
-                {/* Search form */}
-                {/* Create invoice button */}
-
                 <AddIncome />
 
               </div>
 
             </div>
 
-           
-
             {/* Table */}
             <ExpensesTable selectedItems={handleSelectedItems} />
             
 
-            Pagination
+            {/* Pagination
             <div className="mt-8">
               <PaginationClassic />
-            </div>
+            </div> */}
 
           </div>
         </main>

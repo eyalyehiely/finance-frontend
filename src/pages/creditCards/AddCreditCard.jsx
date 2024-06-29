@@ -52,7 +52,7 @@ function AddCreditCard() {
 
   return (
     <>
-      <Button onClick={handleShow} color="primary" outline>
+      <Button onClick={handleShow} color="outline-primary">
       <span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@ function AddCreditCard() {
             </Form.Group>
 
             <Form.Group controlId="formDayOfCharge">
-              <Form.Label>יום חיוב</Form.Label>
+              <Form.Label>יום חיוב<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as='select'
                 name="day_of_charge"

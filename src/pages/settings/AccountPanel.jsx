@@ -110,7 +110,7 @@ function AccountPanel() {
                   </Grid>
                   <Grid item md={4} sm={6} xs={12}>
                     <Typography variant="body1">
-                      <strong>כתובת:</strong> {user.address}
+                      <strong>עיר מגורים:</strong> {user.address}
                     </Typography>
                   </Grid>
                 </Grid>

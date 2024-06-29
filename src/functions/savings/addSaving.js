@@ -12,7 +12,7 @@ export default function addSaving(token, setSavings, data, handleClose) {
     setSavings((prevSavings) => [...prevSavings, response.data]);
     swal({
       title: "💰!עבודה טובה",
-      text: " !הכנסה נוספה בהצלחה",
+      text: " !חסכון נוספה בהצלחה",
       icon: "success",
       button: "אישור",
     }).then(() => {
@@ -23,7 +23,7 @@ export default function addSaving(token, setSavings, data, handleClose) {
   }).catch((error) => {
     console.error('Error:', error.response?.data?.message || error.message);
     swal({
-      title: "Ⅹ!שגיאה ",
+      title: "!שגיאה ",
       icon: "warning",
       button: "אישור",
     });
