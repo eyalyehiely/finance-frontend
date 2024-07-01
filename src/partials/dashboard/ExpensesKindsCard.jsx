@@ -97,7 +97,7 @@ function ExpensesKindsCard() {
       <AddExpense />
       <img src={Icon} width="32" height="32" alt="Icon 02" />
       </header>
-      <h2  dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2"> הוצאות: {amount} ₪(חודשי)</h2>
+      <h2  dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2"> הוצאות: {expenses} ₪(חודשי)</h2>
       {error && <div className="text-red-600 p-4">{error}</div>}
       {loading ? (
         <div className="text-center p-4">אין נתונים</div>
