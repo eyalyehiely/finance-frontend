@@ -17,7 +17,7 @@ function ExpensesKindsCard() {
   const [check, setCheck] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [amount, setAmount] = useState(null);
+  const [expenses, setExpenses] = useState(null);
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 
 
@@ -86,7 +86,7 @@ function ExpensesKindsCard() {
 
   useEffect(() => {
     if (token) {
-        fetchCurrentMonthExpenses(token, setAmount);
+        fetchCurrentMonthExpenses(token, setExpenses);
     }
 }, [token]); 
 
