@@ -29,7 +29,8 @@ function Signin() {
           title: "שלום",
           text: "התחברות בוצעה בהצלחה",
           icon: "success",
-          button: "אישור",
+          timer:2000,
+          button: false,
         }).then(() => {
           navigate('/');
         });
@@ -98,7 +99,7 @@ function Signin() {
                     <label className="block text-sm font-medium mb-1" htmlFor="username">
                       שם משתמש <span className="text-rose-500">*</span>
                     </label>
-                    <input id="username" className="form-input w-full" type="text" required />
+                    <input id="username" className="form-input w-full" type="email" required />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="password">

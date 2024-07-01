@@ -15,15 +15,15 @@ import Typography from '@mui/material/Typography';
 import getCurrentUserData from '../../functions/users/getCurrentUserData';
 import EditUser from './EditUser';
 
-
-
 function AccountPanel() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [user, setUser] = useState({});
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 
   useEffect(() => {
-    getCurrentUserData(token, setUser);
+    if (token) {
+      getCurrentUserData(token, setUser);
+    }
   }, [token]);
 
   return (
@@ -53,7 +53,7 @@ function AccountPanel() {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <EditUser/>
+                    <EditUser />
                   </Grid>
                 </Grid>
               </CardContent>
@@ -61,7 +61,6 @@ function AccountPanel() {
               <CardActions>
                 {/* <Button fullWidth variant="text">
                   העלאת תמונה
-                  
                 </Button> */}
               </CardActions>
             </Card>
@@ -119,20 +118,16 @@ function AccountPanel() {
           </section>
 
           {/* Email */}
-          <section>
-            <Card>
-              <CardHeader title="תמיכה ויצירת קשר" />
-              <CardContent>
-                <Grid container spacing={2} alignItems="center">
-                  <Grid item xs>
-                    <Typography variant="body1">
-                      <strong>צריך עזרה? , </strong> 
-                      <a href="mailto:eyalwork0@gmail.com">לחץ כאן</a>
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </CardContent>
-            </Card>
+          <section className="contact section" id="contact">
+            <Typography variant="h6" className="section-title">Contact</Typography>
+            <div className="contact__container bd-grid">
+              <form action="/send_email" method="POST" className="contact__form">
+                <input type="text" name="name" placeholder="Your Name" className="contact__input" required />
+                <input type="email" name="email" placeholder="Your Email" className="contact__input" required />
+                <textarea name="message" placeholder="Your Message" className="contact__input" required></textarea>
+                <Button type="submit" variant="contained" color="primary">Send</Button>
+              </form>
+            </div>
           </section>
         </div>
         <Rights />
@@ -142,4 +137,3 @@ function AccountPanel() {
 }
 
 export default AccountPanel;
-
