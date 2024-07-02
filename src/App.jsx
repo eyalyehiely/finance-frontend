@@ -41,6 +41,7 @@ import Calander from './pages/Calendar'
 import AccountPanel from './pages/settings/AccountPanel'
 import FeedbackPanel from './partials/settings/FeedbackPanel'
 import ProtectedRoute from './components/protectedRoute';
+// import Stocks from './components/Stocks';
 
 
 
@@ -110,6 +111,7 @@ function App() {
         <Route path="/component/icons" element={<IconsPage />} />
 
         <Route path="/settings/account" element={<AccountPanel/>} />
+        {/* <Route path="/stocks" element={<Stocks/>} /> */}
       </Routes>
     </>
   );
