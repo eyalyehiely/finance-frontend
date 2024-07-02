@@ -48,7 +48,7 @@ function Sidebar({
   }, [sidebarExpanded]);
 
   return (
-    <div className="min-w-fit">
+    <div className="min-w-fit" >
       {/* Sidebar backdrop (mobile only) */}
       <div
         className={`fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
@@ -120,7 +120,7 @@ function Sidebar({
             </button>
           </div>
         </div>
-        <div dir = "rtl" className="space-y-8">
+        <div className="space-y-8">
           {/* Pages group */}
           <div>
             <h3 className="text-xs uppercase text-slate-500 font-semibold pl-3">
@@ -465,6 +465,31 @@ function Sidebar({
                     </svg>
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       יומן-בקרוב
+                    </span>
+                  </div>
+                </NavLink>
+              </li>
+
+              {/* stocks */}
+
+              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('calendar') && 'bg-slate-900'}`}>
+                <NavLink
+                  end
+                  to="#"
+                  className={`block text-slate-200 truncate transition duration-150 ${
+                    pathname.includes('calendar') ? 'hover:text-slate-200' : 'hover:text-white'
+                  }`}
+                >
+                  <div className="flex items-center">
+                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                      <path className={`fill-current ${pathname.includes('calendar') ? 'text-indigo-500' : 'text-slate-600'}`} d="M1 3h22v20H1z" />
+                      <path
+                        className={`fill-current ${pathname.includes('calendar') ? 'text-indigo-300' : 'text-slate-400'}`}
+                        d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z"
+                      />
+                    </svg>
+                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      מניות
                     </span>
                   </div>
                 </NavLink>
