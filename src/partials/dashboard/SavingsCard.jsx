@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import BarChart from '../../charts/BarChart01';
 import Icon from '../../images/icon-03.svg';
 import axios from '../../functions/axiosConfig'
+import AddSaving from '../../pages/incomes/AddSaving'
+
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
@@ -57,6 +59,7 @@ function SavingsCard() {
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="px-5 pt-5">
         <header className="flex justify-between items-start mb-2">
+        <AddSaving/>
           {/* Icon */}
           <img src={Icon} width="32" height="32" alt="Icon 03" />
           בהמשך - גרף חיזוי חסכונות 6 חודשים קדימה

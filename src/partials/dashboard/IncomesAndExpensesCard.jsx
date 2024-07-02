@@ -3,6 +3,7 @@ import DoughnutChart from '../../charts/DoughnutChart';
 import Icon from '../../images/icon-03.svg';
 import fetchCurrentMonthExpenses from '../../functions/expenses/fetchCurrentMonthExpenses';
 import fetchCurrentMonthIncomes from '../../functions/incomes/fetchCurrentMonthIncomes'
+import AddIncome from '../../pages/incomes/AddIncome'
 
 
 
@@ -51,6 +52,8 @@ const difference = incomes - expenses
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
+        <AddIncome/>
+        
       <img src={Icon} width="32" height="32" alt="Icon 03" />
         <h2 dir = "rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">הוצאות vs הכנסות (חודשי)</h2>
 
