@@ -11,10 +11,10 @@ export default function addExpensesData(token, setExpenses, data, handleClose) {
   }).then((response) => {
     setExpenses((prevExpenses) => [...prevExpenses, response.data]);
     swal({
-      title: "💰!עבודה טובה",
-      text: " !הוצאה נוספה בהצלחה",
+      title: " 💰!הוצאה נוספה בהצלחה",
       icon: "success",
-      button: "אישור",
+      timer:2000,
+      button: false,
     }).then(() => {
       handleClose();
       window.location.reload()

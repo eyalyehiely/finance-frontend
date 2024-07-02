@@ -11,10 +11,10 @@ export default function updateUser(token, setUser, data, handleClose) {
     .then(response => {
       if (response.data.status === 200) {
         swal({
-          title: 'Success!',
-          text: 'משתמש עודכן בהצלחה!',
+          title: '👤 משתמש עודכן בהצלחה!',
           icon: 'success',
-          button: 'אישור',
+          timer:2000,
+          button: false,
         }).then(()=>{
             getCurrentUserData(token, setUser);
           window.location.reload()
@@ -23,7 +23,7 @@ export default function updateUser(token, setUser, data, handleClose) {
        
       } else {
         console.log('Error:', response.data.message);
-        alert(response.data.message); // Adjust error handling as needed
+
       }
     })
     .catch(error => {

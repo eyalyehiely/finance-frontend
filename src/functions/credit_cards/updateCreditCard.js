@@ -11,10 +11,10 @@ export default function updateCreditCard(token, setCreditCards, editingCardId, d
     .then(response => {
       if (response.data.status === 200) {
         swal({
-          title: 'Success!',
-          text: 'כרטיס התעדכן בהצלחה!',
+          title: 'כרטיס התעדכן בהצלחה!',
           icon: 'success',
-          button: 'אישור',
+          timer:2000,
+          button: false,
         }).then(()=>{
           getCreditCardData(token, setCreditCards);
           window.location.reload()
@@ -23,14 +23,13 @@ export default function updateCreditCard(token, setCreditCards, editingCardId, d
        
       } else {
         console.log('Error:', response.data.message);
-        alert(response.data.message); // Adjust error handling as needed
+
       }
     })
     .catch(error => {
       console.error('שגיאה!', error);
       swal({
-        title: 'שגיאה!',
-        text: 'שגיאה בעדכון כרטיס האשראי!',
+        title: 'שגיאה בעדכון כרטיס האשראי!',
         icon: 'warning',
         button: 'אישור',
       });

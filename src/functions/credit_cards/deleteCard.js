@@ -20,7 +20,8 @@ export default function deleteCard(token,id) {
           swal({
             title: "🗑️!כרטיס נמחק בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(() => { 
             getCreditCardData()
             window.location.reload();// Refresh the data after deletion

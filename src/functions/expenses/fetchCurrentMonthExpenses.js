@@ -15,11 +15,9 @@ export default function fetchCurrentMonthExpenses(token,setExpenses) {
             setExpenses(response.data.all_expenses); 
         } else {
             console.log('Error:', response.data.message);
-            // alert(response.data.message);
         }
     })
     .catch(error => {
       console.error('There was an error!', error);
-      // alert('An error occurred while fetching data.');
   });
 }

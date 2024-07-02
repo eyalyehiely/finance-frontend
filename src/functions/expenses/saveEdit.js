@@ -26,20 +26,21 @@ export default function saveEdit(token, editedExpense, editingExpenseId, setExpe
       if (response.data.status === 200) {
         swal({
           title: "Success!",
-          text: "Expense updated successfully!",
+          title: "הוצאה נשמרה בהצלחה !",
           icon: "success",
-          button: "OK",
+          timer:2000,
+          button: false,
         });
         setExpenses(expenses => expenses.map(expense => expense.id === editingExpenseId ? response.data.expense : expense));
         fetchExpensesData(token, setExpenses);
         // window.location.reload()
       } else {
         console.log('Error:', response.data.message);
-        alert(response.data.message); // Adjust error handling as needed
+        // Adjust error handling as needed
       }
     })
     .catch(error => {
       console.error('There was an error!', error);
-      alert('An error occurred while updating the expense.'); // Adjust error handling as needed
+
     });
 }

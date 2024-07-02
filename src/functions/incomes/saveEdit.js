@@ -24,10 +24,10 @@ export default function saveEdit(token, editedIncome, editingIncomeId, setIncome
     }).then(response => {
         if (response.data.status === 200) {
           swal({
-            title: "💰!עבודה טובה",
-            text: " !הכנסה עודכנה בהצלחה",
+            title: " 💰!הכנסה עודכנה בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(()=>{
           // Update the incomes list with the returned income data
           setIncomes(incomes=> incomes.map(income => income.id === editingIncomeId ? response.data.income : income));

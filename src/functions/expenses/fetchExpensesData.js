@@ -15,10 +15,10 @@ export default function fetchExpensesData(token,setExpenses) {
         } else {
           console.log('Error:', response.data.message);
           swal({
-            title: "Error!",
+            title: "שגיאה!",
             text: `Frontend Error: ${response.data.message}`,
             icon: "warning",
-            button: "OK",
+            button: "אישור",
           });
         }
       })

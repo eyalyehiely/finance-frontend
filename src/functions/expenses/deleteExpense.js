@@ -18,10 +18,10 @@ export default function deleteExpense(token,id) {
           }
         }).then((response) => {
           swal({
-            title: "🗑️!עבודה טובה",
-            text: " !ההוצאה נמחק בהצלחה",
+            title: " 🗑️!ההוצאה נמחק בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(() => {
             window.location.reload()
             fetchExpensesData(token,setExpenses); // Refresh the data after deletion

@@ -18,10 +18,10 @@ export default function deleteDebt(id,token) {
           }
         }).then((response) => {
           swal({
-            title: "🗑️!עבודה טובה",
-            text: " !החוב נמחק בהצלחה",
+            title: " !🗑️החוב נמחק בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(() => {
             fetchDebtData(); // Refresh the data after deletion
             window.location.reload()

@@ -18,9 +18,10 @@ export default function deleteSaving(id,token) {
           }
         }).then((response) => {
           swal({
-            title: "🗑️!!החסכון נמחק בהצלחה",
+            title: "🗑️!החסכון נמחק בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(() => {
           fetchSavingsData(token);
           window.location.reload() // Refresh the data after deletion

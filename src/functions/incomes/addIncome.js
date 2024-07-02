@@ -11,10 +11,10 @@ export default function addIncome(token, setIncomes, data, handleClose) {
   }).then((response) => {
     setIncomes((prevIncomes) => [...prevIncomes, response.data]);
     swal({
-      title: "💰!עבודה טובה",
-      text: " !הכנסה נוספה בהצלחה",
+      title: " 💰!הכנסה נוספה בהצלחה",
       icon: "success",
-      button: "אישור",
+      timer:2000,
+      button: false,
     }).then(() => {
       handleClose();
       window.location.reload()

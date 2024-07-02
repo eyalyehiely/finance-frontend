@@ -37,7 +37,6 @@ export default function saveEdit(token, editedDebt, editingDebtId, setDebts) {
         window.location.reload()
       } else {
         console.log('Error:', response.data.message);
-        alert(response.data.message); // Adjust error handling as needed
       }
     })
     .catch(error => {

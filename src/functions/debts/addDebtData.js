@@ -11,10 +11,10 @@ export default function addDebtData(token, setDebts, data, handleClose) {
   }).then((response) => {
     setDebts((prevDebts) => [...prevDebts, response.data]);
     swal({
-      title: "💰!עבודה טובה",
-      text: " !הוצאה נוספה בהצלחה",
+      title: " !הוצאה נוספה בהצלחה",
       icon: "success",
-      button: "אישור",
+      timer:2000,
+      button: false,
     }).then(() => {
       handleClose();
       window.location.reload()
