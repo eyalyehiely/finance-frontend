@@ -66,12 +66,8 @@ function CreditCards() {
                 <div className="mb-4 sm:mb-0">
                   <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">אשראי ✨</h1>
                 </div>
-                <div className='items-center'>
                 {/* Add card button */}
-                
                  <AddCreditCard/>
-             
-              </div>
               </div>
 
               {/* Filters */}
