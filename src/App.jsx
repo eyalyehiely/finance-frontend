@@ -40,7 +40,6 @@ import ChangePassword from './pages/changePasswordPage.jsx'
 import Calander from './pages/Calendar'
 import AccountPanel from './pages/settings/AccountPanel'
 import FeedbackPanel from './partials/settings/FeedbackPanel'
-import ProtectedRoute from './components/protectedRoute';
 // import Stocks from './components/Stocks';
 
 
@@ -62,13 +61,10 @@ function App() {
       <Routes>
         
         <Route exact path="/" element={<Dashboard />} />
-        {/* <Route path="/dashboard" element={<ProtectedRoute element={Dashboard} />} /> */}
         <Route path="/dashboard/fintech" element={<Fintech />} />
         {/* expenses */}
         <Route path="/expenses/all-expenses" element={<AllExpenses />} />
         <Route path="/expenses/expenses-table" element={<ExpensesTable />} />
-
-        {/* <Route path="/expenses/add-expenses" element={<ProtectedRoute element={AddExpense} />} /> */}
 
 
         {/* debts */}

@@ -5,10 +5,12 @@ import ExpensesTable from './IncomesTable';
 import PaginationClassic from '../../components/PaginationClassic';
 import Rights from '../../components/Rights';
 import AddIncome from '../../pages/incomes/AddIncome'
+import checkToken from '../../functions/checkToken';
 
 
 
 function AllIncomes() {
+  checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const handleSelectedItems = (selectedItems) => {
