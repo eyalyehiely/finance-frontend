@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../functions/axiosConfig'
 import Button from 'react-bootstrap/Button';
 import swal from 'sweetalert';
 
@@ -12,14 +12,15 @@ function ResetPassword() {
 
     const email = document.getElementById('email').value;
 
-    axios.post('http://localhost:8000/api/auth/reset_password/', {
+    axios.post('/auth/reset_password/', {
       email: email,
     }).then((response) => {
       if (response.status === 200) {
         swal({
           title: "קישור נשלח בהצלחה",
           icon: "success",
-          button: "אישור",
+          timer:2000,
+          button: false,
         }).then(() => {
           window.location.href = '/signin';
         });
@@ -85,6 +86,7 @@ function ResetPassword() {
                 <div className="flex justify-end mt-6">
                   <Button type="submit" variant="primary">שלח קישור</Button>
                 </div>
+                <Button type="button" href='/signin' variant="info">חזור</Button>
               </form>
             </div>
           </div>

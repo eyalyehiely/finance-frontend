@@ -13,14 +13,15 @@ function ChangePassword() {
     event.preventDefault();
     const new_password = document.getElementById('new_password').value;
 
-    axios.post(`http://localhost:8000/api/auth/change_password/${email}`, {
+    axios.post(`/auth/change_password/${email}`, {
       new_password: new_password,
     }).then((response) => {
       if (response.status === 200) {
         swal({
-          title: "סיסמא עודכנה בהצלחה",
+          title: "סיסמה עודכנה בהצלחה",
           icon: "success",
-          button: "אישור",
+          timer:2000,
+          button: false,
         }).then(() => {
           window.location.href = '/signin';
         });
