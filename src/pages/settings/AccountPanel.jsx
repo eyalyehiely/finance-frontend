@@ -176,7 +176,7 @@ function AccountPanel() {
                 <TextField
                   label="אימייל"
                   name="email"
-                  value={email}
+                  value={user.email}
                   onChange={(e) => setEmail(e.target.value)}
                   variant="outlined"
                   type="email"
