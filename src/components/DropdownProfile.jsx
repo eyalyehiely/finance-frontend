@@ -11,8 +11,6 @@ const first_name = token ? jwtDecode(token).first_name : null;
 
 
 
-console.log('first_name:', first_name); // Debug: Check the first_name
-
 function DropdownProfile({
   align
 }) {
