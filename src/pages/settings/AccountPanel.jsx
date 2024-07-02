@@ -21,7 +21,6 @@ import EditUser from './EditUser';
 function AccountPanel() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [user, setUser] = useState({});
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
@@ -37,8 +36,7 @@ function AccountPanel() {
 
   useEffect(() => {
     if (user) {
-      setName(user.first_name);
-      setEmail(user.username);
+      setEmail(user.email);
     }
   }, [user]);
 
@@ -47,16 +45,14 @@ function AccountPanel() {
   
     try {
       const response = await axios.post('/auth/supporting_mail/', {
-        name,
-        subject,
         email,
+        subject,
         message,
       });
 
       if (response.status === 200) {
-        setSuccess('המייל נשלח בהצלחה!');
-        setName(user.first_name); // Reset the form fields
-        setEmail(user.username);
+        setSuccess('המייל נשלח בהצלחה!'); 
+        setEmail(user.email);
         setSubject('')
         setMessage('');
       } else {
@@ -163,16 +159,7 @@ function AccountPanel() {
             <Typography variant="h6" className="section-title">צור קשר</Typography>
             <div className="contact__container">
               <form onSubmit={handleSubmit} className="contact__form">
-                <TextField
-                  label="שם מלא"
-                  name="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  variant="outlined"
-                  fullWidth
-                  margin="normal"
-                  required
-                />
+                
                 <TextField
                   label="אימייל"
                   name="email"
@@ -184,7 +171,6 @@ function AccountPanel() {
                   margin="normal"
                   required
                 />
-
 
                 <TextField
                   label="נושא"
