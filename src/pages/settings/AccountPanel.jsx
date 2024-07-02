@@ -25,6 +25,7 @@ function AccountPanel() {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 
   useEffect(() => {
@@ -50,17 +51,11 @@ function AccountPanel() {
       });
 
       if (response.status === 200) {
-        swal({
-          title: " ✉️מייל נשלח בהצלחה ",
-          icon: "success",
-          timer:2000,
-          button: false,
-        }).then(()=>{
+        setSuccess('המייל נשלח בהצלחה!'); 
         setEmail(user.email);
         setSubject('')
         setMessage('');
-      })
-    } else {
+      } else {
         throw new Error('לא הצלחנו לשלוח את המייל. נסה שוב מאוחר יותר.');
       }
     } catch (error) {
@@ -204,6 +199,7 @@ function AccountPanel() {
                 <Button type="submit" variant="contained" color="primary" className="contact__button">שלח</Button>
               </form>
               {error && <p className="error-message">{error}</p>}
+              {success && <p className="success-message">{success}</p>}
             </div>
           </section>
         </div>
