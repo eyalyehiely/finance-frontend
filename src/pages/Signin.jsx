@@ -38,7 +38,7 @@ function Signin() {
         console.log('Error:', response.data.message);
         swal({
           title: "Ⅹ!שגיאה",
-          text: {"!שגיאת frontend": response.data.message},
+          text: `!שגיאת frontend: ${response.data.message}`,
           icon: "warning",
           button: "אישור",
         });
@@ -115,7 +115,7 @@ function Signin() {
                 <div className="flex items-center justify-between mt-6">
                   <div className="mr-1">
                     <Link className="text-sm underline hover:no-underline" to="/reset-password">
-                      ? שכחת סיסמא
+                      שכחת סיסמה ?
                     </Link>
                   </div>
                   <Button type="submit" variant="primary"> התחבר</Button>
@@ -123,8 +123,14 @@ function Signin() {
               </form>
 
               <div className="pt-5 mt-6 border-t border-slate-200 dark:border-slate-700">
+                <div className="flex text-sm justify-center">
+                  (בקרוב - התחברות עם גוגל)       
+                </div>
+              </div>
+
+              <div className="pt-5 mt-6 border-t border-slate-200 dark:border-slate-700">
                 <div className="text-sm">
-                  ? האם אין לך חשבון {' '}
+                  האם אין לך חשבון ?
                   <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" to="/signup">
                     הרשם כאן
                   </Link>
@@ -150,3 +156,5 @@ function Signin() {
 }
 
 export default Signin;
+
+

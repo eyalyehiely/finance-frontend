@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../../src/functions/axiosConfig'
+import axios from '../functions/axiosConfig'
 import swal from 'sweetalert';
 import AuthImage from '../images/finance.avif';
 import AuthDecoration from '../images/auth-decoration.png';
@@ -64,19 +64,19 @@ function Signup() {
       .then((response) => {
         console.log(response.data);
         swal({
-          title: "משתמש נוסף בהצלחה",
+          title: "👤משתמש נוסף בהצלחה",
           icon: "success",
-          button: "אישור",
+          timer:1000,
+          button: false,
         }).then(() => {
-          window.location.href = '/';
+          window.location.href = '/signin';
         });
       }).catch((error) => {
         console.error(error);
         swal({
           title: "שגיאה",
           icon: "warning",
-          timer:2000,
-          button: false,
+          button: "אישור",
         });
       });
   };
@@ -120,6 +120,7 @@ function Signup() {
             <div className="flex-1">
               <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
                 {/* Logo */}
+                
                 <svg width="32" height="32" viewBox="0 0 32 32">
                   <defs>
                     <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">
@@ -146,6 +147,7 @@ function Signup() {
             </div>
 
             <div className="max-w-sm mx-auto w-full px-4 py-8">
+              <Button type="button" href='/signin' variant="info">חזור</Button>
               <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">צור חשבון ✨</h1>
               {/* Form */}
               <form onSubmit={handleSubmit}>
