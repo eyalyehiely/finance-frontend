@@ -22,7 +22,6 @@ function IncomesCard() {
         setAmount(response.data.month_revenues);
       } else {
         console.log('Error:', response.data.message);
-        alert(response.data.message);
       }
     })
     .catch(error => {
@@ -30,15 +29,12 @@ function IncomesCard() {
       if (error.response) {
         // The request was made and the server responded with a status code
         console.error('Error status:', error.response.status);
-        alert(`Error: ${error.response.data.message}`);
       } else if (error.request) {
         // The request was made but no response was received
         console.error('No response from server:', error.request);
-        alert('No response from server. Please try again later.');
       } else {
         // Something happened in setting up the request that triggered an Error
         console.error('Error:', error.message);
-        alert('An unexpected error occurred.');
       }
     });
   }
