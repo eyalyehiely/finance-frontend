@@ -481,11 +481,14 @@ function Sidebar({
                   }`}
                 >
                   <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path className={`fill-current ${pathname.includes('calendar') ? 'text-indigo-500' : 'text-slate-600'}`} d="M1 3h22v20H1z" />
+                  <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
-                        className={`fill-current ${pathname.includes('calendar') ? 'text-indigo-300' : 'text-slate-400'}`}
-                        d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z"
+                        className="fill-current text-slate-600"
+                        d="M19 5h1v14h-2V7.414L5.707 19.707 5 19H4V5h2v11.586L18.293 4.293 19 5Z"
+                      />
+                      <path
+                        className="fill-current text-slate-400"
+                        d="M5 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8ZM5 23a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
                       />
                     </svg>
                     <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
