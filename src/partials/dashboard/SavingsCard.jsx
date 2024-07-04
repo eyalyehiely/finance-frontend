@@ -60,7 +60,7 @@ function SavingsCard() {
         <header className="flex justify-between items-start mb-2">
         <AddSaving/>
           {/* Icon */}
-          בהמשך - גרף חיזוי חסכונות 6 חודשים קדימה
+          
         </header>
         <h2 dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">חסכונות</h2>
         <div dir="rtl" className="flex items-start">

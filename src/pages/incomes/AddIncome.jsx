@@ -71,8 +71,8 @@ function AddIncome() {
                 required
               >
                 <option value=""></option>
-                <option value="salary">משכורת</option>
-                <option value="allowance">קצבה</option>
+                <option value="משכורת">משכורת</option>
+                <option value="קצבה">קצבה</option>
                 <option value="other">אחר</option>
               </Form.Control>
             </Form.Group>

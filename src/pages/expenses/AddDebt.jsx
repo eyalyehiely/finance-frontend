@@ -80,12 +80,12 @@ function AddDebt() {
                 required
               >
                 <option value=""></option>
-                <option value="mortgage">משכנתא</option>
-                <option value="government">ממשלתית</option>
-                <option value="loan">הלוואה</option>
-                <option value="business">עסק</option>
-                <option value="medical">רפואי</option>
-                <option value="car">משכון רכב</option>
+                <option value="משכנתא">משכנתא</option>
+                <option value="ממשלתית">ממשלתית</option>
+                <option value="הלוואה">הלוואה</option>
+                <option value="עסק">עסק</option>
+                <option value="רפואי">רפואי</option>
+                <option value="משכון רכב">משכון רכב</option>
               </Form.Control>
             </Form.Group>
 

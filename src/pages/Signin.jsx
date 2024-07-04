@@ -390,10 +390,10 @@ function Signin() {
         <div className="hidden md:block absolute top-0 bottom-0 left-0 md:w-1/2" aria-hidden="true">
           <img
             className="object-cover object-center w-full h-full"
-            src={AuthImage}
+            src='src/images/dollars.jpeg'
             width="760"
             height="1024"
-            alt="Authentication"
+            alt="dollars"
           />
         </div>
       </div>

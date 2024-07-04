@@ -153,8 +153,8 @@ function AddCreditCard() {
                 required
               >
                  <option value=""></option>
-                <option value="Active">פעיל</option>
-                <option value="Blocked">מושבת</option>
+                <option value="פעיל">פעיל</option>
+                <option value="חסום">חסום</option>
               </Form.Control>
             </Form.Group>
 

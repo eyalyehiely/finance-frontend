@@ -122,8 +122,8 @@ function AddExpense() {
                 required
               >
                 <option value=""></option>
-                <option value="regular_expense">הוצאה רגילה</option>
-                <option value="iregular_expense">הוצאה לא רגילה</option>
+                <option value="הוצאה קבועה">הוצאה קבועה</option>
+                <option value="הוצאה משתנה">הוצאה משתנה</option>
               </Form.Control>
             </Form.Group>
 
@@ -137,11 +137,11 @@ function AddExpense() {
                 required
               >
                 <option value=""></option>
-                <option value="credit_card">כרטיס אשראי</option>
-                <option value="direct_debit">הוראת קבע</option>
-                <option value="transaction">העברה בנקאית</option>
-                <option value="cash">מזומן</option>
-                <option value="check">צ׳ק</option>
+                <option value="כרטיס אשראי">כרטיס אשראי</option>
+                <option value="הוראת קבע">הוראת קבע</option>
+                <option value="העברה בנקאית">העברה בנקאית</option>
+                <option value="מזומן">מזומן</option>
+                <option value="צ׳ק">צ׳ק</option>
               </Form.Control>
             </Form.Group>
 
@@ -157,14 +157,14 @@ function AddExpense() {
                 required
               >
                 <option value=""></option>
-                <option value="supermarket">סופר</option>
-                <option value="restaurant">מסעדה</option>
-                <option value="tech">טכנולוגיה</option>
-                <option value="dress_and_shoes">הלבשה והנעלה</option>
-                <option value="fuel">דלק</option>
-                <option value="loan">הלוואה</option>
-                <option value="debt">חוב</option>
-                <option value="gift">מתנה</option>
+                <option value="סופר">סופר</option>
+                <option value="מסעדה">מסעדה</option>
+                <option value="טכנולוגיה">טכנולוגיה</option>
+                <option value="dהלבשה והנעלהress_and_shoes">הלבשה והנעלה</option>
+                <option value="דלק">דלק</option>
+                <option value="הלוואה">הלוואה</option>
+                <option value="חוב">חוב</option>
+                <option value="מתנה">מתנה</option>
               </Form.Control>
             </Form.Group>
 

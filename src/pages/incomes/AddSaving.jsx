@@ -75,11 +75,11 @@ function AddSaving() {
                 required
               >
                 <option value=""></option>
-                <option value="health">בריאות</option>
-                <option value="business">עסקים</option>
-                <option value="regular">רגיל</option>
-                <option value="education">השכלה</option>
-                <option value="other">אחר</option>
+                <option value="בריאות">בריאות</option>
+                <option value="עסקים">עסקים</option>
+                <option value="רגיל">רגיל</option>
+                <option value="השכלה">השכלה</option>
+                <option value="אחר">אחר</option>
               </Form.Control>
             </Form.Group>
 

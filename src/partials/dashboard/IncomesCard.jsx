@@ -52,7 +52,7 @@ function IncomesCard() {
           {amount !== null ? (
             <>
               <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{amount}₪</div>
-              <div className="text-sm font-semibold text-white px-1.5 bg-emerald-500 rounded-full">+49%</div>
+              {/* <div className="text-sm font-semibold text-white px-1.5 bg-emerald-500 rounded-full">+49%</div> */}
             </>
           ) : (
             <div className="text-lg font-semibold text-slate-800 dark:text-slate-100 mr-2">אין נתונים</div>
