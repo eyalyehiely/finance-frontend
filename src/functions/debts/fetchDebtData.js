@@ -33,7 +33,7 @@ import swal from 'sweetalert';
 //   }
 
 
-
+import fetch from 'node-fetch';
 export default function fetchDebtData(token, setDebts) {
   fetch('/debts/get_all_debts/', {
     method: 'POST',
