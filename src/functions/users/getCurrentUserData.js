@@ -1,8 +1,10 @@
 
 import axios from '../axiosConfig'
 import swal from 'sweetalert';
+import checkToken from '../checkToken';
 
 export default function getCurrentUserData(token,setUser) {
+  checkToken()
     axios.post('/auth/fetch_current_user_data/', {}, {
       headers: {
         'Content-Type': 'application/json',
