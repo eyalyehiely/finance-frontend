@@ -1,5 +1,6 @@
 // import axios from '../axiosConfig'
 import swal from 'sweetalert';
+import fetch from 'node-fetch';
 import fetchDebtData from './fetchDebtData';
 
 // export default function addDebtData(token, setDebts, data, handleClose) {
