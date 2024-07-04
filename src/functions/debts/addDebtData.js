@@ -17,7 +17,7 @@ export default function addDebtData(token, setDebts, data, handleClose) {
       button: false,
     }).then(() => {
       handleClose();
-      window.location.reload()
+      handleClose
       fetchDebtData(token,setDebts)
      
     });

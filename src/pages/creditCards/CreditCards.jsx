@@ -208,9 +208,9 @@ function CreditCards() {
                       <li className="flex items-center justify-between py-3 border-b border-slate-200 dark:border-slate-700">
                         <div className="text-sm">סטטוס</div>
                         <div className="flex items-center whitespace-nowrap">
-                        <div className={`flex items-center space-x-1 ${card.status == 'Active' ? 'text-green-500' : 'text-red-500'}`}>
-                        <div className={`w-2 h-2 rounded-full ${card.status == 'Active' ? 'bg-green-500' : 'bg-red-500'} mr-2`} />
-                          <span>{card.status == 'Active' ? 'פעיל' : 'מושבת'}</span>
+                        <div className={`flex items-center space-x-1 ${card.status == 'פעיל' ? 'text-green-500' : 'text-red-500'}`}>
+                        <div className={`w-2 h-2 rounded-full ${card.status == 'פעיל' ? 'bg-green-500' : 'bg-red-500'} mr-2`} />
+                          <span>{card.status == 'פעיל' ? 'פעיל' : 'מושבת'}</span>
                       </div>
 
 
