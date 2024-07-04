@@ -11,23 +11,22 @@ const checkToken = () => {
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        const currentTime = Date.now() / 1000; // Convert to seconds
+        const currentTime = Date.now() / 1000;
 
-        // Check if the token is expired
         if (decodedToken.exp < currentTime) {
-          // Token is expired
+          localStorage.removeItem('authTokens');
           navigate('/signin');
         }
+        // No else block needed: If token is valid, do nothing and let the component render.
       } catch (error) {
-        // Token decoding failed
         console.error('Invalid token:', error);
+        localStorage.removeItem('authTokens');
         navigate('/signin');
       }
     } else {
-      // No token available
       navigate('/signin');
     }
-  }, [navigate]);
+  }, [navigate]);  // Only depends on `navigate`, runs on mount and route changes
 };
 
 export default checkToken;
