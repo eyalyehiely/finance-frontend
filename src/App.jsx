@@ -13,10 +13,7 @@ import './charts/ChartjsConfig';
 import Dashboard from './pages/Dashboard';
 import Fintech from './pages/Fintech';
 import AllExpenses from './pages/expenses/AllExpenses';
-import ExpensesTable from './pages/expenses/ExpensesTable';
 import AllDebts from './pages/expenses/AllDebts';
-import AddDebt from './pages/expenses/AddDebt';
-import DebtTable from './pages/expenses/DebtTable';
 import CreditCards from './pages/creditCards/CreditCards';
 import AllIncomes from './pages/incomes/AllIncomes';
 import AllSavings from './pages/incomes/AllSavings';
@@ -37,9 +34,8 @@ import TooltipPage from './pages/component/TooltipPage';
 import AccordionPage from './pages/component/AccordionPage';
 import IconsPage from './pages/component/IconsPage';
 import ChangePassword from './pages/changePasswordPage.jsx'
-import Calander from './pages/Calendar'
+// import Calander from './pages/Calendar'
 import AccountPanel from './pages/settings/AccountPanel'
-import FeedbackPanel from './partials/settings/FeedbackPanel'
 // import Stocks from './components/Stocks';
 
 
@@ -62,15 +58,13 @@ function App() {
         
         <Route exact path="/" element={<Dashboard />} />
         <Route path="/dashboard/fintech" element={<Fintech />} />
+
         {/* expenses */}
         <Route path="/expenses/all-expenses" element={<AllExpenses />} />
-        <Route path="/expenses/expenses-table" element={<ExpensesTable />} />
 
 
         {/* debts */}
         <Route path="/expenses/all-debts" element={<AllDebts />} />
-        <Route path="/expenses/debt-table" element={<DebtTable />} />
-        <Route path="/expenses/add-debt" element={<AddDebt />} />
 
         {/* credit cards */}
         <Route path="/creditcards/all-cards" element={<CreditCards />} />
@@ -109,6 +103,7 @@ function App() {
 
         <Route path="/settings/account" element={<AccountPanel/>} />
         {/* <Route path="/stocks" element={<Stocks/>} /> */}
+        {/* <Route path="/calander" element={<calander/>} /> */}
       </Routes>
     </>
   );
