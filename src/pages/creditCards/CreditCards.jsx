@@ -6,7 +6,6 @@ import Rights from '../../components/Rights';
 import getCreditCardData from '../../functions/credit_cards/getCreditCardData';
 import deleteCard from '../../functions/credit_cards/deleteCard';
 import EditCard from './EditCard';
-import Button from 'react-bootstrap/Button';
 import AddCreditCard from './AddCreditCard';
 import axios from '../../functions/axiosConfig';
 
@@ -31,7 +30,7 @@ function CreditCards() {
         if (response.data.status === 200) {
           setExpenses(response.data.credit_card);
         } else {
-          console.log('error');
+          console.log('Error fetching expenses');
         }
       })
       .catch(error => {
@@ -62,13 +61,10 @@ function CreditCards() {
               {/* Page header */}
               <div className="sm:flex sm:justify-between sm:items-center mb-5">
                 {/* Left: Title */}
-                <div className="mb-4 sm:mb-0">
-                  <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">אשראי ✨</h1>
+                <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-start gap-2">
+                  <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">הכרטיסים שלי ✨</h1>
+                  <AddCreditCard />
                 </div>
-                <div>
-                  <AddCreditCard/>
-                </div>
-               
               </div>
 
               {/* Filters */}

@@ -49,12 +49,13 @@ function AddCreditCard() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Form submitted');
     addCreditCard(token, setCreditCards, data, handleClose);
   };
 
   return (
     <>
-     <Button onClick={handleShow} variant="outline-primary" className="d-flex align-items-center">
+     <Button onClick={handleShow} variant="outline-primary" type="button" className="d-flex align-items-center">
         <span className="ml-2">הוסף אשראי</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +72,7 @@ function AddCreditCard() {
         </svg>
       </Button>
 
-
-
+   
       <Modal show={show} onHide={handleClose} centered dir="rtl">
         <Modal.Header>
           <Modal.Title>פרטי אשראי</Modal.Title>
@@ -178,7 +178,7 @@ function AddCreditCard() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" type="submit" onClick={handleClose}>
             סגור
           </Button>
         </Modal.Footer>
