@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import axios from "axios";
+import axios from '../functions/axiosConfig';
 import swal from 'sweetalert';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
