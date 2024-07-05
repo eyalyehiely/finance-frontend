@@ -58,7 +58,7 @@ function AddExpense() {
   };
 
   const isCreditCard = () => {
-    if (data.payment_method === 'credit_card') {
+    if (data.payment_method === 'כרטיס אשראי' && creditCards.length>0) {
       return (
         <Form.Group controlId="formCreditCard">
           <Form.Label>שם הכרטיס</Form.Label>
