@@ -160,7 +160,7 @@ function AddExpense() {
                 <option value="סופר">סופר</option>
                 <option value="מסעדה">מסעדה</option>
                 <option value="טכנולוגיה">טכנולוגיה</option>
-                <option value="dהלבשה והנעלהress_and_shoes">הלבשה והנעלה</option>
+                <option value="הלבשה והנעלה">הלבשה והנעלה</option>
                 <option value="דלק">דלק</option>
                 <option value="הלוואה">הלוואה</option>
                 <option value="חוב">חוב</option>
