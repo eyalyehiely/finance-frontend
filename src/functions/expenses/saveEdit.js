@@ -14,6 +14,8 @@ export default function saveEdit(token, editedExpense, editingExpenseId, setExpe
     name: editedExpense.name || '',
     price: editedExpense.price ? String(editedExpense.price).replace(/,/g, '') : '',
     credit_card: editedExpense.credit_card || '',
+    category:editedExpense.category || '',
+    expense_type:editedExpense.expense_type || '',
   };
 
   axios.put(`/expenses/edit_expense/${editingExpenseId}/`, editedData, {
