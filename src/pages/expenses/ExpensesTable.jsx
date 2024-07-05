@@ -99,6 +99,11 @@ function ExpensesTable() {
               <th className="p-2">
                 <div className="font-semibold text-right">סוג ההוצאה</div>
               </th>
+
+              <th className="p-2">
+                <div className="font-semibold text-right">קטגוריה</div>
+              </th>
+
               <th className="p-2">
                 <div className="font-semibold text-right">דרך תשלום</div>
               </th>
@@ -151,6 +156,33 @@ function ExpensesTable() {
                       <div className="text-right">{expense.expense_type}</div>
                     )}
                   </td>
+
+
+                  <td className="p-2">
+                    {editingExpenseId === expense.id ? (
+                      <select
+                        id="category"
+                        className="text-right"
+                        value={editedExpense.category || ''}
+                        onChange={(e) => handleEditChange(e, 'category')}
+                      >
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value="סופר">סופר</option>
+                        <option value="מסעדה">מסעדה</option>
+                        <option value="טכנולוגיה">טכנולוגיה</option>
+                        <option value="dהלבשה והנעלהress_and_shoes">הלבשה והנעלה</option>
+                        <option value="דלק">דלק</option>
+                        <option value="הלוואה">הלוואה</option>
+                        <option value="חוב">חוב</option>
+                        <option value="מתנה">מתנה</option>
+                        <option value="אחר">אחר</option>
+                      </select>
+                    ) : (
+                      <div className="text-right">{expense.category}</div>
+                    )}
+                  </td>
+
                   <td className="p-2">
                     {editingExpenseId === expense.id ? (
                       <select
