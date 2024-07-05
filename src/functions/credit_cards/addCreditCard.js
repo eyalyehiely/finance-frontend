@@ -11,7 +11,7 @@ export default function addCreditCard(token, setCreditCards, data, handleClose) 
   }).then((response) => {
     setCreditCards((prevCreditCards) => [...prevCreditCards, response.data]);
     swal({
-      title: " !הכנסה נוספה בהצלחה",
+      title: "  💳!כרטיס נוסף בהצלחה",
       icon: "success",
       timer:2000,
       button: false,
