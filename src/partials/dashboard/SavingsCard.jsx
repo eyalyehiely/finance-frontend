@@ -57,11 +57,9 @@ function SavingsCard() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="px-5 pt-5 flex flex-col items-left">
-        <header className="flex justify-between items-start mb-2">
+        <div className="flex justify-between items-start mb-2">
         <AddSaving/>
-          {/* Icon */}
-          
-        </header>
+        </div>
         <h2 dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">חסכונות</h2>
         <div dir="rtl" className="flex items-start">
           {savings !== null ? (
