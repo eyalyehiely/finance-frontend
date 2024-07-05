@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { format } from 'date-fns';
 
 function ExpensesTable() {
   const [expenses, setExpenses] = useState([]);
@@ -31,6 +32,8 @@ function ExpensesTable() {
           expense.name.toLowerCase().includes(query) ||
           expense.payment_method.toLowerCase().includes(query) ||
           expense.price.toString().includes(query) ||
+          expense.category.toString().includes(query)||
+          expense.expense_type.toString().includes(query)||
           new Date(expense.date_and_time).toLocaleString().includes(query)
         )
       );
@@ -167,11 +170,10 @@ function ExpensesTable() {
                         onChange={(e) => handleEditChange(e, 'category')}
                       >
                         <option value=""></option>
-                        <option value=""></option>
                         <option value="סופר">סופר</option>
                         <option value="מסעדה">מסעדה</option>
                         <option value="טכנולוגיה">טכנולוגיה</option>
-                        <option value="dהלבשה והנעלהress_and_shoes">הלבשה והנעלה</option>
+                        <option value="הלבשה והנעלה">הלבשה והנעלה</option>
                         <option value="דלק">דלק</option>
                         <option value="הלוואה">הלוואה</option>
                         <option value="חוב">חוב</option>
@@ -192,11 +194,11 @@ function ExpensesTable() {
                         onChange={(e) => handleEditChange(e, 'payment_method')}
                       >
                         <option value=""></option>
-                        <option value="credit_card">כרטיס אשראי</option>
-                        <option value="direct_debit">הוראת קבע</option>
-                        <option value="transaction">העברה בנקאית</option>
-                        <option value="cash">מזומן</option>
-                        <option value="check">צ׳ק</option>
+                        <option value="כרטיס אשראי">כרטיס אשראי</option>
+                        <option value="הוראת קבע">הוראת קבע</option>
+                        <option value="העברה בנקאית">העברה בנקאית</option>
+                        <option value="מזומן">מזומן</option>
+                        <option value="צ׳ק">צ׳ק</option>
                       </select>
                     ) : (
                       <div className="text-right">{expense.payment_method}</div>
@@ -225,7 +227,7 @@ function ExpensesTable() {
                         onChange={(e) => handleEditChange(e, 'date_and_time')}
                       />
                     ) : (
-                      <div className="text-right">{new Date(expense.date_and_time).toLocaleString()}</div>
+                      <div className="text-right">{format(new Date(expense.date_and_time), 'dd/MM/yyyy HH:mm')}</div>
                     )}
                   </td>
                   <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
