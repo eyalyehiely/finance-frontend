@@ -69,7 +69,7 @@ function ExpensesTable() {
     setEditingExpenseId(null);
     setEditedExpense({});
   };
-
+  console.log({setEditedExpense});
   return (
     <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 relative" dir="rtl">
       <header className="px-5 py-4">
