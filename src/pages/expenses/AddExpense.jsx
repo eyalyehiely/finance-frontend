@@ -72,7 +72,7 @@ function AddExpense() {
             {creditCards.length > 0 ? (
               creditCards.map((card, index) => (
                 <option key={index} value={card.name}>
-                  {card.name(card.last_four_digits)}
+                  {card.name},{card.last_four_digits}
                 </option>
               ))
             ) : (
@@ -165,6 +165,7 @@ function AddExpense() {
                 <option value="הלוואה">הלוואה</option>
                 <option value="חוב">חוב</option>
                 <option value="מתנה">מתנה</option>
+                <option value="אחר">אחר</option>
               </Form.Control>
             </Form.Group>
 
