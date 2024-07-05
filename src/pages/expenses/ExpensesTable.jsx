@@ -137,13 +137,16 @@ function ExpensesTable() {
 
                   <td className="p-2">
                     {editingExpenseId === expense.id ? (
-                      <input
-                        type="text"
+                      <select
                         id="expense_type"
                         className="text-right"
                         value={editedExpense.expense_type || ''}
                         onChange={(e) => handleEditChange(e, 'expense_type')}
-                      />
+                      >
+                        <option value=""></option>
+                        <option value="הוצאה קבועה">הוצאה קבועה</option>
+                        <option value="הוצאה משתנה">הוצאה משתנה</option>
+                      </select>
                     ) : (
                       <div className="text-right">{expense.expense_type}</div>
                     )}
