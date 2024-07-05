@@ -97,6 +97,9 @@ function ExpensesTable() {
                 <div className="font-semibold text-right">שם ההוצאה</div>
               </th>
               <th className="p-2">
+                <div className="font-semibold text-right">סוג ההוצאה</div>
+              </th>
+              <th className="p-2">
                 <div className="font-semibold text-right">דרך תשלום</div>
               </th>
               <th className="p-2">
@@ -128,6 +131,21 @@ function ExpensesTable() {
                       />
                     ) : (
                       <div className="text-right">{expense.name}</div>
+                    )}
+                  </td>
+
+
+                  <td className="p-2">
+                    {editingExpenseId === expense.id ? (
+                      <input
+                        type="text"
+                        id="expense_type"
+                        className="text-right"
+                        value={editedExpense.expense_type || ''}
+                        onChange={(e) => handleEditChange(e, 'expense_type')}
+                      />
+                    ) : (
+                      <div className="text-right">{expense.expense_type}</div>
                     )}
                   </td>
                   <td className="p-2">
