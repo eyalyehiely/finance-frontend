@@ -187,7 +187,7 @@ function Sidebar({
                               end
                               to="/"
                               className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
+                                'block transition duration-150 truncate no-underline ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -230,8 +230,8 @@ function Sidebar({
                           setSidebarExpanded(true);
                         }}
                       >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
+                        <div className="flex items-center justify-between no-underline">
+                          <div className="flex items-center ">
                             <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                               <path
                                 className={`fill-current ${pathname.includes('ecommerce') ? 'text-indigo-300' : 'text-slate-400'}`}
@@ -268,7 +268,7 @@ function Sidebar({
                               end
                               to="/expenses/all-expenses"
                               className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
+                                'block transition duration-150 truncate no-underline ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -282,7 +282,7 @@ function Sidebar({
                               end
                               to="/expenses/all-debts"
                               className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
+                                'block transition duration-150 truncate no-underline' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -349,7 +349,7 @@ function Sidebar({
                               end
                               to="/incomes/all-incomes"
                               className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
+                                'block transition duration-150 truncate no-underline' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -429,7 +429,7 @@ function Sidebar({
                               end
                               to="/creditcards/all-cards"
                               className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
+                                'block transition duration-150 truncate no-underline' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -451,7 +451,7 @@ function Sidebar({
                 <NavLink
                   end
                   to="/calendar"
-                  className={`block text-slate-200 truncate transition duration-150 ${
+                  className={`block text-slate-200 truncate no-underline transition duration-150 ${
                     pathname.includes('calendar') ? 'hover:text-slate-200' : 'hover:text-white'
                   }`}
                 >
@@ -472,31 +472,31 @@ function Sidebar({
 
               {/* stocks */}
 
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('calendar') && 'bg-slate-900'}`}>
-                <NavLink
-                  end
-                  to="#"
-                  className={`block text-slate-200 truncate transition duration-150 ${
-                    pathname.includes('calendar') ? 'hover:text-slate-200' : 'hover:text-white'
-                  }`}
-                >
-                  <div className="flex items-center">
-                  <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className="fill-current text-slate-600"
-                        d="M19 5h1v14h-2V7.414L5.707 19.707 5 19H4V5h2v11.586L18.293 4.293 19 5Z"
-                      />
-                      <path
-                        className="fill-current text-slate-400"
-                        d="M5 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8ZM5 23a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
-                      />
-                    </svg>
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      מניות
-                    </span>
-                  </div>
-                </NavLink>
-              </li>
+              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('calendar') ? 'bg-slate-900' : ''}`}>
+            <NavLink
+              end
+              to="#"
+              className={`block text-slate-200 truncate transition duration-150 ${
+                pathname.includes('stocks') ? 'hover:text-slate-200' : 'hover:text-white'
+              } no-underline`}  
+            >
+              <div className="flex items-center">
+                <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                  <path
+                    className="fill-current text-slate-600"
+                    d="M19 5h1v14h-2V7.414L5.707 19.707 5 19H4V5h2v11.586L18.293 4.293 19 5Z"
+                  />
+                  <path
+                    className="fill-current text-slate-400"
+                    d="M5 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8ZM5 23a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
+                  />
+                </svg>
+                <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                  מניות
+                </span>
+              </div>
+            </NavLink>
+          </li>
               {/* Settings */}
               <SidebarLinkGroup activecondition={pathname.includes('settings')}>
                 {(handleClick, open) => {
@@ -550,33 +550,20 @@ function Sidebar({
                       </a>
                       <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
                         <ul className={`pl-9 mt-1 ${!open && 'hidden'}`}>
-                          <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/settings/account"
-                              className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
-                              }
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                החשבון שלי
-                              </span>
-                            </NavLink>
-                          </li>
-                         
-                          <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/settings/feedback"
-                              className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
-                              }
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                {/* Give Feedback */}
-                              </span>
-                            </NavLink>
-                          </li>
+                        <li className="mb-1 last:mb-0">
+                          <NavLink
+                            end
+                            to="/settings/account"
+                            className={({ isActive }) =>
+                              'block transition duration-150 truncate no-underline ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
+                            }
+                          >
+                            <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              החשבון שלי
+                            </span>
+                          </NavLink>
+                        </li>
+
                         </ul>
                       </div>
                     </React.Fragment>
