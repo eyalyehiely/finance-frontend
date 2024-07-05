@@ -18,7 +18,7 @@ export default function deleteExpense(token,id) {
           }
         }).then((response) => {
           swal({
-            title: " 🗑️!ההוצאה נמחק בהצלחה",
+            title: " 🗑️!הוצאה נמחק בהצלחה",
             icon: "success",
             timer:2000,
             button: false,
