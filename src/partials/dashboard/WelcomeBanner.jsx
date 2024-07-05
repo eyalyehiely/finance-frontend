@@ -12,7 +12,7 @@ function WelcomeBanner() {
       <div dir="rtl" className="relative flex items-center">
         <h2 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1 flex items-center">
           <Note />
-          <span className="ml-2">{first_name}</span>
+          <span className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1 flex items-center">,{first_name}</span>
         </h2>
       </div>
     </div>
