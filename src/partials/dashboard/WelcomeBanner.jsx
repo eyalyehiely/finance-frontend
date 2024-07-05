@@ -1,6 +1,6 @@
 import React from 'react';
 import Note from '../../components/UserNote';
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 
 function WelcomeBanner() {
   const token = localStorage.getItem('authTokens');
