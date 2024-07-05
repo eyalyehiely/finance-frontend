@@ -51,7 +51,15 @@ function ExpensesTable() {
 
   const startEdit = (expense) => {
     setEditingExpenseId(expense.id);
-    setEditedExpense({ ...expense });
+    setEditedExpense({
+      name: expense.name || '',
+      expense_type: expense.expense_type || '',  // Ensure default values
+      category: expense.category || '',        // Ensure default values
+      payment_method: expense.payment_method || '',
+      price: expense.price || '',
+      date_and_time: expense.date_and_time || '',
+      credit_card: expense.credit_card || '',
+    });
   };
 
   const cancelEdit = () => {
