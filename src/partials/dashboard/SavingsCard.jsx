@@ -56,7 +56,7 @@ function SavingsCard() {
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
-      <div className="px-5 pt-5 flex flex-col items-center">
+      <div className="px-5 pt-5 flex flex-col items-left">
         <header className="flex justify-between items-start mb-2">
         <AddSaving/>
           {/* Icon */}

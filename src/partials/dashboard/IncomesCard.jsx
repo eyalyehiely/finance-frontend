@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../functions/axiosConfig'
+import AddIncome from '../../pages/incomes/AddIncome';
 
 function IncomesCard() {
   const [amount, setAmount] = useState(null);
@@ -45,23 +46,23 @@ function IncomesCard() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="px-5 pt-5 flex flex-col items-center">
+        <AddIncome />
         <header className="flex justify-between items-start mb-2">
         </header>
         <h2 dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">הכנסות (החודש)</h2>
-        <div dir="rtl" className="flex items-center">
+        <div dir="rtl" className="flex flex-col items-center justify-center h-full w-full">
           {amount !== null ? (
             <>
-              <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{amount}₪</div>
+              <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">{amount}₪</div>
               {/* <div className="text-sm font-semibold text-white px-1.5 bg-emerald-500 rounded-full">+49%</div> */}
             </>
           ) : (
-            <div className="text-lg font-semibold text-slate-800 dark:text-slate-100 mr-2">אין נתונים</div>
+            <div className="text-lg font-semibold text-slate-800 dark:text-slate-100">אין נתונים</div>
           )}
         </div>
       </div>
     </div>
   );
-  
 }
 
 export default IncomesCard;

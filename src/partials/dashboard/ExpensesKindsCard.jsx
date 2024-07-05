@@ -93,14 +93,18 @@ function ExpensesKindsCard() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 pt-5 flex flex-col items-center">
-      <AddExpense />
+        <AddExpense />
       </header>
-      <h2  dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2"> הוצאות: {expenses} ₪(חודשי)</h2>
-      {error && <div className="text-red-600 p-4">{error}</div>}
+      <h2 dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2 text-center">
+        הוצאות: {expenses} ₪ (חודשי)
+      </h2>
+      {error && <div className="text-red-600 p-4 text-center">{error}</div>}
       {loading ? (
         <div className="text-center p-4">אין נתונים</div>
       ) : (
-      <PieChart data={chartData} width={389} height={220} />
+        <div className="flex justify-center">
+          <PieChart data={chartData} width={389} height={220} />
+        </div>
       )}
     </div>
   );
