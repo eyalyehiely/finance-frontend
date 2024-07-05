@@ -88,7 +88,8 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/change_password/:email" element={<ChangePassword />} />
+        <Route path="/auth/change_password/:email/:token/" element={<ChangePassword />} />
+
 
         {/* components */}
         {/* <Route path="/calendar" element={<Calander />} /> */}

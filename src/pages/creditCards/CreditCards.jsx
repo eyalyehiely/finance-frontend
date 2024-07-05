@@ -1,15 +1,14 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../../partials/Sidebar';
 import Header from '../../partials/Header';
 import CreditCardLogo from '../component/CreditCardLogo';
 import Rights from '../../components/Rights';
-import getCreditCardData from '../../functions/credit_cards/getCreditCardData'
-import deleteCard from '../../functions/credit_cards/deleteCard'
-import EditCard from './EditCard'
-import Button from 'react-bootstrap/esm/Button';
+import getCreditCardData from '../../functions/credit_cards/getCreditCardData';
+import deleteCard from '../../functions/credit_cards/deleteCard';
+import EditCard from './EditCard';
+import Button from 'react-bootstrap/Button';
 import AddCreditCard from './AddCreditCard';
-import axios from '../../functions/axiosConfig'
-
+import axios from '../../functions/axiosConfig';
 
 
 
@@ -66,8 +65,10 @@ function CreditCards() {
                 <div className="mb-4 sm:mb-0">
                   <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">אשראי ✨</h1>
                 </div>
-                {/* Add card button */}
-                 <AddCreditCard/>
+                <div>
+                  <AddCreditCard/>
+                </div>
+               
               </div>
 
               {/* Filters */}

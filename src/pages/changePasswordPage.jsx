@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 
 
 function ChangePassword() {
-  const { email } = useParams();
+  const { email,token } = useParams();
 
   function fetchData(event) {
     event.preventDefault();
     const new_password = document.getElementById('new_password').value;
 
-    axios.post(`/auth/change_password/${email}`, {
+    axios.post(`/auth/change_password/${email}/${token}/`, {
       new_password: new_password,
     }).then((response) => {
       if (response.status === 200) {
