@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import fetchExpensesData from '/src/functions/expenses/fetchExpensesData.js';
+import fetchExpensesData from '../../functions/expenses/fetchExpensesData';
 import saveEdit from '../../functions/expenses/saveEdit';
 import AddCommaToNumber from '../../components/AddComma';
 import deleteExpense from '../../functions/expenses/deleteExpense';
@@ -51,15 +51,7 @@ function ExpensesTable() {
 
   const startEdit = (expense) => {
     setEditingExpenseId(expense.id);
-    setEditedExpense({
-      name: expense.name || '',
-      expense_type: expense.expense_type || '',  // Ensure default values
-      category: expense.category || '',        // Ensure default values
-      payment_method: expense.payment_method || '',
-      price: expense.price || '',
-      date_and_time: expense.date_and_time || '',
-      credit_card: expense.credit_card || '',
-    });
+    setEditedExpense({ ...expense });
   };
 
   const cancelEdit = () => {
