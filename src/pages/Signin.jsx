@@ -352,8 +352,10 @@ function Signin() {
                   <Button type="submit" variant="primary"> התחבר</Button>
                 </div>
               </form>
+              
+              {/* google sign */}
 
-              <div className="pt-5 mt-6 border-t border-slate-200 dark:border-slate-700">
+              {/* <div className="pt-5 mt-6 border-t border-slate-200 dark:border-slate-700">
                 <div className="flex text-sm justify-center">
                   <div
                     id="g_id_onload"
@@ -373,7 +375,7 @@ function Signin() {
                     data-logo_alignment="left">
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="pt-5 mt-6 border-t border-slate-200 dark:border-slate-700">
                 <div className="text-sm">
