@@ -9,21 +9,44 @@ function LineOfCreditAlert() {
   const [creditNotes, setCreditNotes] = useState(null);
 
   useEffect(() => {
-    getActiveCreditCardData(token, setCreditCards);
-    getCurrentMonthCardExpenses(token, setExpenses);
+    if (token) {
+      getActiveCreditCardData(token, setCreditCards);
+      getCurrentMonthCardExpenses(token, setExpenses);
+    }
   }, [token]);
 
   useEffect(() => {
     if (creditCards.length > 0 && expenses.length > 0) {
-      const totalExpenses = expenses.reduce((acc, expense) => acc + expense.amount, 0);
+      let hasExceededLimit = false;
+      let cardName = '';
+      let cardLastDigits = '';
 
-      const hasExceededLimit = creditCards.some(card => totalExpenses >= card.line_of_credit * 0.75);
+      // Outer loop iterates over credit cards
+      for (let i = 0; i < creditCards.length; i++) {
+        const cardLineOfCredit = creditCards[i].line_of_credit;
+        let totalExpenses = 0;
 
-      if (hasExceededLimit) {
-        setCreditNotes('הנך קרוב לחריגה בכרטיס האשראי');
-      } else {
-        setCreditNotes(null);
+        // Inner loop iterates over expenses
+        for (let j = 0; j < expenses.length; j++) {
+          totalExpenses += expenses[j].amount;
+
+          if (totalExpenses >= cardLineOfCredit * 0.75) {
+            cardName = creditCards[i].name;
+            cardLastDigits = creditCards[i].last_four_digits;
+            hasExceededLimit = true;
+            break;
+          }
+        }
+
+        // If limit exceeded for any card, no need to check further
+        if (hasExceededLimit) {
+          break;
+        }
       }
+
+      setCreditNotes(
+        hasExceededLimit ? `הנך קרוב לחריגה בכרטיס האשראי בכרטיס ${cardName} (${cardLastDigits})` : null
+      );
     }
   }, [creditCards, expenses]);
 
