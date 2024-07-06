@@ -25,7 +25,7 @@ function IncomesTable() {
         incomes.filter((income) =>
           income.source.toLowerCase().includes(query) ||
           income.amount.toString().includes(query)||
-          new Date(income.date).toLocaleString().includes(query)
+          format(new Date(income.date),'dd/MM/yyyy').includes(query)
         )
       );
     } else {
@@ -169,7 +169,7 @@ function IncomesTable() {
                       </td>
 
                       <td className="p-2">
-                        <div className="text-right">{income.date.toLocaleString()}</div>
+                        <div className="text-right">{format(income.date,'dd/MM/yyyy')}</div>
                       </td>
                       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                         <div className="space-x-1">

@@ -25,8 +25,8 @@ function SavingsTable() {
         savings.filter((saving) =>
           saving.saving_type.toLowerCase().includes(query) ||
           saving.amount.toString().includes(query) ||
-          new Date(saving.starting_date).toLocaleString().includes(query)||
-          new Date(saving.finish_date).toLocaleString().includes(query)
+          format(new Date(saving.starting_date),'dd/MM/yyyy').includes(query)||
+          format(new Date(saving.finish_date),'dd/MM/yyyy').includes(query)
         )
       );
     } else {

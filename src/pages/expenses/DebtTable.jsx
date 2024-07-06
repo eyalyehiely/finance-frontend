@@ -32,8 +32,8 @@ console.log(debts.length);
           debt.type.toLowerCase().includes(query) ||
           debt.amount.toString().includes(query) ||
           debt.interest.toString().includes(query) ||
-          new Date(debt.starting_date).toLocaleString().includes(query)||
-          new Date(debt.finish_date).toLocaleString().includes(query)
+          format(new Date(debt.starting_date),'dd/MM/yyyy').includes(query)||
+          format(new Date(debt.finish_date),'dd/MM/yyyy').includes(query)
         )
       );
     } else {

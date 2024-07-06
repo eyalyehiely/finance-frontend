@@ -35,7 +35,7 @@ function ExpensesTable() {
           expense.price.toString().includes(query) ||
           expense.category.toLowerCase().includes(query)||
           expense.expense_type.toLowerCase().includes(query)||
-          new Date(expense.date_and_time).toLocaleString().includes(query)
+          format(new Date(expense.date_and_time),'dd/MM/yyyy HH:mm').includes(query)
         )
       );
     } else {
