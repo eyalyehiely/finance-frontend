@@ -137,7 +137,9 @@ function AddExpense() {
                 required
               >
                 <option value=""></option>
+                {creditCards.length > 0 && (
                 <option value="כרטיס אשראי">כרטיס אשראי</option>
+              )}
                 <option value="הוראת קבע">הוראת קבע</option>
                 <option value="העברה בנקאית">העברה בנקאית</option>
                 <option value="מזומן">מזומן</option>
