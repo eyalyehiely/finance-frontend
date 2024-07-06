@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { format } from 'date-fns';
+import DropdownFilter from '../../components/DropdownFilter';
 
 function ExpensesTable() {
   const [expenses, setExpenses] = useState([]);
@@ -32,8 +33,8 @@ function ExpensesTable() {
           expense.name.toLowerCase().includes(query) ||
           expense.payment_method.toLowerCase().includes(query) ||
           expense.price.toString().includes(query) ||
-          expense.category.toString().includes(query)||
-          expense.expense_type.toString().includes(query)||
+          expense.category.toLowerCase().includes(query)||
+          expense.expense_type.toLowerCase().includes(query)||
           new Date(expense.date_and_time).toLocaleString().includes(query)
         )
       );
@@ -74,8 +75,9 @@ function ExpensesTable() {
     <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 relative" dir="rtl">
       <header className="px-5 py-4">
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">
-          הוצאות <span className="text-slate-400 dark:text-slate-500 font-medium">{filteredExpenses.length}</span>
+          הוצאות <span className="text-slate-400 dark:text-slate-500 font-medium">{filteredExpenses.length} <DropdownFilter align={"right"}/></span>
         </h2>
+        
         <div className="my-4">
           <input
             type="text"
