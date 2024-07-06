@@ -31,6 +31,7 @@ console.log(debts.length);
           debt.name.toLowerCase().includes(query) ||
           debt.type.toLowerCase().includes(query) ||
           debt.amount.toString().includes(query) ||
+          debt.interest.toString().includes(query) ||
           new Date(debt.starting_date).toLocaleString().includes(query)||
           new Date(debt.finish_date).toLocaleString().includes(query)
         )
