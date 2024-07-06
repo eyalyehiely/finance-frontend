@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../functions/axiosConfig'
-
+import { format } from 'date-fns';
 function ExpensesTableCard() {
   const [expenses, setExpenses] = useState([]);
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
@@ -76,7 +76,7 @@ function ExpensesTableCard() {
         <div className="text-right">{expense[0]}</div> {/* Name */}
       </td>
       <td className="p-2">
-        <div className="text-right">{new Date(expense[1]).toLocaleDateString()}</div> {/* Date */}
+        <div className="text-right">{format(new Date(expense[1]),'dd/MM/yyyy')}</div> {/* Date */}
       </td>
       <td className="p-2">
         <div className="text-right">{expense[2]}</div> {/* Payment Method */}

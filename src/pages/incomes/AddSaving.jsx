@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import fetchSavingsData from '../../functions/savings/fetchSavingsData'
 import addSaving from '../../functions/savings/addSaving';
 
+
 function AddSaving() {
   const [show, setShow] = useState(false);
   const [savings, setSavings] = useState([]);

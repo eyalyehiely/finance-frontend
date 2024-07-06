@@ -3,6 +3,7 @@ import AddCommaToNumber from '../../components/AddComma';
 import fetchIncomesData from '../../functions/incomes/fetchIncomesData';
 import deleteIncome from '../../functions/incomes/deleteIncome';
 import saveEdit from '../../functions/incomes/saveEdit';
+import { format } from 'date-fns';
 
 
 
@@ -128,7 +129,7 @@ function IncomesTable() {
                       </td>
 
                       <td className="p-2">
-                        <input type="text" id="date" className="text-right" value={editedIncome.date.toLocaleString()} onChange={(e) => handleEditChange(e, 'date')} />
+                        <input type="text" id="date" className="text-right" value={format(editedIncome.date,'dd/MM/yyyy')} onChange={(e) => handleEditChange(e, 'date')} />
                       </td>
 
                       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
