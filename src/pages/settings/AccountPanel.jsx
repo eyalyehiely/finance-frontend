@@ -17,7 +17,6 @@ import TextField from '@mui/material/TextField';
 import axios from '../../functions/axiosConfig'
 import getCurrentUserData from '../../functions/users/getCurrentUserData';
 import EditUser from './EditUser';
-import { format } from 'date-fns';
 
 
 function AccountPanel() {
@@ -138,7 +137,7 @@ function AccountPanel() {
                   </Grid>
                   <Grid item md={4} sm={6} xs={12}>
                     <Typography variant="body1">
-                      <strong>תאריך לידה:</strong> {format(user.birth_date,'dd/MM/yyyy')}
+                      <strong>תאריך לידה:</strong> {user.birth_date}
                     </Typography>
                   </Grid>
                   <Grid item md={4} sm={6} xs={12}>
