@@ -30,7 +30,8 @@ function Signup() {
   const { first_name, last_name, gender, life_status, num_of_children, email, password, birth_date, profession, phone_number, address } = formData;
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: id === 'email' ? value.toLowerCase() : value });
   };
 
   useEffect(() => {

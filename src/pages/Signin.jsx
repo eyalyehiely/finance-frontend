@@ -13,7 +13,7 @@ function Signin() {
   // Fetch data from the server on form submission
   const fetchData = async (event) => {
     event.preventDefault();
-    const username = document.getElementById('username').value;
+    const username = document.getElementById('username').value.toLowerCase();
     const password = document.getElementById('password').value;
 
     try {
