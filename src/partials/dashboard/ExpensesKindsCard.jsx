@@ -96,8 +96,9 @@ function ExpensesKindsCard() {
       <div className="px-5 pt-5 flex flex-col items-center">
         <AddExpense />
       </div>
-      <ThemeText dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2 text-center">
+      <div dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2 text-center">
         הוצאות: {expenses} ₪ (חודשי)
+        </div>
       
       {error && <div className="text-red-600 p-4 text-center">{error}</div>}
       {loading ? (
