@@ -4,10 +4,12 @@ import PieChart from '../../charts/PieChart';
 import axios from '../../functions/axiosConfig'
 import fetchCurrentMonthExpenses from '../../functions/expenses/fetchCurrentMonthExpenses';
 import AddExpense from '../../pages/expenses/AddExpense';
+import ThemeText from '../../components/ThemeText';
 
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
+import ThemeText from '../../components/ThemeText';
 
 function ExpensesKindsCard() {
   const [creditCard, setCreditCard] = useState(null);
@@ -90,24 +92,24 @@ function ExpensesKindsCard() {
 }, [token]); 
 
 
-  return (
-    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
-      <div className="px-5 pt-5 flex flex-col items-center">
-        <AddExpense />
-      </div>
-      <h2 dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2 text-center">
-        הוצאות: {expenses} ₪ (חודשי)
-      </h2>
-      {error && <div className="text-red-600 p-4 text-center">{error}</div>}
-      {loading ? (
-        <div className="text-center p-4">אין נתונים</div>
-      ) : (
-        <div className="flex justify-center">
-          <PieChart data={chartData} width={389} height={220} />
-        </div>
-      )}
+return (
+  <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+    <div className="px-5 pt-5 flex flex-col items-center">
+      <AddExpense />
     </div>
-  );
+    <ThemeText className="text-lg font-semibold mb-2 text-center">
+      הוצאות: {expenses} ₪ (חודשי)
+    </ThemeText>
+    {error && <ThemeText className="text-red-600 p-4 text-center">{error}</ThemeText>}
+    {loading ? (
+      <ThemeText className="text-center p-4">אין נתונים</ThemeText>
+    ) : (
+      <div className="flex justify-center">
+        <PieChart data={chartData} width={389} height={220} />
+      </div>
+    )}
+  </div>
+);
 }
 
 export default ExpensesKindsCard;

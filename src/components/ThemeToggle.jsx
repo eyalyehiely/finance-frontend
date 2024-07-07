@@ -4,6 +4,10 @@ import { useThemeProvider } from '../utils/ThemeContext';
 export default function ThemeToggle() {
   const { currentTheme, changeCurrentTheme } = useThemeProvider();
 
+  const handleChange = () => {
+    changeCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
+  };
+
   return (
     <div>
       <input
@@ -12,11 +16,14 @@ export default function ThemeToggle() {
         id="light-switch"
         className="light-switch sr-only"
         checked={currentTheme === 'light'}
-        onChange={() => changeCurrentTheme(currentTheme === 'light' ? 'dark' : 'light')}
+        onChange={handleChange}
+        aria-checked={currentTheme === 'light'}
+        role="switch"
       />
       <label
         className="flex items-center justify-center cursor-pointer w-8 h-8 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600/80 rounded-full"
         htmlFor="light-switch"
+        aria-label={`Switch to ${currentTheme === 'light' ? 'dark' : 'light'} mode`}
       >
         <svg className="w-4 h-4 dark:hidden" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
           <path
