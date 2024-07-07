@@ -1,4 +1,4 @@
-import axios from '../axiosConfig'
+import axios from '../axiosConfig';
 import swal from 'sweetalert';
 import fetchExpensesData from './fetchExpensesData';
 
@@ -8,20 +8,22 @@ export default function addExpensesData(token, setExpenses, data, handleClose) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-  }).then((response) => {
+  })
+  .then((response) => {
+    // Add the new expense to the state
     setExpenses((prevExpenses) => [...prevExpenses, response.data]);
+
     swal({
       title: " 💰!הוצאה נוספה בהצלחה",
       icon: "success",
-      timer:2000,
+      timer: 2000,
       button: false,
     }).then(() => {
       handleClose();
-      window.location.reload()
-      fetchExpensesData(token,setExpenses)
-     
+      fetchExpensesData(token, setExpenses);
     });
-  }).catch((error) => {
+  })
+  .catch((error) => {
     console.error('Error:', error.response?.data?.message || error.message);
     swal({
       title: "Ⅹ!שגיאה ",

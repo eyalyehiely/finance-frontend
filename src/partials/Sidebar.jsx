@@ -167,7 +167,7 @@ function Sidebar({
                             </svg>
                             <div>
                             <span  className="text-sm font-medium mr-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                               בית
+                             בית
                             </span>
                             </div>
                             
@@ -512,7 +512,7 @@ function Sidebar({
                 </svg>
                <div>
                <span className="text-sm font-medium mr-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                  מניות
+                  מניות-בקרוב
                 </span>
                </div>
               </div>

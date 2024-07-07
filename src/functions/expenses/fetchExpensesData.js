@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 export default function fetchExpensesData(token,setExpenses) {
     axios.post('/expenses/get_all_expenses/', {}, {
       headers: {
-        'content-type': 'application/json',
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       }
     })
