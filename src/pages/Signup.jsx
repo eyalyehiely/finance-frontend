@@ -73,7 +73,7 @@ function Signup() {
           timer: 1000,
           button: false,
         }).then(() => {
-          window.location.href = '/';
+          window.location.href = '/signin';
         });
       }).catch((error) => {
         console.error(error);
