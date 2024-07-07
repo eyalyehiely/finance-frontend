@@ -136,7 +136,8 @@ function Signin() {
                 </div>
 
             <div className="max-w-sm mx-auto w-full px-4 py-8">
-              <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">ברוכים השבים! ✨</h1>
+            <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">CashControl</h1>
+              <h2>התחבר או צור חשבון</h2>
               <form onSubmit={fetchData}>
                 <div className="space-y-4">
                   <div>
@@ -159,7 +160,7 @@ function Signin() {
                 <div className="flex items-center justify-between mt-6">
                   <div className="mr-1">
                     <Link className="text-sm underline hover:no-underline" to="/reset-password">
-                      שכחת סיסמה ?
+                      שכחתי סיסמה ?
                     </Link>
                   </div>
                   <Button type="submit" variant="primary"> התחבר</Button>
@@ -193,8 +194,9 @@ function Signin() {
               <div className="pt-5 mt-6 border-t border-slate-200 dark:border-slate-700">
                 <div className="text-sm">
                   האם אין לך חשבון ?
-                  <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" to="/signup">
-                    הרשם כאן
+                  
+                  <Link className="font-medium text-indigo-500 mr-2 hover:text-indigo-600 dark:hover:text-indigo-400" to="/signup">
+                    צור חשבון 
                   </Link>
                 </div>
               </div>
