@@ -165,9 +165,12 @@ function Sidebar({
                                 d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z"
                               />
                             </svg>
-                            <span  className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            <div>
+                            <span  className="text-sm font-medium mr-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                בית
                             </span>
+                            </div>
+                            
                           </div>
                           {/* Icon */}
                           <div className="flex shrink-0 ml-2">
@@ -243,9 +246,12 @@ function Sidebar({
                                 d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z"
                               />
                             </svg>
-                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            <div>
+                            <span className="text-sm font-medium mr-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               הוצאות
                             </span>
+                            </div>
+                            
                           </div>
                           {/* Icon */}
                           <div className="flex shrink-0 ml-2">
@@ -279,7 +285,8 @@ function Sidebar({
                               end
                               to="/expenses/all-debts"
                               className={({ isActive }) =>
-                                'block transition duration-150 truncate no-underline' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
+                                'block transition duration-150 truncate no-underline' + 
+                                (isActive ? ' text-indigo-500' : ' text-slate-400 hover:text-slate-200')
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -287,6 +294,7 @@ function Sidebar({
                               </span>
                             </NavLink>
                           </li>
+
                         </ul>
                       </div>
                     </React.Fragment>
@@ -314,20 +322,28 @@ function Sidebar({
                         }}
                       >
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                              <path
-                                className={`fill-current ${pathname.includes('tasks') ? 'text-indigo-500' : 'text-slate-600'}`}
-                                d="M8 1v2H3v19h18V3h-5V1h7v23H1V1z"
-                              />
-                              <path className={`fill-current ${pathname.includes('tasks') ? 'text-indigo-500' : 'text-slate-600'}`} d="M1 1h22v23H1z" />
-                              <path
-                                className={`fill-current ${pathname.includes('tasks') ? 'text-indigo-300' : 'text-slate-400'}`}
-                                d="M15 10.586L16.414 12 11 17.414 7.586 14 9 12.586l2 2zM5 0h14v4H5z"
-                              />
-                            </svg>
-                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">הכנסות</span>
-                          </div>
+                        <div className="flex items-center">
+                        <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                          <path
+                            className={`fill-current ${pathname.includes('tasks') ? 'text-indigo-500' : 'text-slate-600'}`}
+                            d="M8 1v2H3v19h18V3h-5V1h7v23H1V1z"
+                          />
+                          <path
+                            className={`fill-current ${pathname.includes('tasks') ? 'text-indigo-500' : 'text-slate-600'}`}
+                            d="M1 1h22v23H1z"
+                          />
+                          <path
+                            className={`fill-current ${pathname.includes('tasks') ? 'text-indigo-300' : 'text-slate-400'}`}
+                            d="M15 10.586L16.414 12 11 17.414 7.586 14 9 12.586l2 2zM5 0h14v4H5z"
+                          />
+                        </svg>
+                        <div>
+                        <span className="text-sm font-medium mr-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 no-underline">
+                          הכנסות
+                        </span>
+                        </div>
+                        </div>
+
                           {/* Icon */}
                           <div className="flex shrink-0 ml-2">
                             <svg
@@ -341,25 +357,26 @@ function Sidebar({
                       </a>
                       <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
                         <ul className={`pl-9 mt-1 ${!open && 'hidden'}`}>
-                          <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/incomes/all-incomes"
-                              className={({ isActive }) =>
-                                'block transition duration-150 truncate no-underline' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
-                              }
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                ההכנסות שלי
-                              </span>
-                            </NavLink>
-                          </li>
+                        <li className="mb-1 last:mb-0">
+                          <NavLink
+                            end
+                            to="/incomes/all-incomes"
+                            className={({ isActive }) =>
+                              'block transition duration-150 truncate no-underline' + (isActive ? ' text-indigo-500' : ' text-slate-400 hover:text-slate-200')
+                            }
+                          >
+                            <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              ההכנסות שלי
+                            </span>
+                          </NavLink>
+                        </li>
+
                           <li className="mb-1 last:mb-0">
                             <NavLink
                               end
                               to="/incomes/all-savings"
                               className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
+                                'block transition duration-150 truncate no-underline ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -390,7 +407,7 @@ function Sidebar({
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                            <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                            <svg className="shrink-2 h-6 w-6" viewBox="0 0 24 24">
                               <path
                                 className={`fill-current ${pathname.includes('finance') ? 'text-indigo-300' : 'text-slate-400'}`}
                                 d="M13 6.068a6.035 6.035 0 0 1 4.932 4.933H24c-.486-5.846-5.154-10.515-11-11v6.067Z"
@@ -404,9 +421,12 @@ function Sidebar({
                                 d="M6.939 15.007A5.861 5.861 0 0 1 6 11.829c0-2.937 2.167-5.376 5-5.85V0C4.85.507 0 5.614 0 11.83c0 2.695.922 5.174 2.456 7.17l4.483-3.993Z"
                               />
                             </svg>
-                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            <div className=''>
+                            <span className="text-sm font-medium mr-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               אשראי
                             </span>
+                            </div>
+                            
                           </div>
                           {/* Icon */}
                           <div className="flex shrink-0 ml-2">
@@ -426,7 +446,7 @@ function Sidebar({
                               end
                               to="/creditcards/all-cards"
                               className={({ isActive }) =>
-                                'block transition duration-150 truncate no-underline' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
+                                'block transition duration-150 truncate no-underline ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
@@ -460,9 +480,11 @@ function Sidebar({
                         d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z"
                       />
                     </svg>
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                    <div>
+                    <span className="text-sm font-medium mr-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       יומן-בקרוב
                     </span>
+                    </div>
                   </div>
                 </NavLink>
               </li>
@@ -488,9 +510,11 @@ function Sidebar({
                     d="M5 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8ZM5 23a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
                   />
                 </svg>
-                <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+               <div>
+               <span className="text-sm font-medium mr-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                   מניות
                 </span>
+               </div>
               </div>
             </NavLink>
           </li>
@@ -530,9 +554,11 @@ function Sidebar({
                                 d="M19.707 9.292a3.012 3.012 0 00-1.415 1.415L13.286 5.7c-.4.195-.84.298-1.286.3a3 3 0 113-3 2.969 2.969 0 01-.3 1.286l5.007 5.006z"
                               />
                             </svg>
-                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            <div>
+                            <span className="text-sm font-medium mr-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               הגדרות
                             </span>
+                            </div>
                           </div>
                           {/* Icon */}
                           <div className="flex shrink-0 ml-2">

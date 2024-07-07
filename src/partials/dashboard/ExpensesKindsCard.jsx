@@ -5,7 +5,6 @@ import axios from '../../functions/axiosConfig'
 import fetchCurrentMonthExpenses from '../../functions/expenses/fetchCurrentMonthExpenses';
 import AddExpense from '../../pages/expenses/AddExpense';
 
-
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
 
