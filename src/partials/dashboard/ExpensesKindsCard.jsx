@@ -8,7 +8,7 @@ import AddExpense from '../../pages/expenses/AddExpense';
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
-import ThemeText from '../../components/ThemeText';
+
 
 function ExpensesKindsCard() {
   const [creditCard, setCreditCard] = useState(null);
