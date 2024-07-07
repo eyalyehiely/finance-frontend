@@ -10,8 +10,12 @@ function LineOfCreditAlert() {
 
   useEffect(() => {
     if (token) {
-      getActiveCreditCardData(token, setCreditCards);
-      getCurrentMonthCardExpenses(token, setExpenses);
+      getActiveCreditCardData(token)
+        .then(setCreditCards)
+        .catch((error) => console.error('Error fetching credit card data:', error));
+      getCurrentMonthCardExpenses(token)
+        .then(setExpenses)
+        .catch((error) => console.error('Error fetching expenses:', error));
     }
   }, [token]);
 
@@ -21,25 +25,24 @@ function LineOfCreditAlert() {
       let cardName = '';
       let cardLastDigits = '';
 
-      // Outer loop iterates over credit cards
-      for (let i = 0; i < creditCards.length; i++) {
-        const cardLineOfCredit = creditCards[i].line_of_credit;
-        let totalExpenses = 0;
+      // Use a map to track expenses for each card
+      const expensesByCard = new Map();
 
-        // Inner loop iterates over expenses
-        for (let j = 0; j < expenses.length; j++) {
-          totalExpenses += expenses[j].amount;
-
-          if (totalExpenses >= cardLineOfCredit * 0.75) {
-            cardName = creditCards[i].name;
-            cardLastDigits = creditCards[i].last_four_digits;
-            hasExceededLimit = true;
-            break;
-          }
+      for (const expense of expenses) {
+        const cardId = expense.card_id;
+        if (!expensesByCard.has(cardId)) {
+          expensesByCard.set(cardId, 0);
         }
+        expensesByCard.set(cardId, expensesByCard.get(cardId) + expense.amount);
+      }
 
-        // If limit exceeded for any card, no need to check further
-        if (hasExceededLimit) {
+      // Check each card against its total expenses
+      for (const card of creditCards) {
+        const totalExpenses = expensesByCard.get(card.id) || 0;
+        if (totalExpenses >= card.line_of_credit * 0.75) {
+          cardName = card.name;
+          cardLastDigits = card.last_four_digits;
+          hasExceededLimit = true;
           break;
         }
       }
