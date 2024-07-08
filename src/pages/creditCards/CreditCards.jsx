@@ -25,13 +25,14 @@ function CreditCards() {
     })
     .then(response => {
       if (response.data.status === 200) {
+        console.log('Expenses fetched:', response.data.credit_card); // Log the response
         setExpenses(response.data.credit_card);
       } else {
-        console.log('Error fetching expenses');
+        console.log('Error fetching expenses:', response.data);
       }
     })
     .catch(error => {
-      console.error('There was an error!', error);
+      console.error('There was an error fetching expenses!', error);
     });
   }, [token]);
 
