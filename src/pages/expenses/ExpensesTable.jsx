@@ -19,7 +19,6 @@ function ExpensesTable() {
   const [searchQuery, setSearchQuery] = useState('');
   const [creditCards, setCreditCards] = useState([]);
   const [canSaveCreditCard, setCanSaveCreditCard] = useState(false);
-  setCanSaveCreditCard =false;
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 
   useEffect(() => {
@@ -76,15 +75,10 @@ function ExpensesTable() {
 
 
 
-  function handleCreditCardSaving(){
-    const button = document.getElementById('saveCreditCardChanges')
-    if (setCanSaveCreditCard===false)
-      button.disabled = true;
-    else{
-      button.disabled = false;
-    }
-
-  }
+  const handleCreditCardSaving = () => {
+    const button = document.getElementById('saveCreditCardChanges');
+    button.disabled = !canSaveCreditCard;
+  };
   return (
     <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 relative" dir="rtl">
       <header className="px-5 py-4">
@@ -319,7 +313,10 @@ function ExpensesTable() {
                 as="select"
                 id='credit_card_id'
                 value={editedExpense.credit_card_id || ''}
-                onChange={(e) => handleEditChange(e, 'credit_card')}
+                onChange={(e) => {
+                  handleEditChange(e, 'credit_card_id');
+                  setCanSaveCreditCard(e.target.value !== '');
+                }}
                 required
               >
                 <option value=""></option>
@@ -346,13 +343,12 @@ function ExpensesTable() {
             <Button
               variant="primary"
               id='saveCreditCardChanges'
-              onClick={(e) => {
-                saveChanges(e);
-                handleCreditCardSaving(e);
-              }}
+              onClick={saveChanges}
+              disabled={!canSaveCreditCard}
             >
-              שמור שינויים
-            </Button>
+            
+            שמור שינויים
+          </Button>
 
           </Modal.Footer>
         </Modal>
