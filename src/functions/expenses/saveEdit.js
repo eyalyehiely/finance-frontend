@@ -13,7 +13,7 @@ export default function saveEdit(token, editedExpense, editingExpenseId, setExpe
     date_and_time: editedExpense.date_and_time || '',
     name: editedExpense.name || '',
     price: editedExpense.price ? String(editedExpense.price).replace(/,/g, '') : '',
-    credit_card: editedExpense.credit_card || '',
+    credit_card_id: editedExpense.credit_card_id || '',
     category: editedExpense.category || '',
     expense_type: editedExpense.expense_type || '',
   };

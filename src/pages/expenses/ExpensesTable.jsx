@@ -116,7 +116,7 @@ function ExpensesTable() {
                 <div className="font-semibold text-right">סכום</div>
               </th>
               <th className="p-2">
-                <div className="font-semibold text-right">תאריך ההוצאה</div>
+                <div className="font-semibold text-right">תאריך ושעת ההוצאה</div>
               </th>
               <th className="p-2">
                 <div className="font-semibold text-right">פעולות</div>
@@ -303,15 +303,15 @@ function ExpensesTable() {
               <Form.Label>בחר כרטיס אשראי</Form.Label>
               <Form.Control
                 as="select"
-                id='credit_card'
-                value={editedExpense.credit_card || ''}
+                id='credit_card_id'
+                value={editedExpense.credit_card_id || ''}
                 onChange={(e) => handleEditChange(e, 'credit_card')}
                 required
               >
                 <option value=""></option>
                 {creditCards.map((card) => (
                   <option key={card.id} value={card.id}>
-                    {card.name}
+                    {card.name}, {card.last_four_digits}
                   </option>
                 ))}
               </Form.Control>
