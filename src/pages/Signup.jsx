@@ -61,6 +61,13 @@ function Signup() {
     setSearchQuery(e.target.value);
   };
 
+
+  function handleClick (){
+    const button = document.getElementById('submitButton')
+    button.disabled = true;
+    button.innerText = 'תודה';
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -238,7 +245,7 @@ function Signup() {
                 </div>
 
                 <div className="flex items-center justify-between mt-6">
-                  <Button type="submit" variant="primary">הרשם כאן</Button>
+                  <Button id="submitButton" type="submit" variant="primary" onClick={handleClick}>הרשם כאן</Button>
                 </div>
               </form>
 
