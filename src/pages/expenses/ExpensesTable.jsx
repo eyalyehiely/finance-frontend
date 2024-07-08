@@ -293,7 +293,7 @@ function ExpensesTable() {
           </tbody>
         </table>
       </div>
-      {editedExpense.payment_method === 'כרטיס אשראי'  && creditCards > 0 (
+      {editedExpense.payment_method === 'כרטיס אשראי'  && creditCards.length > 0 (
         <Modal show={true} onHide={cancelEdit} dir="rtl">
           <Modal.Header>
             <Modal.Title>בחר כרטיס אשראי</Modal.Title>
