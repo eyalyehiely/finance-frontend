@@ -26,20 +26,18 @@ function LineOfCreditAlert() {
         const cardLineOfCredit = creditCards[i].line_of_credit;
         let totalExpenses = 0;
 
-        // Inner loop iterates over expenses
+        // Inner loop iterates over expenses for the current credit card
         for (let j = 0; j < expenses.length; j++) {
-          totalExpenses += expenses[j].amount;
-
-          if (totalExpenses >= cardLineOfCredit * 0.75) {
-            cardName = creditCards[i].name;
-            cardLastDigits = creditCards[i].last_four_digits;
-            hasExceededLimit = true;
-            break;
+          if (expenses[j].credit_card_id === creditCards[i].id) {
+            totalExpenses += expenses[j].amount;
           }
         }
 
-        // If limit exceeded for any card, no need to check further
-        if (hasExceededLimit) {
+        // Check if the total expenses exceed 75% of the line of credit
+        if (totalExpenses >= cardLineOfCredit * 0.75) {
+          cardName = creditCards[i].name;
+          cardLastDigits = creditCards[i].last_four_digits;
+          hasExceededLimit = true;
           break;
         }
       }
