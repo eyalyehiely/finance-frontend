@@ -18,7 +18,7 @@ function AddExpense() {
     date_and_time: '',
     category: '',
     price: '',
-    credit_card: '',
+    credit_card_id: '',
   });
 
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
@@ -39,7 +39,7 @@ function AddExpense() {
       date_and_time: '',
       category: '',
       price: '',
-      credit_card: '',
+      credit_card_id: '',
     });
   };
 
@@ -65,19 +65,16 @@ function AddExpense() {
           <Form.Control
             as="select"
             name="credit_card"
-            value={data.credit_card}
+            value={data.credit_card_id}
             onChange={handleChange}
             required
           >
-            {creditCards.length > 0 ? (
-              creditCards.map((card, index) => (
-                <option key={index} value={card.id}>
-                  {card.name},{card.last_four_digits}
+            <option value="">בחר כרטיס</option>
+              {creditCards.map((card) => (
+                <option key={card.id} value={card.id}>
+                  {card.name}, {card.last_four_digits}
                 </option>
-              ))
-            ) : (
-              <option>אין כרטיסים זמינים</option>
-            )}
+              ))}
           </Form.Control>
         </Form.Group>
       );
