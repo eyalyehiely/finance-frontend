@@ -12,14 +12,10 @@ import { Button } from 'react-bootstrap';
 
 
 
-
-
 function CreditCards() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [creditCards, setCreditCards] = useState([]);
   const [expenses,setExpenses] = useState([]);
-  // const [chosenCard, setChosenCard] = useState([]);
-  // const [logo, setLogo] = useState([]);
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 
     axios.post(`/expenses/fetch_user_expenses/`,{},{
@@ -210,9 +206,6 @@ function CreditCards() {
                         <div className={`w-2 h-2 rounded-full ${card.status == 'פעיל' ? 'bg-green-500' : 'bg-red-500'} mr-2`} />
                           <span>{card.status == 'פעיל' ? 'פעיל' : 'מושבת'}</span>
                       </div>
-
-
-                          {/* <div className="text-sm font-medium text-slate-800 dark:text-slate-100">{card.status}</div> */}
                         </div>
                       </li>
                       
@@ -226,7 +219,7 @@ function CreditCards() {
                       <div className="flex justify-between text-sm mb-2">
                         <div>הוצאות החודש בכרטיס זה</div>
                         <div className="italic">
-                        ₪{expenses} <span className="text-slate-400 dark:text-slate-500">/</span> ₪{card.line_of_credit}
+                        ₪{expenses.filter(card.id)} <span className="text-slate-400 dark:text-slate-500">/</span> ₪{card.line_of_credit}
                         </div>
                       </div>
                       <div className="relative w-full h-2 bg-slate-300 dark:bg-slate-700">
