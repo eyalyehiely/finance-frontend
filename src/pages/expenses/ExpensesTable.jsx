@@ -314,6 +314,7 @@ function ExpensesTable() {
                     {card.name}, {card.last_four_digits}
                   </option>
                 ))}
+                <option value="">אין כרטיסים זמינים</option>
               </Form.Control>
             </Form.Group>
           </Modal.Body>
