@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../functions/axiosConfig';
 import swal from 'sweetalert';
-import AuthImage from '../images/finance.avif';
-import AuthDecoration from '../images/auth-decoration.png';
 import Button from 'react-bootstrap/Button';
 import Rights from '../components/Rights';
 import getAdress from '../functions/users/getAdress';
@@ -62,11 +60,11 @@ function Signup() {
   };
 
 
-  // function handleClick (){
-  //   const button = document.getElementById('submitButton')
-  //   button.disabled = true;
-  //   button.innerText = 'תודה';
-  // }
+  function handleClick (){
+    const button = document.getElementById('submitButton')
+    button.disabled = true;
+    button.innerText = 'תודה';
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -249,7 +247,7 @@ function Signup() {
                 </div>
 
                 <div className="flex items-center justify-between mt-6">
-                  <Button id="submitButton" type="submit" variant="primary">הרשם כאן</Button>
+                  <Button id="submitButton" type="submit" variant="primary" onClick={handleClick}>הרשם כאן</Button>
                 </div>
               </form>
 
