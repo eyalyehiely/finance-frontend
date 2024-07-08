@@ -293,7 +293,7 @@ function ExpensesTable() {
           </tbody>
         </table>
       </div>
-      {editedExpense.payment_method === 'כרטיס אשראי'  && creditCards.length > 0 (
+      {editedExpense.payment_method === 'כרטיס אשראי'  &&  (
         <Modal show={true} onHide={cancelEdit} dir="rtl">
           <Modal.Header>
             <Modal.Title>בחר כרטיס אשראי</Modal.Title>
@@ -309,13 +309,19 @@ function ExpensesTable() {
                 required
               >
                 <option value=""></option>
-                {creditCards.map((card) => (
+                {creditCards.length > 0 ? (
+                creditCards.map((card) => (
                   <option key={card.id} value={card.id}>
                     {card.name}, {card.last_four_digits}
                   </option>
-                ))}
-                <option value="">אין כרטיסים זמינים</option>
+                ))
+                ):(
+                  <option value="" disabled>
+                  אין כרטיסים זמינים
+                </option>
+                )}
               </Form.Control>
+                
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
