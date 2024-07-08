@@ -71,7 +71,7 @@ function AddExpense() {
           >
             {creditCards.length > 0 ? (
               creditCards.map((card, index) => (
-                <option key={index} value={card.name}>
+                <option key={index} value={card.last_four_digits}>
                   {card.name},{card.last_four_digits}
                 </option>
               ))
