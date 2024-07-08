@@ -18,6 +18,8 @@ function ExpensesTable() {
   const [editedExpense, setEditedExpense] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const [creditCards, setCreditCards] = useState([]);
+  const [canSaveCreditCard, setCanSaveCreditCard] = useState(false);
+  setCanSaveCreditCard =false;
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 
   useEffect(() => {
@@ -71,6 +73,18 @@ function ExpensesTable() {
     setEditedExpense({});
   };
   console.log({editedExpense});
+
+
+
+  function handleCreditCardSaving(){
+    const button = document.getElementById('saveCreditCardChanges')
+    if (setCanSaveCreditCard===false)
+      button.disabled = true;
+    else{
+      button.disabled = false;
+    }
+
+  }
   return (
     <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 relative" dir="rtl">
       <header className="px-5 py-4">
@@ -313,6 +327,7 @@ function ExpensesTable() {
                 creditCards.map((card) => (
                   <option key={card.id} value={card.id}>
                     {card.name}, {card.last_four_digits}
+                    {canSaveCreditCard=true}
                   </option>
                 ))
                 ):(
@@ -328,9 +343,17 @@ function ExpensesTable() {
             <Button variant="secondary" onClick={cancelEdit}>
               סגור
             </Button>
-            <Button variant="primary" onClick={saveChanges}>
+            <Button
+              variant="primary"
+              id='saveCreditCardChanges'
+              onClick={(e) => {
+                saveChanges(e);
+                handleCreditCardSaving(e);
+              }}
+            >
               שמור שינויים
             </Button>
+
           </Modal.Footer>
         </Modal>
       )}
