@@ -64,17 +64,19 @@ function AddExpense() {
           <Form.Label>שם הכרטיס</Form.Label>
           <Form.Control
             as="select"
-            name="credit_card"
+            name="credit_card_id"
             value={data.credit_card_id}
             onChange={handleChange}
             required
           >
-
+            
+     
               {creditCards.map((card) => (
                 <option key={card.id} value={card.id}>
-                  {card.name}, {card.last_four_digits}
+                  {card.name},{card.last_four_digits}
                 </option>
               ))}
+           
           </Form.Control>
         </Form.Group>
       );
