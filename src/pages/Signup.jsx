@@ -13,8 +13,8 @@ function Signup() {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
-    gender: 'גבר',
-    life_status: 'רווק',
+    gender: 'זכר',
+    life_status: 'רווק/ה',
     num_of_children: 0,
     email: '',
     password: '',
@@ -62,11 +62,11 @@ function Signup() {
   };
 
 
-  function handleClick (){
-    const button = document.getElementById('submitButton')
-    button.disabled = true;
-    button.innerText = 'תודה';
-  }
+  // function handleClick (){
+  //   const button = document.getElementById('submitButton')
+  //   button.disabled = true;
+  //   button.innerText = 'תודה';
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -98,7 +98,7 @@ function Signup() {
         <div>
           <label className="block text-sm font-medium mb-1">מספר ילדים<span className="text-rose-500">*</span></label>
           <select id="num_of_children" className="form-select w-full" value={num_of_children} onChange={handleChange}>
-            <option value="">בחר מספר ילדים</option>
+            <option value=""></option>
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -172,18 +172,18 @@ function Signup() {
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="gender"> מגדר <span className="text-rose-500">*</span></label>
                     <select id="gender" className="form-select w-full" value={gender} onChange={handleChange} required>
-                      <option value="male">זכר</option>
-                      <option value="female">נקבה</option>
-                      <option value="other">אחר</option>
+                      <option value="זכר">זכר</option>
+                      <option value="נקבה">נקבה</option>
+                      <option value="אחר">אחר</option>
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="life_status">סטטוס <span className="text-rose-500">*</span></label>
                     <select id="life_status" className="form-select w-full" value={life_status} onChange={handleStatusChange} required>
-                      <option value="single">רווק/ה</option>
-                      <option value="marriage">נשוי/ה</option>
-                      <option value="divorce">גרוש/ה</option>
+                      <option value="רווק/ה">רווק/ה</option>
+                      <option value="נשוי/ה">נשוי/ה</option>
+                      <option value="גרוש/ה">גרוש/ה</option>
                     </select>
                   </div>
 
@@ -245,7 +245,7 @@ function Signup() {
                 </div>
 
                 <div className="flex items-center justify-between mt-6">
-                  <Button id="submitButton" type="submit" variant="primary" onClick={handleClick}>הרשם כאן</Button>
+                  <Button id="submitButton" type="submit" variant="primary">הרשם כאן</Button>
                 </div>
               </form>
 
