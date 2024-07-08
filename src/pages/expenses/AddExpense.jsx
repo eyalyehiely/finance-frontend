@@ -69,7 +69,7 @@ function AddExpense() {
             onChange={handleChange}
             required
           >
-            <option value="">בחר כרטיס</option>
+
               {creditCards.map((card) => (
                 <option key={card.id} value={card.id}>
                   {card.name}, {card.last_four_digits}
