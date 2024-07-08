@@ -13,8 +13,8 @@ function Signup() {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
-    gender: 'male',
-    life_status: 'single',
+    gender: 'גבר',
+    life_status: 'רווק',
     num_of_children: 0,
     email: '',
     password: '',
