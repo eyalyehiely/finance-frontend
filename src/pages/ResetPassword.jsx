@@ -90,7 +90,11 @@ function ResetPassword() {
                 <div className="flex justify-end mt-6">
                   <Button type="submit" variant="primary">שלח קישור</Button>
                 </div>
-                <Button type="button" href='/signin' variant="info">חזור</Button>
+                <Button variant="info">
+              <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 no-underline" to="/signin">
+                חזור 
+              </Link>
+            </Button>
               </form>
             </div>
           </div>

@@ -153,7 +153,11 @@ function Signup() {
             </div>
 
             <div className="max-w-sm mx-auto w-full px-4 py-8">
-              <Button type="button" href='/signin' variant="info">חזור</Button>
+            <Button variant="info">
+              <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 no-underline" to="/signin">
+                חזור 
+              </Link>
+            </Button>
               <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">צור חשבון ✨</h1>
               {/* Form */}
               <form onSubmit={handleSubmit}>
@@ -262,8 +266,13 @@ function Signup() {
 
         {/* Image */}
         <div className="hidden md:block absolute top-0 bottom-0 left-0 md:w-1/2" aria-hidden="true">
-          <img className="object-cover object-center w-full h-full" src={AuthImage} width="760" height="1024" alt="Authentication" />
-          <img className="absolute top-1/4 right-0 -translate-x-1/2 ml-8 hidden lg:block" src={AuthDecoration} width="218" height="224" alt="Authentication decoration" />
+          <img
+            className="object-cover object-center w-full h-full"
+            src='src/images/dollars.jpeg'
+            width="760"
+            height="1024"
+            alt="dollars"
+          />
         </div>
 
       </div>
