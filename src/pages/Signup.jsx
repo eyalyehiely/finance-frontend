@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import Button from 'react-bootstrap/Button';
 import Rights from '../components/Rights';
 import getAdress from '../functions/users/getAdress';
+import { LinkOffRounded } from '@mui/icons-material';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -86,7 +87,7 @@ function Signup() {
   };
 
   const isMarriage = () => {
-    if (life_status === 'נשוי/ה') {
+    if (life_status === 'נשוי/ה' || life_status === 'גרוש/ה') {
       return (
         <div>
           <label className="block text-sm font-medium mb-1">מספר ילדים<span className="text-rose-500">*</span></label>
@@ -245,9 +246,14 @@ function Signup() {
         </div>
 
         {/* Image */}
-        <div className="hidden md:block absolute top-0 bottom-0 right-0 md:w-1/2 bg-indigo-600" aria-hidden="true">
-          <img className="object-cover object-center w-full h-full" src={require("../images/auth-image.jpg")} width="760" height="1024" alt="Authentication" />
-          <img className="object-cover object-center w-full h-full" src={require("../images/auth-image-2.jpg")} width="760" height="1024" alt="Authentication decoration" />
+        <div className="hidden md:block absolute top-0 bottom-0 left-0 md:w-1/2" aria-hidden="true">
+          <img
+            className="object-cover object-center w-full h-full"
+            src='src/images/dollars.jpeg'
+            width="760"
+            height="1024"
+            alt="dollars"
+          />
         </div>
 
       </div>
