@@ -193,17 +193,12 @@ function Signup() {
 
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="password">סיסמה <span className="text-rose-500">*</span></label>
-                    <div className="relative flex items-center">
-                      <input id="password" className="form-input w-full" type={showPassword ? 'text' : 'password'} value={password} onChange={handleChange} required />
-                      <button
-                        type="button"
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        {showPassword ? 'Hide' : 'Show'}
-                      </button>
+                    <input id="password" className="form-input w-full" type={showPassword ? 'text' : 'password'} value={password} onChange={handleChange} required />
+                    <div className="mt-2">
+                      <input type="checkbox" id="showPassword" checked={showPassword} onChange={() => setShowPassword(!showPassword)} />
+                      <label htmlFor="showPassword" className="text-sm font-medium mb-1"> הצג סיסמה  </label>
                     </div>
-                  </div>
+                    </div>
 
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="birth_date">תאריך לידה <span className="text-rose-500">*</span></label>
@@ -236,7 +231,7 @@ function Signup() {
                   <div className="mr-1">
                     <Link className="text-sm underline hover:no-underline" to="/signin">יש לך כבר חשבון?</Link>
                   </div>
-                  <button id="submitButton" className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3" type="submit">הרשם</button>
+                  <Button id="submitButton" className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3" type="submit">הרשם</Button>
                 </div>
 
               </form>
