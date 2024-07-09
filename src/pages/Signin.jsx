@@ -142,7 +142,7 @@ function Signin() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="username">
-                      שם משתמש <span className="text-rose-500">*</span>
+                       אימייל <span className="text-rose-500">*</span>
                     </label>
                     <input id="username" className="form-input w-full" type="email" required />
                   </div>
