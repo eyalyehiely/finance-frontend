@@ -8,21 +8,19 @@ export default function addCreditCard(token, setCreditCards, data, handleClose) 
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-  })
-  .then((response) => {
+  }).then((response) => {
     setCreditCards((prevCreditCards) => [...prevCreditCards, response.data]);
     swal({
       title: "  💳!כרטיס נוסף בהצלחה",
       icon: "success",
-      timer: 2000,
+      timer:2000,
       button: false,
     }).then(() => {
       handleClose();
-      // Fetch the updated credit card data
+      window.location.reload()
       getCreditCardData(token, setCreditCards);
     });
-  })
-  .catch((error) => {
+  }).catch((error) => {
     console.error('Error:', error.response?.data?.message || error.message);
     swal({
       title: "Ⅹ!שגיאה ",
