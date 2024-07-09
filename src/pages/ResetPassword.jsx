@@ -51,7 +51,7 @@ function ResetPassword() {
             {/* Header */}
             <div className="flex-1">
                   <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
-                    <Link className="block">
+                    <Link className="block" to="/signin">
                       {/* New SVG */}
                       <svg 
                         height="32" 
@@ -63,7 +63,9 @@ function ResetPassword() {
                         viewBox="0 0 235.517 235.517" 
                         xmlSpace="preserve" 
                         fill="#000000"
+                        
                       >
+                        
                         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                         <g id="SVGRepo_iconCarrier">
