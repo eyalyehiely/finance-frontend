@@ -247,7 +247,7 @@ function Signup() {
                 </div>
 
                 <div className="flex items-center justify-between mt-6">
-                  <Button id="submitButton" type="submit" variant="primary" onClick={handleClick}>הרשם כאן</Button>
+                  <Button id="submitButton" type="submit" variant="primary" onSubmit={handleClick}>הרשם כאן</Button>
                 </div>
               </form>
 
