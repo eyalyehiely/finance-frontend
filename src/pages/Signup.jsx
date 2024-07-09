@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../functions/axiosConfig';
@@ -59,15 +58,11 @@ function Signup() {
     setSearchQuery(e.target.value);
   };
 
-
-  function handleClick (){
-    const button = document.getElementById('submitButton')
-    button.disabled = true;
-    button.innerText = 'תודה';
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    const button = document.getElementById('submitButton');
+    button.disabled = true;
+    button.innerText = 'תודה';
 
     axios.post('/auth/signup/', formData)
       .then((response) => {
@@ -91,7 +86,7 @@ function Signup() {
   };
 
   const isMarriage = () => {
-    if (life_status === 'marriage') {
+    if (life_status === 'נשוי/ה') {
       return (
         <div>
           <label className="block text-sm font-medium mb-1">מספר ילדים<span className="text-rose-500">*</span></label>
@@ -124,7 +119,7 @@ function Signup() {
             {/* Header */}
             <div className="flex-1">
               <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
-                <Link className="block">
+                <Link className="block" to="/">
                   {/* New SVG */}
                   <svg
                     height="32"
@@ -151,11 +146,11 @@ function Signup() {
             </div>
 
             <div className="max-w-sm mx-auto w-full px-4 py-8">
-            <Button variant="info">
-              <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 no-underline" to="/signin">
-                חזור 
-              </Link>
-            </Button>
+              <Button variant="info">
+                <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 no-underline" to="/signin">
+                  חזור
+                </Link>
+              </Button>
               <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">צור חשבון ✨</h1>
               {/* Form */}
               <form onSubmit={handleSubmit}>
@@ -172,11 +167,10 @@ function Signup() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="gender"> מגדר <span className="text-rose-500">*</span></label>
-                    <select id="gender" className="form-select w-full" value={gender} onChange={handleChange} required>
+                    <label className="block text-sm font-medium mb-1" htmlFor="gender">מין <span className="text-rose-500">*</span></label>
+                    <select id="gender" className="form-select w-full" value={gender} onChange={handleChange}>
                       <option value="זכר">זכר</option>
                       <option value="נקבה">נקבה</option>
-                      <option value="אחר">אחר</option>
                     </select>
                   </div>
 
@@ -198,10 +192,15 @@ function Signup() {
 
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="password">סיסמה <span className="text-rose-500">*</span></label>
-                    <input id="password" className="form-input w-full" type={showPassword ? 'text' : 'password'} value={password} onChange={handleChange} required />
-                    <div className="mt-2">
-                      <input type="checkbox" id="showPassword" checked={showPassword} onChange={() => setShowPassword(!showPassword)} />
-                      <label htmlFor="showPassword" className="text-sm font-medium mb-1"> הצג סיסמה  </label>
+                    <div className="relative flex items-center">
+                      <input id="password" className="form-input w-full" type={showPassword ? 'text' : 'password'} value={password} onChange={handleChange} required />
+                      <button
+                        type="button"
+                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? 'Hide' : 'Show'}
+                      </button>
                     </div>
                   </div>
 
@@ -211,66 +210,44 @@ function Signup() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="profession">מקצוע <span className="text-rose-500">*</span></label>
+                    <label className="block text-sm font-medium mb-1" htmlFor="profession">מקצוע<span className="text-rose-500">*</span></label>
                     <input id="profession" className="form-input w-full" type="text" value={profession} onChange={handleChange} required />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="phone_number">מספר טלפון <span className="text-rose-500">*</span></label>
-                    <input id="phone_number" className="form-input w-full" type='tel' value={phone_number} onChange={handleChange} required minLength={10} maxLength={10} />
+                    <label className="block text-sm font-medium mb-1" htmlFor="phone_number">טלפון<span className="text-rose-500">*</span></label>
+                    <input id="phone_number" className="form-input w-full" type="text" value={phone_number} onChange={handleChange} required />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="address">עיר מגורים <span className="text-rose-500">*</span></label>
-                    <input
-                      type="text"
-                      id="address"
-                      className="form-input w-full"
-                      value={searchQuery}
-                      onChange={handleSearchChange}
-                      placeholder="חפש עיר..."
-                      required
-                    />
-                    <select
-                      id="address"
-                      className="form-select w-full mt-2"
-                      value={address}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value="">בחר עיר</option>
+                    <label className="block text-sm font-medium mb-1" htmlFor="address">ישוב<span className="text-rose-500">*</span></label>
+                    <input id="address" className="form-input w-full" type="text" value={address} onChange={handleChange} list="addressList" required />
+                    <datalist id="addressList">
                       {filteredAddresses.map((address, index) => (
-                        <option key={index} value={address['שם_ישוב']}>{address['שם_ישוב']}</option>
+                        <option key={index} value={address['שם_ישוב']} />
                       ))}
-                    </select>
+                    </datalist>
                   </div>
+
                 </div>
 
                 <div className="flex items-center justify-between mt-6">
-                  <Button id="submitButton" type="submit" variant="primary" onSubmit={handleClick}>הרשם כאן</Button>
+                  <div className="mr-1">
+                    <Link className="text-sm underline hover:no-underline" to="/signin">יש לך כבר חשבון?</Link>
+                  </div>
+                  <button id="submitButton" className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3" type="submit">הרשם</button>
                 </div>
-              </form>
 
-              {/* Footer */}
-              <div className="pt-5 mt-6 border-t border-slate-200 dark:border-slate-700">
-                <div className="text-sm">
-                  יש לך כבר חשבון? <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" to="/signin">התחברות</Link>
-                </div>
-              </div>
+              </form>
             </div>
 
           </div>
         </div>
 
         {/* Image */}
-        <div className="hidden md:block absolute top-0 bottom-0 left-0 md:w-1/2" aria-hidden="true">
-          <img
-            className="object-cover object-center w-full h-full"
-            src='src/images/dollars.jpeg'
-            width="760"
-            height="1024"
-            alt="dollars"
-          />
+        <div className="hidden md:block absolute top-0 bottom-0 right-0 md:w-1/2 bg-indigo-600" aria-hidden="true">
+          <img className="object-cover object-center w-full h-full" src={require("../images/auth-image.jpg")} width="760" height="1024" alt="Authentication" />
+          <img className="object-cover object-center w-full h-full" src={require("../images/auth-image-2.jpg")} width="760" height="1024" alt="Authentication decoration" />
         </div>
 
       </div>
