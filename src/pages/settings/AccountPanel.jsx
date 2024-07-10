@@ -17,9 +17,11 @@ import TextField from '@mui/material/TextField';
 import axios from '../../functions/axiosConfig'
 import getCurrentUserData from '../../functions/users/getCurrentUserData';
 import EditUser from './EditUser';
+import checkToken from '../../functions/checkToken';
 
 
 function AccountPanel() {
+  checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [user, setUser] = useState({});
   const [email, setEmail] = useState('');

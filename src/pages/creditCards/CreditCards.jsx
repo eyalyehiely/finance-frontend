@@ -9,8 +9,10 @@ import EditCard from './EditCard';
 import AddCreditCard from './AddCreditCard';
 import { Button } from 'react-bootstrap';
 import getExpensesPerCreditCard from '../../functions/credit_cards/getExpensesPerCreditCard';
+import checkToken from '../../functions/checkToken';
 
 function CreditCards() {
+  // checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [creditCards, setCreditCards] = useState([]);
   const [cardExpenses, setCardExpenses] = useState([]);

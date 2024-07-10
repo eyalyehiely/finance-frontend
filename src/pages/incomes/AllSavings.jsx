@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import Sidebar from '../../partials/Sidebar';
 import Header from '../../partials/Header';
-import PaginationClassic from '../../components/PaginationClassic';
 import SavingsTable from './SavingsTable';
 import Rights from '/src/components/Rights';
 import AddSaving from '../../pages/incomes/AddSaving'
+import checkToken from '../../functions/checkToken';
 
 
 
 function AllSavings() {
+  checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const handleSelectedItems = (selectedItems) => {

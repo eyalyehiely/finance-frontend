@@ -5,9 +5,11 @@ import Header from '../../partials/Header';
 import ExpensesTable from './ExpensesTable';
 import Rights from '../../components/Rights';
 import AddExpense from '../../pages/expenses/AddExpense';
+import checkToken from '../../functions/checkToken';
 
 
 function AllExpenses() {
+  checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const [expenses, setExpenses] = useState([]);
