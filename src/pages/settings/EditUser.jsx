@@ -131,9 +131,9 @@ function EditUser({ card }) {
                 required
                 >
                 <option value={data.gender}>{data.gender}</option>
-                <option value="female">נקבה</option>
-                <option value="male">זכר</option>
-                <option value="other">אחר</option>
+                <option value="נקבה">נקבה</option>
+                <option value="זכר">זכר</option>
+                <option value="אחר">אחר</option>
             </Form.Control>
               
             </Form.Group>
@@ -148,9 +148,9 @@ function EditUser({ card }) {
                 required
               >
                 <option value={data.life_status}>{data.life_status}</option>
-                <option value="single">רווק/ה</option>
-                <option value="marriage">נשוי/ה</option>
-                <option value="divorce">גרוש/ה</option>
+                <option value="רווק/ה">רווק/ה</option>
+                <option value="נשוי/ה">נשוי/ה</option>
+                <option value="גרוש/ה">גרוש/ה</option>
               </Form.Control>
             </Form.Group>
 
