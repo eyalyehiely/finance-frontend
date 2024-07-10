@@ -4,6 +4,7 @@ import axios from '../functions/axiosConfig';
 import swal from 'sweetalert';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import Rights from '../components/Rights';
 
 
 function ChangePassword() {
@@ -93,11 +94,17 @@ function ChangePassword() {
             </div>
           </div>
         </div>
-        {/* <div className="hidden md:block absolute top-0 bottom-0 right-0 md:w-1/2" aria-hidden="true">
-          <img className="object-cover object-center w-full h-full" src={AuthImage} width="760" height="1024" alt="Authentication" />
-          <img className="absolute top-1/4 left-0 -translate-x-1/2 ml-8 hidden lg:block" src={AuthDecoration} width="218" height="224" alt="Authentication decoration" />
-        </div> */}
+        <div className="hidden md:block absolute top-0 bottom-0 left-0 md:w-1/2" aria-hidden="true">
+          <img
+            className="object-cover object-center w-full h-full"
+            src='src/images/dollars.jpeg'
+            width="760"
+            height="1024"
+            alt="dollars"
+          />
+        </div>
       </div>
+      <Rights/>
     </main>
   );
 }
