@@ -1,46 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../functions/axiosConfig'
 import Button from 'react-bootstrap/Button';
-import swal from 'sweetalert';
+import sendResetPasswordMail from '../functions/users/sendResetPasswordMail'
+import Rights from '../components/Rights';
+
 
 
 function ResetPassword() {
-
-  function fetchData(event) {
-    event.preventDefault();
-
-    const email = document.getElementById('email').value;
-
-    axios.post('/auth/reset_password/', {
-      email: email,
-    }).then((response) => {
-      if (response.status === 200) {
-        swal({
-          title: "קישור נשלח בהצלחה",
-          icon: "success",
-          timer:2000,
-          button: false,
-        }).then(() => {
-          window.location.href = '/signin';
-        });
-      } else {
-        swal({
-          title: "משתמש לא נמצא",
-          icon: "warning",
-          button: "אישור",
-        });
-      }
-    }).catch(error => {
-      console.error('Error occurred:', error);
-      swal({
-        title: "שגיאה",
-        text: "משהו השתבש, אנא נסה שוב",
-        icon: "warning",
-        button: "אישור",
-      });
-    });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const button = document.getElementById('submitButton');
+    button.disabled = true;
+    button.innerText = 'תודה';
+    sendResetPasswordMail()
   }
+
 
   return (
     <main className="bg-white dark:bg-slate-900" dir="rtl">
@@ -80,9 +54,10 @@ function ResetPassword() {
                 </div>
 
             <div className="max-w-sm mx-auto w-full px-4 py-8">
-              <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">איפוס סיסמה ✨</h1>
+            <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">CashControl</h1>
+              <h2 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">איפוס סיסמה ✨</h2>
               {/* Form */}
-              <form onSubmit={fetchData}>
+              <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="email">כתובת מייל <span className="text-rose-500">*</span></label>
@@ -90,7 +65,7 @@ function ResetPassword() {
                   </div>
                 </div>
                 <div className="flex justify-end mt-6">
-                  <Button type="submit" variant="primary">שלח קישור</Button>
+                <Button id="submitButton" className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3" type="submit">שלח קישור</Button>
                 </div>
                 <Button variant="info">
               <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 no-underline" to="/signin">
@@ -103,10 +78,16 @@ function ResetPassword() {
         </div>
 
         {/* Image */}
-        {/* <div className="hidden md:block absolute top-0 bottom-0 right-0 md:w-1/2" aria-hidden="true" dir=>
-          <img className="object-cover object-center w-full h-full" src={AuthImage} width="760" height="1024" alt="Authentication" />
-          <img className="absolute top-1/4 left-0 -translate-x-1/2 ml-8 hidden lg:block" src={AuthDecoration} width="218" height="224" alt="Authentication decoration" />
-        </div> */}
+        <div className="hidden md:block absolute top-0 bottom-0 left-0 md:w-1/2" aria-hidden="true">
+          <img
+            className="object-cover object-center w-full h-full"
+            src='src/images/dollars.jpeg'
+            width="760"
+            height="1024"
+            alt="dollars"
+          />
+        </div>
+        <Rights/>
       </div>
     </main>
   );
