@@ -109,7 +109,7 @@ function Signin() {
           <div className="min-h-[100dvh] h-full flex flex-col after:flex-1">
             <div className="flex-1">
                   <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
-                    <Link className="block">
+                    <div className="block">
                       {/* New SVG */}
                       <svg 
                         height="32" 
@@ -131,7 +131,7 @@ function Signin() {
                           />
                         </g>
                       </svg>
-                    </Link>
+                    </div>
                   </div>
                 </div>
 
@@ -193,7 +193,7 @@ function Signin() {
 
               <div className="pt-5 mt-6 border-t border-slate-200 dark:border-slate-700">
                 <div className="text-sm">
-                  האם אין לך חשבון ?
+                   אין ברשותך חשבון ?
                   
                   <Link className="font-medium text-indigo-500 mr-2 hover:text-indigo-600 dark:hover:text-indigo-400" to="/signup">
                     צור חשבון 
