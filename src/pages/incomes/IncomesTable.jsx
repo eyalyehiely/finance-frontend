@@ -118,9 +118,9 @@ function IncomesTable() {
                       <td className="p-2">
                         <select id="source" className="text-right" value={editedIncome.source} onChange={(e) => handleEditChange(e, 'source')}>
                           <option value=""></option>
-                          <option value="salary">משכורת</option>
-                          <option value="allowance">קצבה</option>
-                          <option value="other">אחר</option>
+                          <option value="משכורת">משכורת</option>
+                          <option value="קצבה">קצבה</option>
+                          <option value="אחר">אחר</option>
                         </select>
                       </td>
                         
