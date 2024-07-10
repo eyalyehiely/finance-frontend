@@ -12,7 +12,7 @@ import getExpensesPerCreditCard from '../../functions/credit_cards/getExpensesPe
 import checkToken from '../../functions/checkToken';
 
 function CreditCards() {
-  // checkToken()
+  checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [creditCards, setCreditCards] = useState([]);
   const [cardExpenses, setCardExpenses] = useState([]);

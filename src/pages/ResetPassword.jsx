@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import sendResetPasswordMail from '../functions/users/sendResetPasswordMail'
+import sendResetPasswordLink from '../functions/users/sendResetPasswordLink'
 import Rights from '../components/Rights';
 
 
@@ -12,7 +12,7 @@ function ResetPassword() {
     const button = document.getElementById('submitButton');
     button.disabled = true;
     button.innerText = 'תודה';
-    sendResetPasswordMail()
+    sendResetPasswordLink()
   }
 
 

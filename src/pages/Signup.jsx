@@ -5,7 +5,6 @@ import swal from 'sweetalert';
 import Button from 'react-bootstrap/Button';
 import Rights from '../components/Rights';
 import getAdress from '../functions/users/getAdress';
-import { LinkOffRounded } from '@mui/icons-material';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -67,6 +66,7 @@ function Signup() {
 
     axios.post('/auth/signup/', formData)
       .then((response) => {
+        localStorage.setItem('authTokens', JSON.stringify(response.data));
         console.log(response.data);
         swal({
           title: "👤משתמש נוסף בהצלחה",
@@ -74,7 +74,7 @@ function Signup() {
           timer: 1000,
           button: false,
         }).then(() => {
-          window.location.href = '/signin';
+          navigate('/');
         });
       }).catch((error) => {
         console.error(error);
@@ -147,6 +147,7 @@ function Signup() {
             </div>
 
             <div className="max-w-sm mx-auto w-full px-4 py-8">
+            <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">CashControl</h1>
               <Button variant="info">
                 <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 no-underline" to="/signin">
                   חזור
@@ -229,7 +230,7 @@ function Signup() {
 
                 <div className="flex items-center justify-between mt-6">
                   <div className="mr-1">
-                    <Link className="text-sm underline hover:no-underline" to="/signin">יש לך כבר חשבון?</Link>
+                    <Link className="text-sm underline hover:no-underline" to="/signin">יש ברשותך חשבון ?</Link>
                   </div>
                   <Button id="submitButton" className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3" type="submit">הרשם</Button>
                 </div>

@@ -24,7 +24,7 @@ function ChangePassword() {
           timer:2000,
           button: false,
         }).then(() => {
-          window.location.href = '/signin';
+          navigate('/signin');
         });
       } else {
         swal({

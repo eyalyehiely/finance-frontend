@@ -36,6 +36,7 @@ import IconsPage from './pages/component/IconsPage';
 import ChangePassword from './pages/changePasswordPage.jsx'
 import Calander from './pages/Calendar'
 import AccountPanel from './pages/settings/AccountPanel'
+import Information from './pages/Information';
 // import Stocks from './components/Stocks';
 
 
@@ -102,6 +103,7 @@ function App() {
         <Route path="/component/icons" element={<IconsPage />} />
 
         <Route path="/settings/account" element={<AccountPanel/>} />
+        <Route path="/info" element={<Information/>} />
         {/* <Route path="/stocks" element={<Stocks/>} /> */}
         <Route path="/calander" element={<Calander/>} />
       </Routes>
