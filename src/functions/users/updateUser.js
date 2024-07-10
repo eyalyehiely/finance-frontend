@@ -16,7 +16,7 @@ export default function updateUser(token, setUser, data, handleClose) {
           timer:2000,
           button: false,
         }).then(()=>{
-            getCurrentUserData(token, setUser);
+          getCurrentUserData(token, setUser);
           window.location.reload()
           handleClose();
         })

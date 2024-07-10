@@ -54,7 +54,7 @@ function EditUser({ card }) {
       email: user.email || '',
       gender: user.gender || '',
       life_status: user.life_status || '',
-      num_of_children: user.num_of_children || '',
+      num_of_children: user.num_of_children || 0,
       phone_number: user.phone_number || '',
       birth_date: user.birth_date || '',
       profession: user.profession || '',
