@@ -50,7 +50,7 @@ function Information() {
                 <li className="m-0">
                     <button className="btn-sm bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 dark:text-slate-400 no-underline ">
                       <div className="w-1 h-3.5 bg-sky-500 shrink-0"></div>
-                      <a href="#creditcard"><span className="mr-1">אשראי</span></a>
+                      <a href="#account"><span className="mr-1">חשבון</span></a>
                     </button>
                   </li>
                   
@@ -79,9 +79,8 @@ function Information() {
 
               {/* Posts */}
               <div>
-                <h2 className="text-2xl text-slate-800 dark:text-slate-100 font-bold mb-4">Popular Questions</h2>
                 {/* Post */}
-                <section className="py-4 border-b border-slate-200 dark:border-slate-700" id='creditcard'>
+                <section className="py-4 border-b border-slate-200 dark:border-slate-700" id='account'>
                   <header className="flex items-start mb-2">
                     <div className="mt-2 mr-3">
                       <svg className="w-4 h-4 shrink-0 fill-current" viewBox="0 0 16 16">
@@ -106,7 +105,7 @@ function Information() {
 
 
                 {/* Post */}
-                <article className="py-4 border-b border-slate-200 dark:border-slate-700">
+                <section className="py-4 border-b border-slate-200 dark:border-slate-700" id='creditcard'>
                   <header className="flex items-start mb-2">
                     <div className="mt-2 mr-3">
                       <svg className="w-4 h-4 shrink-0 fill-current" viewBox="0 0 16 16">
@@ -127,7 +126,7 @@ function Information() {
                       </li>
                     </ul>
                   </div>
-                </article>
+                </section>
 
 
                 {/* Post */}
