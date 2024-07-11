@@ -153,14 +153,14 @@ function Signin() {
                     <input id="password" className="form-input w-full" type={showPassword ? 'text' : 'password'} required />
                     <div className="mt-2">
                       <input type="checkbox" id="showPassword" checked={showPassword} onChange={() => setShowPassword(!showPassword)} />
-                      <label htmlFor="showPassword" className="ml-2">הצג סיסמה</label>
+                      <label htmlFor="showPassword" className="mr-2">הצג סיסמה</label>
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between mt-6">
                   <div className="mr-1">
                     <Link className="text-sm underline hover:no-underline" to="/reset-password">
-                      שכחתי סיסמה ?
+                      שכחתי סיסמה
                     </Link>
                   </div>
                   <Button type="submit" variant="primary"> התחבר</Button>
