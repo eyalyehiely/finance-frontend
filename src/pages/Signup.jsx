@@ -197,7 +197,7 @@ function Signup() {
                     <input id="password" className="form-input w-full" type={showPassword ? 'text' : 'password'} value={password} onChange={handleChange} required />
                     <div className="mt-2">
                       <input type="checkbox" id="showPassword" checked={showPassword} onChange={() => setShowPassword(!showPassword)} />
-                      <label htmlFor="showPassword" className="text-sm font-medium mb-1"> הצג סיסמה  </label>
+                      <label htmlFor="showPassword" className="text-sm font-medium mr-2"> הצג סיסמה  </label>
                     </div>
                     </div>
 
