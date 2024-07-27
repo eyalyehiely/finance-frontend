@@ -206,7 +206,7 @@ function SavingsTable() {
                           </button>
                           <button
                             className="text-rose-500 hover:text-rose-600 rounded-full"
-                            onClick={() => deleteSaving(saving.id, token)}
+                            onClick={() => deleteSaving(saving.id, token,setSavings)}
                           >
                             <span className="sr-only">Delete</span>
                             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">

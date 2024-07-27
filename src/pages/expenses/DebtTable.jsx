@@ -221,7 +221,7 @@ console.log(debts.length);
 
                           <button
                             className="text-rose-500 hover:text-rose-600 rounded-full"
-                            onClick={() => deleteDebt(debt.id,token)}
+                            onClick={() => deleteDebt(debt.id,token,setDebts)}
                           >
                             <span className="sr-only">Delete</span>
                             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">
