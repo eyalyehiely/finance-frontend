@@ -10,10 +10,11 @@ import DashboardCard05 from '../partials/dashboard/NotesCard';
 import DashboardCard06 from '../partials/dashboard/ExpensesKindsCard';
 import DashboardCard07 from '../partials/dashboard/ExpensesTableCard';
 import Rights from '/src/components/Rights';
+import checkToken from '../../functions/checkToken';
 
 
 function Dashboard() {
-
+  checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (

@@ -3,8 +3,7 @@ import { Link,NavLink } from 'react-router-dom';
 import Transition from '../utils/Transition';
 import LogoutButton from './LogOut';
 import { jwtDecode } from 'jwt-decode';
-import UserAvatar from '../images/user-avatar-32.png';
-import getCurrentUserData from '../../src/functions/users/getCurrentUserData';
+import getCurrentUserData from '../functions/users/getCurrentUserData';
 
 const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 const first_name = token ? jwtDecode(token).first_name : null;
