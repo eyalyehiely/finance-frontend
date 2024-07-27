@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import sendResetPasswordLink from '../functions/users/sendResetPasswordLink'
 import Rights from '../components/Rights';
@@ -7,12 +7,14 @@ import Rights from '../components/Rights';
 
 
 function ResetPassword() {
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const button = document.getElementById('submitButton');
     button.disabled = true;
     button.innerText = 'תודה';
-    sendResetPasswordLink()
+    sendResetPasswordLink(e,navigate)
   }
 
 
