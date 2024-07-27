@@ -59,7 +59,7 @@ export default async function addExpensesData(token, setExpenses, data, handleCl
     }).then(() => {
       handleClose();
       // Optionally re-fetch data if you want to ensure state consistency
-      // fetchExpensesData(token, setExpenses);
+      fetchExpensesData(token, setExpenses);
     });
   } catch (error) {
     console.error('Error:', error.response?.data?.message || error.message);
