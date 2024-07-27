@@ -1,9 +1,9 @@
 
 import axios from '../axiosConfig'
 
-export default function getCurrentUserData(token,setUser) {
+export default async function getCurrentUserData(token,setUser) {
 
-    axios.post('/auth/fetch_current_user_data/', {}, {
+    await axios.post('/auth/fetch_current_user_data/', {}, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
