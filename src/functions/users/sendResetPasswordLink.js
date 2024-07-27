@@ -14,7 +14,7 @@ export default function fetchData(event) {
           timer: 1000,
           button: false,
         }).then(() => {
-          window.location.href('/signin')
+          window.location.href = '/signin';
         });
       } else {
         swal({
