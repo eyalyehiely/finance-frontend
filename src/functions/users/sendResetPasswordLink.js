@@ -1,20 +1,20 @@
-
-import axios from '../axiosConfig'
+import axios from '../axiosConfig';
 import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 
 export default function fetchData(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const email = document.getElementById('email').value;
+  const email = document.getElementById('email').value;
+  const navigate = useNavigate(); // Ensure useNavigate is imported and used
 
-    axios.post('/auth/reset_password/', {
-      email: email,
-    }).then((response) => {
+  axios.post('/auth/reset_password/', { email })
+    .then((response) => {
       if (response.status === 200) {
         swal({
           title: "קישור נשלח בהצלחה",
           icon: "success",
-          timer:1000,
+          timer: 1000,
           button: false,
         }).then(() => {
           navigate('/signin');
@@ -26,7 +26,8 @@ export default function fetchData(event) {
           button: "אישור",
         });
       }
-    }).catch(error => {
+    })
+    .catch((error) => {
       console.error('Error occurred:', error);
       swal({
         title: "שגיאה",
@@ -35,4 +36,4 @@ export default function fetchData(event) {
         button: "אישור",
       });
     });
-  }
+}
