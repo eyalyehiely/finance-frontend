@@ -23,7 +23,6 @@ export default function deleteExpense(token, id, setExpenses) {
           timer: 2000,
           button: false,
         }).then(() => {
-          // Refresh the data after deletion
           fetchExpensesData(token, setExpenses);
         });
       }).catch((error) => {

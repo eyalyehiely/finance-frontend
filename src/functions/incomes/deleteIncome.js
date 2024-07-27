@@ -2,7 +2,7 @@ import swal from 'sweetalert'
 import axios from '../axiosConfig'
 import fetchIncomesData from './fetchIncomesData';
 
-export default function deleteIncome(id,token) {
+export default function deleteIncome(id,token,setIncomes) {
     swal({
       title: "האם אתה בטוח?",
       text: "ברגע שתלחץ על אישור לא יהיה ניתן לשחזר את המידע",
@@ -23,8 +23,7 @@ export default function deleteIncome(id,token) {
             timer:2000,
             button: false,
           }).then(() => {
-            window.location.reload()
-            fetchIncomesData(token,setIncomes); // Refresh the data after deletion
+          fetchIncomesData(token,setIncomes); // Refresh the data after deletion
            
           });
         }).catch((error) => {
