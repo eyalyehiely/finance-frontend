@@ -213,6 +213,8 @@ function Signin() {
     axios.post("/auth/api/google-login/", { id_token: response.tokenId })
       .then((res) => {
         localStorage.setItem("authTokens", JSON.stringify(res.data));
+        console.log("data",res.data);
+        console.log("response token:",response.tokenId);
         swal({
           title: "שלום",
           text: "התחברות עם Google בוצעה בהצלחה",
