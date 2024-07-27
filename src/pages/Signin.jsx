@@ -164,19 +164,19 @@ function Signin() {
   // Fetch data from the server on form submission
   const fetchData = async (event) => {
     event.preventDefault();
-    const username = document.getElementById("username").value.toLowerCase();
-    const password = document.getElementById("password").value;
+    const username = document.getElementById('username').value.toLowerCase();
+    const password = document.getElementById('password').value;
 
     try {
-      const response = await axios.post("/token/", {
+      const response = await axios.post('/token/', {
         username,
-        password,
+        password
       });
 
-      console.log("Response:", response.data);
+      console.log('Response:', response.data);
 
       if (response.status === 200) {
-        localStorage.setItem("authTokens", JSON.stringify(response.data));
+        localStorage.setItem('authTokens', JSON.stringify(response.data));
         swal({
           title: "שלום",
           text: "התחברות בוצעה בהצלחה",
@@ -184,10 +184,10 @@ function Signin() {
           timer: 2000,
           button: false,
         }).then(() => {
-          navigate("/");
+          navigate('/');
         });
       } else {
-        console.log("Error:", response.data.message);
+        console.log('Error:', response.data.message);
         swal({
           title: "Ⅹ!שגיאה",
           text: `!שגיאת frontend: ${response.data.message}`,
@@ -196,7 +196,7 @@ function Signin() {
         });
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
       swal({
         title: "!שגיאה",
         text: "שם משתמש או סיסמה לא תקינים",
@@ -210,8 +210,7 @@ function Signin() {
   const handleGoogleSuccess = (response) => {
     console.log("Google response:", response);
     // Send the response to your backend for verification and login
-    axios
-      .post("auth/token/google/", { id_token: response.tokenId })
+    axios.post("/token/google/", { id_token: response.tokenId })
       .then((res) => {
         localStorage.setItem("authTokens", JSON.stringify(res.data));
         swal({
