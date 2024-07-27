@@ -186,7 +186,7 @@ function IncomesTable() {
                           </button>
                           <button
                             className="text-rose-500 hover:text-rose-600 rounded-full"
-                            onClick={() => deleteIncome(income.id,token)}
+                            onClick={() => deleteIncome(income.id,token,setIncomes)}
                           >
                             <span className="sr-only">Delete</span>
                             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">

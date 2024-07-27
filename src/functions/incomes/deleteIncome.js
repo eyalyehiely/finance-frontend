@@ -18,13 +18,12 @@ export default function deleteIncome(id,token,setIncomes) {
           }
         }).then((response) => {
           swal({
-            title: " 🗑️!החוב נמחק בהצלחה",
+            title: " 🗑️!ההכנסה נמחקה בהצלחה",
             icon: "success",
             timer:2000,
             button: false,
           }).then(() => {
-          fetchIncomesData(token,setIncomes); // Refresh the data after deletion
-           
+          fetchIncomesData(token,setIncomes); 
           });
         }).catch((error) => {
           console.error("Error deleting income:", error);
