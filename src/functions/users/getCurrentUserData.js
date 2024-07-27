@@ -16,6 +16,6 @@ export default async function getCurrentUserData(token,setUser) {
         console.log('Error:', response.data.message);
       }
     }).catch(error => {
-      console.error('There was an error!', error);
+      console.error('There was an error in fetching current user data!', error);
     });
   }
