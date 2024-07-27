@@ -1,13 +1,10 @@
 import axios from '../axiosConfig';
 import swal from 'sweetalert';
-import { useNavigate } from 'react-router-dom';
 
 export default function fetchData(event) {
   event.preventDefault();
 
   const email = document.getElementById('email').value;
-  const navigate = useNavigate(); // Ensure useNavigate is imported and used
-
   axios.post('/auth/reset_password/', { email })
     .then((response) => {
       if (response.status === 200) {
@@ -17,7 +14,7 @@ export default function fetchData(event) {
           timer: 1000,
           button: false,
         }).then(() => {
-          navigate('/signin');
+          window.location.href('/signin')
         });
       } else {
         swal({
