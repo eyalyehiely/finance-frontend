@@ -210,7 +210,7 @@ function Signin() {
   const handleGoogleSuccess = (response) => {
     console.log("Google response:", response);
     // Send the response to your backend for verification and login
-    axios.post("/token/google/", { id_token: response.tokenId })
+    axios.post("/auth/api/google-login/", { id_token: response.tokenId })
       .then((res) => {
         localStorage.setItem("authTokens", JSON.stringify(res.data));
         swal({
