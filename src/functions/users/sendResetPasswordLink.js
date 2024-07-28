@@ -31,6 +31,9 @@ export default function fetchData(event) {
         text: "משהו השתבש, אנא נסה שוב",
         icon: "warning",
         button: "אישור",
-      });
+      })
+      .then(()=>{
+        window.location.href = '/signin';
+      })
     });
 }
