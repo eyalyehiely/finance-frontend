@@ -1,4 +1,4 @@
-function addCommaToNumber(number) {
+function AddCommaToNumber(number) {
   if (number === null || number === undefined) {
       return '';
   }
@@ -6,4 +6,4 @@ function addCommaToNumber(number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export default addCommaToNumber;
+export default AddCommaToNumber;

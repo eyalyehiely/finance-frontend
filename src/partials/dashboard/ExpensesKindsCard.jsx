@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import PieChart from '../../charts/PieChart';
 import axios from '../../functions/axiosConfig'
-import Icon from '../../images/icon-02.svg';
 import fetchCurrentMonthExpenses from '../../functions/expenses/fetchCurrentMonthExpenses';
-
+import AddExpense from '../../pages/expenses/AddExpense';
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
+
 
 function ExpensesKindsCard() {
   const [creditCard, setCreditCard] = useState(null);
@@ -16,7 +16,7 @@ function ExpensesKindsCard() {
   const [check, setCheck] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [amount, setAmount] = useState(null);
+  const [expenses, setExpenses] = useState(null);
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 
 
@@ -85,22 +85,27 @@ function ExpensesKindsCard() {
 
   useEffect(() => {
     if (token) {
-        fetchCurrentMonthExpenses(token, setAmount);
+        fetchCurrentMonthExpenses(token, setExpenses);
     }
 }, [token]); 
 
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
-      <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-      <img src={Icon} width="32" height="32" alt="Icon 02" />
-      </header>
-      <h2  dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2"> הוצאות: {amount} ₪(חודשי)</h2>
-      {error && <div className="text-red-600 p-4">{error}</div>}
+    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+      <div className="px-5 pt-5 flex flex-col items-center">
+        <AddExpense />
+      </div>
+      <div dir="rtl" className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2 text-center">
+        הוצאות: {expenses} ₪ (חודשי)
+        </div>
+      
+      {error && <div className="text-red-600 p-4 text-center">{error}</div>}
       {loading ? (
         <div className="text-center p-4">אין נתונים</div>
       ) : (
-      <PieChart data={chartData} width={389} height={220} />
+        <div className="flex justify-center">
+          <PieChart data={chartData} width={389} height={220} />
+        </div>
       )}
     </div>
   );

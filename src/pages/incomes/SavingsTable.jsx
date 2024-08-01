@@ -3,7 +3,7 @@ import AddCommaToNumber from '../../components/AddComma'
 import fetchSavingsData from '../../functions/savings/fetchSavingsData'
 import deleteSaving from '../../functions/savings/deleteSaving';
 import saveEdit from '../../functions/savings/saveEdit';
-
+import { format } from 'date-fns';
 
 
 
@@ -25,8 +25,8 @@ function SavingsTable() {
         savings.filter((saving) =>
           saving.saving_type.toLowerCase().includes(query) ||
           saving.amount.toString().includes(query) ||
-          new Date(saving.starting_date).toLocaleString().includes(query)||
-          new Date(saving.finish_date).toLocaleString().includes(query)
+          format(new Date(saving.starting_date),'dd/MM/yyyy').includes(query)||
+          format(new Date(saving.finish_date),'dd/MM/yyyy').includes(query)
         )
       );
     } else {
@@ -186,10 +186,10 @@ function SavingsTable() {
                         <div className="text-right">{AddCommaToNumber(saving.total_saving_amount)}</div>
                       </td>
                       <td className="p-2">
-                        <div className="text-right">{new Date(saving.starting_date).toLocaleDateString()}</div>
+                        <div className="text-right">{format (new Date(saving.starting_date),'dd/MM/yyyy')}</div>
                       </td>
                       <td className="p-2">
-                        <div className="text-right">{new Date(saving.finish_date).toLocaleDateString()}</div>
+                        <div className="text-right">{format(new Date(saving.finish_date),'dd/MM/yyyy')}</div>
                       </td>
                       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                         <div className="space-x-1">
@@ -206,7 +206,7 @@ function SavingsTable() {
                           </button>
                           <button
                             className="text-rose-500 hover:text-rose-600 rounded-full"
-                            onClick={() => deleteSaving(saving.id, token)}
+                            onClick={() => deleteSaving(saving.id, token,setSavings)}
                           >
                             <span className="sr-only">Delete</span>
                             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">

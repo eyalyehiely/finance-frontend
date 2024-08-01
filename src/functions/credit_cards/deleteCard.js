@@ -2,7 +2,7 @@ import axios from '../axiosConfig'
 import swal from 'sweetalert'
 import getCreditCardData from './getCreditCardData';
 
-export default function deleteCard(token,id) {
+export default function deleteCard(token,id,setCreditCards) {
     swal({
       title: "האם אתה בטוח?",
       text: "ברגע שתלחץ על אישור לא יהיה ניתן לשחזר את המידע",
@@ -20,10 +20,10 @@ export default function deleteCard(token,id) {
           swal({
             title: "🗑️!כרטיס נמחק בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(() => { 
-            getCreditCardData()
-            window.location.reload();// Refresh the data after deletion
+            getCreditCardData(token,setCreditCards)
           });
         }).catch((error) => {
           console.error("Error deleting card:", error);

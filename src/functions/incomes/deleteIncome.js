@@ -2,7 +2,7 @@ import swal from 'sweetalert'
 import axios from '../axiosConfig'
 import fetchIncomesData from './fetchIncomesData';
 
-export default function deleteIncome(id,token) {
+export default function deleteIncome(id,token,setIncomes) {
     swal({
       title: "האם אתה בטוח?",
       text: "ברגע שתלחץ על אישור לא יהיה ניתן לשחזר את המידע",
@@ -18,14 +18,12 @@ export default function deleteIncome(id,token) {
           }
         }).then((response) => {
           swal({
-            title: "🗑️!עבודה טובה",
-            text: " !החוב נמחק בהצלחה",
+            title: " 🗑️!ההכנסה נמחקה בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(() => {
-            window.location.reload()
-            fetchIncomesData(token,setIncomes); // Refresh the data after deletion
-           
+          fetchIncomesData(token,setIncomes); 
           });
         }).catch((error) => {
           console.error("Error deleting income:", error);

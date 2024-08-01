@@ -3,7 +3,7 @@ import AddCommaToNumber from '../../components/AddComma';  // Ensure this import
 import fetchDebtData from '../../functions/debts/fetchDebtData';  // Implement this function
 import deleteDebt from '../../functions/debts/deleteDebt';  // Implement this function
 import saveEdit from '/src/functions/debts/saveEdit.js';  // Implement this function
-
+import { format } from 'date-fns';
 
 function DebtTable() {
   const [debts, setDebts] = useState([]);
@@ -31,8 +31,9 @@ console.log(debts.length);
           debt.name.toLowerCase().includes(query) ||
           debt.type.toLowerCase().includes(query) ||
           debt.amount.toString().includes(query) ||
-          new Date(debt.starting_date).toLocaleString().includes(query)||
-          new Date(debt.finish_date).toLocaleString().includes(query)
+          debt.interest.toString().includes(query) ||
+          format(new Date(debt.starting_date),'dd/MM/yyyy').includes(query)||
+          format(new Date(debt.finish_date),'dd/MM/yyyy').includes(query)
         )
       );
     } else {
@@ -199,10 +200,10 @@ console.log(debts.length);
                         <div className="text-right">{AddCommaToNumber(debt.total_amount)}</div>
                       </td>
                       <td className="p-2">
-                        <div className="text-right">{new Date(debt.starting_date).toLocaleDateString()}</div>
+                        <div className="text-right">{format (new Date(debt.starting_date), 'dd/MM/yyyy')}</div>
                       </td>
                       <td className="p-2">
-                        <div className="text-right">{new Date(debt.finish_date).toLocaleDateString()}</div>
+                        <div className="text-right">{format (new Date(debt.finish_date), 'dd/MM/yyyy')}</div>
                       </td>
                       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                         <div className="space-x-1">
@@ -220,7 +221,7 @@ console.log(debts.length);
 
                           <button
                             className="text-rose-500 hover:text-rose-600 rounded-full"
-                            onClick={() => deleteDebt(debt.id,token)}
+                            onClick={() => deleteDebt(debt.id,token,setDebts)}
                           >
                             <span className="sr-only">Delete</span>
                             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">

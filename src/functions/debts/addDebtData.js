@@ -11,13 +11,13 @@ export default function addDebtData(token, setDebts, data, handleClose) {
   }).then((response) => {
     setDebts((prevDebts) => [...prevDebts, response.data]);
     swal({
-      title: "💰!עבודה טובה",
-      text: " !הוצאה נוספה בהצלחה",
+      title: " !חוב נוסף בהצלחה",
       icon: "success",
-      button: "אישור",
+      timer:2000,
+      button: false,
     }).then(() => {
       handleClose();
-      window.location.reload()
+      handleClose
       fetchDebtData(token,setDebts)
      
     });
@@ -25,7 +25,6 @@ export default function addDebtData(token, setDebts, data, handleClose) {
     console.error('Error:', error.response?.data?.message || error.message);
     swal({
       title: "Ⅹ!שגיאה ",
-      text: "!שגיאת BACKEND",
       icon: "warning",
       button: "אישור",
     });

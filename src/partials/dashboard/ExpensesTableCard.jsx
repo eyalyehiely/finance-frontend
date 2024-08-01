@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
+import axios from '../../functions/axiosConfig'
+import { format } from 'date-fns';
 function ExpensesTableCard() {
   const [expenses, setExpenses] = useState([]);
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
@@ -15,7 +15,7 @@ function ExpensesTableCard() {
       event.preventDefault();
     }
 
-    axios.post('http://localhost:8000/api/expenses/fetch_expenses_table/', {},{
+    axios.post('/expenses/fetch_expenses_table/', {},{
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -27,12 +27,10 @@ function ExpensesTableCard() {
           setExpenses(response.data.sorted_expenses);
         } else {
           console.log('Error:', response.data.message);
-          alert(response.data.message);
         }
       })
       .catch(error => {
         console.error('There was an error!', error);
-        alert('An error occurred while fetching data.');
       });
   }
 
@@ -40,7 +38,7 @@ function ExpensesTableCard() {
     
     <div dir="rtl" className="col-span-full xl:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">ההוצאות הגדולות ביותר</h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">ההוצאות הגדולות ביותר:</h2>
       </header>
       <div className="p-3">
         {/* Table */}
@@ -78,7 +76,7 @@ function ExpensesTableCard() {
         <div className="text-right">{expense[0]}</div> {/* Name */}
       </td>
       <td className="p-2">
-        <div className="text-right">{new Date(expense[1]).toLocaleDateString()}</div> {/* Date */}
+        <div className="text-right">{format(new Date(expense[1]),'dd/MM/yyyy')}</div> {/* Date */}
       </td>
       <td className="p-2">
         <div className="text-right">{expense[2]}</div> {/* Payment Method */}

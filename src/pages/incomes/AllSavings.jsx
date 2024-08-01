@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import Sidebar from '../../partials/Sidebar';
 import Header from '../../partials/Header';
-import PaginationClassic from '../../components/PaginationClassic';
 import SavingsTable from './SavingsTable';
 import Rights from '/src/components/Rights';
 import AddSaving from '../../pages/incomes/AddSaving'
+import checkToken from '../../functions/checkToken';
 
 
 
 function AllSavings() {
+  checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const handleSelectedItems = (selectedItems) => {
@@ -33,11 +34,7 @@ function AllSavings() {
             <div className="sm:flex sm:justify-between sm:items-center mb-5">
 
               {/* Right: Actions */}
-              <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-start gap-2">
-                {/* Search form */}
-                {/* <SearchForm placeholder="Search by invoice ID…" /> */}
-                {/* Create invoice button */}
-               
+              <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-start gap-2"> 
               <AddSaving />
 
               </div>
@@ -48,10 +45,10 @@ function AllSavings() {
             <SavingsTable selectedItems={handleSelectedItems} />
             
 
-            Pagination
+            {/* Pagination
             <div className="mt-8">
               <PaginationClassic />
-            </div>
+            </div> */}
 
           </div>
         </main>

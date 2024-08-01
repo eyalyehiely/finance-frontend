@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import fetchExpensesData from '/src/functions/expenses/fetchExpensesData.js';
+import fetchExpensesData from '../../functions/expenses/fetchExpensesData';
 import saveEdit from '../../functions/expenses/saveEdit';
 import AddCommaToNumber from '../../components/AddComma';
 import deleteExpense from '../../functions/expenses/deleteExpense';
@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { format } from 'date-fns';
+// import DropdownFilter from '../../components/DropdownFilter';
 
 function ExpensesTable() {
   const [expenses, setExpenses] = useState([]);
@@ -16,6 +18,7 @@ function ExpensesTable() {
   const [editedExpense, setEditedExpense] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const [creditCards, setCreditCards] = useState([]);
+  const [canSaveCreditCard, setCanSaveCreditCard] = useState(false);
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 
   useEffect(() => {
@@ -31,7 +34,9 @@ function ExpensesTable() {
           expense.name.toLowerCase().includes(query) ||
           expense.payment_method.toLowerCase().includes(query) ||
           expense.price.toString().includes(query) ||
-          new Date(expense.date_and_time).toLocaleString().includes(query)
+          expense.category.toLowerCase().includes(query)||
+          expense.expense_type.toLowerCase().includes(query)||
+          format(new Date(expense.date_and_time),'dd/MM/yyyy HH:mm').includes(query)
         )
       );
     } else {
@@ -66,6 +71,14 @@ function ExpensesTable() {
     setEditingExpenseId(null);
     setEditedExpense({});
   };
+  console.log({editedExpense});
+
+
+
+  const handleCreditCardSaving = () => {
+    const button = document.getElementById('saveCreditCardChanges');
+    button.disabled = !canSaveCreditCard;
+  };
 
   return (
     <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 relative" dir="rtl">
@@ -73,6 +86,7 @@ function ExpensesTable() {
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">
           הוצאות <span className="text-slate-400 dark:text-slate-500 font-medium">{filteredExpenses.length}</span>
         </h2>
+        
         <div className="my-4">
           <input
             type="text"
@@ -97,13 +111,21 @@ function ExpensesTable() {
                 <div className="font-semibold text-right">שם ההוצאה</div>
               </th>
               <th className="p-2">
+                <div className="font-semibold text-right">סוג ההוצאה</div>
+              </th>
+
+              <th className="p-2">
+                <div className="font-semibold text-right">קטגוריה</div>
+              </th>
+
+              <th className="p-2">
                 <div className="font-semibold text-right">דרך תשלום</div>
               </th>
               <th className="p-2">
                 <div className="font-semibold text-right">סכום</div>
               </th>
               <th className="p-2">
-                <div className="font-semibold text-right">תאריך ההוצאה</div>
+                <div className="font-semibold text-right">תאריך ושעת ההוצאה</div>
               </th>
               <th className="p-2">
                 <div className="font-semibold text-right">פעולות</div>
@@ -130,6 +152,50 @@ function ExpensesTable() {
                       <div className="text-right">{expense.name}</div>
                     )}
                   </td>
+
+
+                  <td className="p-2">
+                    {editingExpenseId === expense.id ? (
+                      <select
+                        id="expense_type"
+                        className="text-right"
+                        value={editedExpense.expense_type || ''}
+                        onChange={(e) => handleEditChange(e, 'expense_type')}
+                      >
+                        <option value=""></option>
+                        <option value="הוצאה קבועה">הוצאה קבועה</option>
+                        <option value="הוצאה משתנה">הוצאה משתנה</option>
+                      </select>
+                    ) : (
+                      <div className="text-right">{expense.expense_type}</div>
+                    )}
+                  </td>
+
+
+                  <td className="p-2">
+                    {editingExpenseId === expense.id ? (
+                      <select
+                        id="category"
+                        className="text-right"
+                        value={editedExpense.category || ''}
+                        onChange={(e) => handleEditChange(e, 'category')}
+                      >
+                        <option value=""></option>
+                        <option value="סופר">סופר</option>
+                        <option value="מסעדה">מסעדה</option>
+                        <option value="טכנולוגיה">טכנולוגיה</option>
+                        <option value="הלבשה והנעלה">הלבשה והנעלה</option>
+                        <option value="דלק">דלק</option>
+                        <option value="הלוואה">הלוואה</option>
+                        <option value="חוב">חוב</option>
+                        <option value="מתנה">מתנה</option>
+                        <option value="אחר">אחר</option>
+                      </select>
+                    ) : (
+                      <div className="text-right">{expense.category}</div>
+                    )}
+                  </td>
+
                   <td className="p-2">
                     {editingExpenseId === expense.id ? (
                       <select
@@ -139,11 +205,11 @@ function ExpensesTable() {
                         onChange={(e) => handleEditChange(e, 'payment_method')}
                       >
                         <option value=""></option>
-                        <option value="credit_card">כרטיס אשראי</option>
-                        <option value="direct_debit">הוראת קבע</option>
-                        <option value="transaction">העברה בנקאית</option>
-                        <option value="cash">מזומן</option>
-                        <option value="check">צ׳ק</option>
+                        <option value="כרטיס אשראי">כרטיס אשראי</option>
+                        <option value="הוראת קבע">הוראת קבע</option>
+                        <option value="העברה בנקאית">העברה בנקאית</option>
+                        <option value="מזומן">מזומן</option>
+                        <option value="צ׳ק">צ׳ק</option>
                       </select>
                     ) : (
                       <div className="text-right">{expense.payment_method}</div>
@@ -172,7 +238,7 @@ function ExpensesTable() {
                         onChange={(e) => handleEditChange(e, 'date_and_time')}
                       />
                     ) : (
-                      <div className="text-right">{new Date(expense.date_and_time).toLocaleString()}</div>
+                      <div className="text-right">{format(new Date(expense.date_and_time), 'dd/MM/yyyy HH:mm')}</div>
                     )}
                   </td>
                   <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
@@ -190,12 +256,12 @@ function ExpensesTable() {
                             </svg>
                           </button>
                           <button
-                            className="text-rose-500 hover:text-rose-600 rounded-full"
+                            className="text-rose-500 hover:text-rose-600 square-full"
                             onClick={cancelEdit}
                           >
                             <span className="sr-only">Cancel</span>
                             <svg className="w-10 h-6 fill-current" viewBox="0 0 32 32">
-                              <path d="M4 8h24v2H4zM4 16h24v2H4zM4 24h24v2H4z" />
+                              <path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2Zm7 19a1 1 0 0 1-1.414 1.414L16 17.414l-5.586 5.586A1 1 0 0 1 9 21.586l5.586-5.586L9 10.414A1 1 0 0 1 10.414 9l5.586 5.586 5.586-5.586A1 1 0 0 1 23 10.414l-5.586 5.586Z" />
                             </svg>
                           </button>
                         </>
@@ -236,7 +302,7 @@ function ExpensesTable() {
           </tbody>
         </table>
       </div>
-      {editedExpense.payment_method === 'credit_card'  && (
+      {editingExpenseId !==null && editedExpense.payment_method === 'כרטיס אשראי'  &&  (
         <Modal show={true} onHide={cancelEdit} dir="rtl">
           <Modal.Header>
             <Modal.Title>בחר כרטיס אשראי</Modal.Title>
@@ -246,27 +312,43 @@ function ExpensesTable() {
               <Form.Label>בחר כרטיס אשראי</Form.Label>
               <Form.Control
                 as="select"
-                id='credit_card'
-                value={editedExpense.credit_card || ''}
-                onChange={(e) => handleEditChange(e, 'credit_card')}
+                id='credit_card_id'
+                value={editedExpense.credit_card_id || ''}
+                onChange={(e) => {
+                  handleEditChange(e, 'credit_card_id');
+                  setCanSaveCreditCard(e.target.value !== '');
+                }}
                 required
               >
                 <option value=""></option>
-                {creditCards.map((card) => (
+                {creditCards.length > 0 ? (
+                creditCards.map((card) => (
                   <option key={card.id} value={card.id}>
-                    {card.name}
+                    {card.name}, {card.last_four_digits}
                   </option>
-                ))}
+                ))
+                ):(
+                  <option value="" disabled>
+                  אין כרטיסים זמינים
+                </option>
+                )}
               </Form.Control>
+                
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={cancelEdit}>
               סגור
             </Button>
-            <Button variant="primary" onClick={saveChanges}>
+            <Button
+              id="saveCreditCardChanges"
+              disabled={!canSaveCreditCard}
+              onClick={saveChanges}
+              variant='primary'
+            >
               שמור שינויים
             </Button>
+
           </Modal.Footer>
         </Modal>
       )}

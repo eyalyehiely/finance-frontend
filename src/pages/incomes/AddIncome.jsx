@@ -48,13 +48,12 @@ function AddIncome() {
 
   return (
     <>
-      <Button onClick={handleShow} variant="outline-primary">
-        <span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+      <Button onClick={handleShow} variant="outline-primary" className="d-flex align-items-center">
+            <span className="ml-2">הוסף הכנסה</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
             <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
           </svg>
-        </span>
-      </Button>
+        </Button>
 
       <Modal show={show} onHide={handleClose} centered dir="rtl">
         <Modal.Header>
@@ -63,7 +62,7 @@ function AddIncome() {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formSource">
-              <Form.Label>סוג הכנסה</Form.Label>
+              <Form.Label>סוג הכנסה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="source"
@@ -72,14 +71,14 @@ function AddIncome() {
                 required
               >
                 <option value=""></option>
-                <option value="salary">משכורת</option>
-                <option value="allowance">קצבה</option>
+                <option value="משכורת">משכורת</option>
+                <option value="קצבה">קצבה</option>
                 <option value="other">אחר</option>
               </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="formAmount">
-              <Form.Label>סכום</Form.Label>
+              <Form.Label>סכום<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="amount"
@@ -90,7 +89,7 @@ function AddIncome() {
             </Form.Group>
 
             <Form.Group controlId="formDate">
-              <Form.Label>תאריך</Form.Label>
+              <Form.Label>תאריך<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="date"
                 name="date"

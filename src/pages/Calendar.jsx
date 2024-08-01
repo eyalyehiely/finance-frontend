@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
+import fetchIncomesData from '../functions/incomes/fetchIncomesData';
 
 function Calendar() {
-
+  const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
   const today = new Date();
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const monthNames = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
+  const dayNames = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת']
+  const [incomes,setIncomes] = useState([])
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [month, setMonth] = useState(today.getMonth());
   // eslint-disable-next-line no-unused-vars
@@ -15,161 +16,57 @@ function Calendar() {
   const [daysInMonth, setDaysInMonth] = useState([])
   const [startingBlankDays, setStartingBlankDays] = useState([])
   const [endingBlankDays, setEndingBlankDays] = useState([])
+  const currenMonth = today.getMonth()
+  const currenDate = today.getDate()
+  const currenYear = today.getFullYear()
+
+
+
+
+
+
+  useEffect(() => {
+    if (token) {
+      fetchIncomesData(token, setIncomes);
+    }
+  }, [token]);
   const events = [
-    // Previous month
+
+  incomes.map((income)=>{
     {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 8, 3),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 8, 7),
-      eventName: '⛱️ Relax for 2 at Marienbad',
-      eventColor: 'indigo'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 12, 10),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 12, 11),
-      eventName: 'Team Catch-up',
-      eventColor: 'sky'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 18, 2),
-      eventEnd: '',
-      eventName: '✍️ New Project (2)',
-      eventColor: 'yellow'
-    },
-    // Current month
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 1, 10),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 1, 11),
-      eventName: 'Meeting w/ Patrick Lin',
-      eventColor: 'sky'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 1, 19),
-      eventEnd: '',
-      eventName: 'Reservation at La Ginestre',
-      eventColor: 'indigo'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 3, 9),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 3, 10),
-      eventName: '✍️ New Project',
-      eventColor: 'yellow'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 7, 21),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 7, 22),
-      eventName: '⚽ 2021 - Semi-final',
-      eventColor: 'red'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 9, 10),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 9, 11),
-      eventName: 'Meeting w/Carolyn',
-      eventColor: 'sky'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 9, 13),
-      eventEnd: '',
-      eventName: 'Pick up Marta at school',
-      eventColor: 'emerald'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 9, 14),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 9, 15),
-      eventName: 'Meeting w/ Patrick Lin',
-      eventColor: 'emerald'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 9, 19),
-      eventEnd: '',
-      eventName: 'Reservation at La Ginestre',
-      eventColor: 'indigo'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 11, 10),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 11, 11),
-      eventName: '⛱️ Relax for 2 at Marienbad',
-      eventColor: 'indigo'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 11, 19),
-      eventEnd: '',
-      eventName: '⚽ 2021 - Semi-final',
-      eventColor: 'red'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 14, 10),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 14, 11),
-      eventName: 'Team Catch-up',
-      eventColor: 'sky'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 21, 2),
-      eventEnd: '',
-      eventName: 'Pick up Marta at school',
-      eventColor: 'emerald'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 21, 3),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 21, 7),
-      eventName: '✍️ New Project (2)',
-      eventColor: 'yellow'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 22, 10),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 22, 11),
-      eventName: 'Team Catch-up',
-      eventColor: 'sky'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 22, 19),
-      eventEnd: '',
-      eventName: '⚽ 2021 - Semi-final',
-      eventColor: 'red'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 23, 0),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 23, 23),
-      eventName: 'You stay at Meridiana B&B',
-      eventColor: 'indigo'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 25, 10),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 25, 11),
-      eventName: 'Meeting w/ Kylie Joh',
-      eventColor: 'sky'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 29, 10),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 29, 11),
-      eventName: 'Call Request ->',
-      eventColor: 'sky'
-    },
-    // Next month
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 2, 3),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 2, 7),
-      eventName: '✍️ New Project (2)',
-      eventColor: 'yellow'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 14, 10),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 14, 11),
-      eventName: 'Team Catch-up',
-      eventColor: 'sky'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 25, 2),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 25, 3),
-      eventName: 'Pick up Marta at school',
-      eventColor: 'emerald'
-    },
-    {
-      eventStart: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 27, 21),
-      eventEnd: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 27, 22),
-      eventName: '⚽ 2021 - Semi-final',
-      eventColor: 'red'
-    },
-  ];
+    eventStart: income.date
+    eventEnd:  ''
+    eventName: income.source 
+    eventColor: 'indigo'
+    }
+    
+  }),
+   // Previous month
+  //  {
+  //   eventStart: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 8, 3),
+  //   eventEnd: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 8, 7),
+  //   eventName: '⛱️ Relax for 2 at thailand',
+  //   eventColor: 'indigo'
+  // },
+  // {
+  //   eventStart: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 12, 10),
+  //   eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 12, 11),
+  //   eventName: 'Team Catch-up',
+  //   eventColor: 'sky'
+  // },
+
+  // // Current month
+
+  // {
+  //   eventStart: new Date(new Date().getFullYear(), new Date().getMonth(), 7, 21),
+  //   eventEnd: new Date(new Date().getFullYear(), new Date().getMonth(), 7, 22),
+  //   eventName: '⚽ 2021 - Semi-final',
+  //   eventColor: 'red'
+  // },
+  
+]
+   
+
 
   const isToday = (date) => {
     const day = new Date(year, month, date);
@@ -262,7 +159,7 @@ function Calendar() {
                   disabled={month === 0 ? true : false}
                   onClick={() => {setMonth(month - 1);getDays();}}
                 >
-                  <span className="sr-only">Previous month</span><wbr />
+                  <span className="sr-only">הקודם</span><wbr />
                   <svg className="h-4 w-4 fill-current" viewBox="0 0 16 16">
                     <path d="M9.4 13.4l1.4-1.4-4-4 4-4-1.4-1.4L4 8z" />
                   </svg>
@@ -274,21 +171,13 @@ function Calendar() {
                   disabled={month === 11 ? true : false}
                   onClick={() => {setMonth(month + 1);getDays();}}
                 >
-                  <span className="sr-only">Next month</span><wbr />
+                  <span className="sr-only">הבא</span><wbr />
                   <svg className="h-4 w-4 fill-current" viewBox="0 0 16 16">
                     <path d="M6.6 13.4L5.2 12l4-4-4-4 1.4-1.4L12 8z" />
                   </svg>
                 </button>
 
                 <hr className="w-px h-full bg-slate-200 dark:bg-slate-700 border-none mx-1" />
-
-                {/* Create event button */}
-                <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                  <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
-                    <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-                  </svg>
-                  <span className="hidden xs:block ml-2">Create Event</span>
-                </button>
 
               </div>
 
@@ -303,44 +192,37 @@ function Calendar() {
                   <li className="m-1">
                     <button className="btn-sm bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 dark:text-slate-400">
                       <div className="w-1 h-3.5 bg-sky-500 shrink-0"></div>
-                      <span className="ml-1.5">Acme Inc.</span>
+                      <span className="mr-1">חסכונות</span>
                     </button>
                   </li>
                   <li className="m-1">
                     <button className="btn-sm bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 dark:text-slate-400">
                       <div className="w-1 h-3.5 bg-emerald-500 shrink-0"></div>
-                      <span className="ml-1.5">הכנסות</span>
+                      <span className="mr-1">הכנסות</span>
                     </button>
                   </li>
-                  <li className="m-1">
-                    <button className="btn-sm bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 dark:text-slate-400">
-                      <div className="w-1 h-3.5 bg-indigo-500 shrink-0"></div>
-                      <span className="ml-1.5">Reservations</span>
-                    </button>
-                  </li>
+
                   <li className="m-1">
                     <button className="btn-sm bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 dark:text-slate-400">
                       <div className="w-1 h-3.5 bg-rose-400 shrink-0"></div>
-                      <span className="ml-1.5">הוצאות</span>
+                      <span className="mr-1">הוצאות</span>
                     </button>
                   </li>
                   <li className="m-1">
                     <button className="btn-sm bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 dark:text-slate-400">
                       <div className="w-1 h-3.5 bg-amber-500 shrink-0"></div>
-                      <span className="ml-1.5">Misc</span>
+                      <span className="mr-1">חובות</span>
                     </button>
                   </li>
-                  <li className="m-1">
-                    <button className="btn-sm bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-indigo-500">+Add New</button>
-                  </li>
+
                 </ul>
               </div>
 
               {/* View buttons (requires custom integration) */}
               <div className="flex flex-nowrap -space-x-px">
-                <button className="btn bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:bg-slate-50 text-indigo-500 rounded-none first:rounded-l last:rounded-r">Month</button>
-                <button className="btn bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-600 dark:text-slate-300 rounded-none first:rounded-l last:rounded-r">Week</button>
-                <button className="btn bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-600 dark:text-slate-300 rounded-none first:rounded-l last:rounded-r">Day</button>
+                <button className="btn bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:bg-slate-50 text-indigo-500 rounded-none first:rounded-l last:rounded-r">חודש</button>
+                <button className="btn bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-600 dark:text-slate-300 rounded-none first:rounded-l last:rounded-r">שבוע</button>
+                <button className="btn bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-600 dark:text-slate-300 rounded-none first:rounded-l last:rounded-r">יום</button>
               </div>
             </div>
 

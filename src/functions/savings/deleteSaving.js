@@ -2,7 +2,7 @@ import axios from '../axiosConfig'
 import swal from 'sweetalert'
 import fetchSavingsData from './fetchSavingsData';
 
-export default function deleteSaving(id,token) {
+export default function deleteSaving(id,token,setSavings) {
     swal({
       title: "האם אתה בטוח?",
       text: "ברגע שתלחץ על אישור לא יהיה ניתן לשחזר את המידע",
@@ -18,12 +18,12 @@ export default function deleteSaving(id,token) {
           }
         }).then((response) => {
           swal({
-            title: "🗑️!!החסכון נמחק בהצלחה",
+            title: "🗑️!החסכון נמחק בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(() => {
-          fetchSavingsData(token);
-          window.location.reload() // Refresh the data after deletion
+          fetchSavingsData(token,setSavings);
           });
         }).catch((error) => {
           console.error("Error deleting saving:", error);

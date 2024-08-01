@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-
 import Sidebar from '../../partials/Sidebar';
 import Header from '../../partials/Header';
 import DebtTable from './DebtTable';
-import PaginationClassic from '../../components/PaginationClassic';
 import Rights from '../../components/Rights';
-import AddDebt from '../../pages/expenses/AddDebt'
+import AddDebt from '../../pages/expenses/AddDebt';
+import checkToken from '../../functions/checkToken';
 
 
 
 function AllDebts() {
+  checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);  
   const handleSelectedItems = (selectedItems) => {

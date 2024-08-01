@@ -18,7 +18,7 @@ function AddExpense() {
     date_and_time: '',
     category: '',
     price: '',
-    credit_card: '',
+    credit_card_id: '',
   });
 
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
@@ -39,7 +39,7 @@ function AddExpense() {
       date_and_time: '',
       category: '',
       price: '',
-      credit_card: '',
+      credit_card_id: '',
     });
   };
 
@@ -58,26 +58,25 @@ function AddExpense() {
   };
 
   const isCreditCard = () => {
-    if (data.payment_method === 'credit_card') {
+    if (data.payment_method === 'כרטיס אשראי' && creditCards.length>0) {
       return (
         <Form.Group controlId="formCreditCard">
           <Form.Label>שם הכרטיס</Form.Label>
           <Form.Control
             as="select"
-            name="credit_card"
-            value={data.credit_card}
+            name="credit_card_id"
+            value={data.credit_card_id}
             onChange={handleChange}
             required
           >
-            {creditCards.length > 0 ? (
-              creditCards.map((card, index) => (
-                <option key={index} value={card.name}>
-                  {card.name}
+            
+     
+              {creditCards.map((card) => (
+                <option key={card.id} value={card.id}>
+                  {card.name},{card.last_four_digits}
                 </option>
-              ))
-            ) : (
-              <option>אין כרטיסים זמינים</option>
-            )}
+              ))}
+           
           </Form.Control>
         </Form.Group>
       );
@@ -88,14 +87,12 @@ function AddExpense() {
 
   return (
     <>
-      <Button onClick={handleShow} variant="outline-primary">
-        <span>
-
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+      <Button onClick={handleShow} variant="outline-primary" className="d-flex align-items-center">
+            <span className="ml-2">הוסף הוצאה</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
             <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
           </svg>
-        </span>
-      </Button>
+        </Button>
 
       <Modal show={show} onHide={handleClose} centered dir="rtl">
         <Modal.Header>
@@ -104,7 +101,7 @@ function AddExpense() {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formExpenseName">
-              <Form.Label>שם ההוצאה</Form.Label>
+              <Form.Label>שם ההוצאה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="input"
                 name="name"
@@ -115,7 +112,7 @@ function AddExpense() {
             </Form.Group>
 
             <Form.Group controlId="formExpenseType">
-              <Form.Label>סוג ההוצאה</Form.Label>
+              <Form.Label>סוג ההוצאה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="expense_type"
@@ -124,13 +121,13 @@ function AddExpense() {
                 required
               >
                 <option value=""></option>
-                <option value="regular_expense">הוצאה רגילה</option>
-                <option value="iregular_expense">הוצאה לא רגילה</option>
+                <option value="הוצאה קבועה">הוצאה קבועה</option>
+                <option value="הוצאה משתנה">הוצאה משתנה</option>
               </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="formPaymentMethod">
-              <Form.Label>דרך תשלום</Form.Label>
+              <Form.Label>דרך תשלום<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="payment_method"
@@ -139,18 +136,20 @@ function AddExpense() {
                 required
               >
                 <option value=""></option>
-                <option value="credit_card">כרטיס אשראי</option>
-                <option value="direct_debit">הוראת קבע</option>
-                <option value="transaction">העברה בנקאית</option>
-                <option value="cash">מזומן</option>
-                <option value="check">צ׳ק</option>
+                {creditCards.length > 0 && (
+                <option value="כרטיס אשראי">כרטיס אשראי</option>
+              )}
+                <option value="הוראת קבע">הוראת קבע</option>
+                <option value="העברה בנקאית">העברה בנקאית</option>
+                <option value="מזומן">מזומן</option>
+                <option value="צ׳ק">צ׳ק</option>
               </Form.Control>
             </Form.Group>
 
             {isCreditCard()}
 
             <Form.Group controlId="formCategory">
-              <Form.Label>קטגוריה</Form.Label>
+              <Form.Label>קטגוריה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 as="select"
                 name="category"
@@ -159,19 +158,20 @@ function AddExpense() {
                 required
               >
                 <option value=""></option>
-                <option value="supermarket">סופר</option>
-                <option value="restaurant">מסעדה</option>
-                <option value="tech">טכנולוגיה</option>
-                <option value="dress_and_shoes">הלבשה והנעלה</option>
-                <option value="fuel">דלק</option>
-                <option value="loan">הלוואה</option>
-                <option value="debt">חוב</option>
-                <option value="gift">מתנה</option>
+                <option value="סופר">סופר</option>
+                <option value="מסעדה">מסעדה</option>
+                <option value="טכנולוגיה">טכנולוגיה</option>
+                <option value="הלבשה והנעלה">הלבשה והנעלה</option>
+                <option value="דלק">דלק</option>
+                <option value="הלוואה">הלוואה</option>
+                <option value="חוב">חוב</option>
+                <option value="מתנה">מתנה</option>
+                <option value="אחר">אחר</option>
               </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="formPrice">
-              <Form.Label>סכום</Form.Label>
+              <Form.Label>סכום<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="number"
                 name="price"
@@ -182,7 +182,7 @@ function AddExpense() {
             </Form.Group>
 
             <Form.Group controlId="formDateAndTime">
-              <Form.Label>תאריך ההוצאה</Form.Label>
+              <Form.Label>תאריך ההוצאה<span className="text-rose-500">*</span></Form.Label>
               <Form.Control
                 type="datetime-local"
                 name="date_and_time"

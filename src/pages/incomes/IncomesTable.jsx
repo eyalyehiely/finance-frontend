@@ -3,6 +3,7 @@ import AddCommaToNumber from '../../components/AddComma';
 import fetchIncomesData from '../../functions/incomes/fetchIncomesData';
 import deleteIncome from '../../functions/incomes/deleteIncome';
 import saveEdit from '../../functions/incomes/saveEdit';
+import { format } from 'date-fns';
 
 
 
@@ -24,7 +25,7 @@ function IncomesTable() {
         incomes.filter((income) =>
           income.source.toLowerCase().includes(query) ||
           income.amount.toString().includes(query)||
-          new Date(income.date).toLocaleString().includes(query)
+          format(new Date(income.date),'dd/MM/yyyy').includes(query)
         )
       );
     } else {
@@ -117,9 +118,9 @@ function IncomesTable() {
                       <td className="p-2">
                         <select id="source" className="text-right" value={editedIncome.source} onChange={(e) => handleEditChange(e, 'source')}>
                           <option value=""></option>
-                          <option value="salary">משכורת</option>
-                          <option value="allowance">קצבה</option>
-                          <option value="other">אחר</option>
+                          <option value="משכורת">משכורת</option>
+                          <option value="קצבה">קצבה</option>
+                          <option value="אחר">אחר</option>
                         </select>
                       </td>
                         
@@ -128,7 +129,7 @@ function IncomesTable() {
                       </td>
 
                       <td className="p-2">
-                        <input type="text" id="date" className="text-right" value={editedIncome.date.toLocaleString()} onChange={(e) => handleEditChange(e, 'date')} />
+                        <input type="text" id="date" className="text-right" value={format(editedIncome.date,'dd/MM/yyyy')} onChange={(e) => handleEditChange(e, 'date')} />
                       </td>
 
                       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
@@ -168,7 +169,7 @@ function IncomesTable() {
                       </td>
 
                       <td className="p-2">
-                        <div className="text-right">{income.date.toLocaleString()}</div>
+                        <div className="text-right">{format(income.date,'dd/MM/yyyy')}</div>
                       </td>
                       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                         <div className="space-x-1">
@@ -185,7 +186,7 @@ function IncomesTable() {
                           </button>
                           <button
                             className="text-rose-500 hover:text-rose-600 rounded-full"
-                            onClick={() => deleteIncome(income.id,token)}
+                            onClick={() => deleteIncome(income.id,token,setIncomes)}
                           >
                             <span className="sr-only">Delete</span>
                             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">

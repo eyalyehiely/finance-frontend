@@ -25,10 +25,10 @@ export default function saveEdit(token, editedSaving, editingSavingsId, setSavin
     }).then(response => {
         if (response.data.status === 200) {
           swal({
-            title: "💰!עבודה טובה",
-            text: " !חסכון עודכן בהצלחה",
+            title: " 💰!חסכון עודכן בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(()=>{
           // Upstarting_date the savings list with the returned saving data
           setSavings(savings=> savings.map(saving => saving.id === editingSavingsId ? response.data.saving : saving));

@@ -11,10 +11,10 @@ export default function addSaving(token, setSavings, data, handleClose) {
   }).then((response) => {
     setSavings((prevSavings) => [...prevSavings, response.data]);
     swal({
-      title: "💰!עבודה טובה",
-      text: " !הכנסה נוספה בהצלחה",
+      title: " 💰!חסכון נוספה בהצלחה",
       icon: "success",
-      button: "אישור",
+      timer:2000,
+      button: false,
     }).then(() => {
       handleClose();
       window.location.reload()
@@ -23,7 +23,7 @@ export default function addSaving(token, setSavings, data, handleClose) {
   }).catch((error) => {
     console.error('Error:', error.response?.data?.message || error.message);
     swal({
-      title: "Ⅹ!שגיאה ",
+      title: "!שגיאה ",
       icon: "warning",
       button: "אישור",
     });

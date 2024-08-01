@@ -13,10 +13,7 @@ import './charts/ChartjsConfig';
 import Dashboard from './pages/Dashboard';
 import Fintech from './pages/Fintech';
 import AllExpenses from './pages/expenses/AllExpenses';
-import ExpensesTable from './pages/expenses/ExpensesTable';
 import AllDebts from './pages/expenses/AllDebts';
-import AddDebt from './pages/expenses/AddDebt';
-import DebtTable from './pages/expenses/DebtTable';
 import CreditCards from './pages/creditCards/CreditCards';
 import AllIncomes from './pages/incomes/AllIncomes';
 import AllSavings from './pages/incomes/AllSavings';
@@ -39,8 +36,8 @@ import IconsPage from './pages/component/IconsPage';
 import ChangePassword from './pages/changePasswordPage.jsx'
 import Calander from './pages/Calendar'
 import AccountPanel from './pages/settings/AccountPanel'
-import FeedbackPanel from './partials/settings/FeedbackPanel'
-import ProtectedRoute from './components/protectedRoute';
+import Information from './pages/Information';
+// import Stocks from './components/Stocks';
 
 
 
@@ -61,19 +58,14 @@ function App() {
       <Routes>
         
         <Route exact path="/" element={<Dashboard />} />
-        {/* <Route path="/dashboard" element={<ProtectedRoute element={Dashboard} />} /> */}
         <Route path="/dashboard/fintech" element={<Fintech />} />
+
         {/* expenses */}
         <Route path="/expenses/all-expenses" element={<AllExpenses />} />
-        <Route path="/expenses/expenses-table" element={<ExpensesTable />} />
-
-        {/* <Route path="/expenses/add-expenses" element={<ProtectedRoute element={AddExpense} />} /> */}
 
 
         {/* debts */}
         <Route path="/expenses/all-debts" element={<AllDebts />} />
-        <Route path="/expenses/debt-table" element={<DebtTable />} />
-        <Route path="/expenses/add-debt" element={<AddDebt />} />
 
         {/* credit cards */}
         <Route path="/creditcards/all-cards" element={<CreditCards />} />
@@ -91,7 +83,8 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/change_password/:email" element={<ChangePassword />} />
+        <Route path="/auth/change_password/:email/:token/" element={<ChangePassword />} />
+
 
         {/* components */}
         {/* <Route path="/calendar" element={<Calander />} /> */}
@@ -110,6 +103,9 @@ function App() {
         <Route path="/component/icons" element={<IconsPage />} />
 
         <Route path="/settings/account" element={<AccountPanel/>} />
+        <Route path="/info" element={<Information/>} />
+        {/* <Route path="/stocks" element={<Stocks/>} /> */}
+        <Route path="/calander" element={<Calander/>} />
       </Routes>
     </>
   );

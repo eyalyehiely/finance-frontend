@@ -2,7 +2,7 @@ import axios from '../axiosConfig'
 import swal from 'sweetalert';
 import fetchDebtData from './fetchDebtData';
 
-export default function deleteDebt(id,token) {
+export default function deleteDebt(id,token,setDebts) {
     swal({
       title: "האם אתה בטוח?",
       text: "ברגע שתלחץ על אישור לא יהיה ניתן לשחזר את המידע",
@@ -18,13 +18,12 @@ export default function deleteDebt(id,token) {
           }
         }).then((response) => {
           swal({
-            title: "🗑️!עבודה טובה",
-            text: " !החוב נמחק בהצלחה",
+            title: " !🗑️החוב נמחק בהצלחה",
             icon: "success",
-            button: "אישור",
+            timer:2000,
+            button: false,
           }).then(() => {
-            fetchDebtData(); // Refresh the data after deletion
-            window.location.reload()
+            fetchDebtData(token,setDebts);  
           });
         }).catch((error) => {
           console.error("Error deleting debt:", error);

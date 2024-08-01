@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Sidebar from '../../partials/Sidebar';
@@ -12,19 +13,58 @@ import CardHeader from '@mui/material/CardHeader';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import axios from '../../functions/axiosConfig'
 import getCurrentUserData from '../../functions/users/getCurrentUserData';
 import EditUser from './EditUser';
-
+import checkToken from '../../functions/checkToken';
 
 
 function AccountPanel() {
+  checkToken()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [user, setUser] = useState({});
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const token = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')).access : null;
 
   useEffect(() => {
-    getCurrentUserData(token, setUser);
+    if (token) {
+      getCurrentUserData(token, setUser);
+    }
   }, [token]);
+
+  useEffect(() => {
+    if (user) {
+      setEmail(user.email);
+    }
+  }, [user]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  
+    try {
+      const response = await axios.post('/auth/supporting_mail/', {
+        email,
+        subject,
+        message,
+      });
+
+      if (response.status === 200) {
+        setSuccess('המייל נשלח בהצלחה!'); 
+        setEmail(user.email);
+        setSubject('')
+        setMessage('');
+      } else {
+        throw new Error('לא הצלחנו לשלוח את המייל. נסה שוב מאוחר יותר.');
+      }
+    } catch (error) {
+      setError(error.message || 'שגיאה לא ידועה');
+    }
+  };
 
   return (
     <div className="flex h-[100vh] overflow-hidden" dir="rtl">
@@ -53,7 +93,7 @@ function AccountPanel() {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <EditUser/>
+                    <EditUser />
                   </Grid>
                 </Grid>
               </CardContent>
@@ -61,7 +101,6 @@ function AccountPanel() {
               <CardActions>
                 {/* <Button fullWidth variant="text">
                   העלאת תמונה
-                  
                 </Button> */}
               </CardActions>
             </Card>
@@ -110,7 +149,7 @@ function AccountPanel() {
                   </Grid>
                   <Grid item md={4} sm={6} xs={12}>
                     <Typography variant="body1">
-                      <strong>כתובת:</strong> {user.address}
+                      <strong>עיר מגורים:</strong> {user.address}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -119,20 +158,52 @@ function AccountPanel() {
           </section>
 
           {/* Email */}
-          <section>
-            <Card>
-              <CardHeader title="תמיכה ויצירת קשר" />
-              <CardContent>
-                <Grid container spacing={2} alignItems="center">
-                  <Grid item xs>
-                    <Typography variant="body1">
-                      <strong>צריך עזרה? , </strong> 
-                      <a href="mailto:eyalwork0@gmail.com">לחץ כאן</a>
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </CardContent>
-            </Card>
+          <section className="contact-section">
+            <Typography variant="h6" className="section-title">צור קשר</Typography>
+            <div className="contact__container">
+              <form onSubmit={handleSubmit} className="contact__form">
+                
+                <TextField
+                  label="אימייל"
+                  name="email"
+                  value={user.email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  variant="outlined"
+                  type="email"
+                  fullWidth
+                  margin="normal"
+                  required
+                />
+
+                <TextField
+                  label="נושא"
+                  name="subject"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                  variant="outlined"
+                  type="subject"
+                  fullWidth
+                  margin="normal"
+                  required
+                />
+                <TextField
+                  label="הודעה"
+                  name="message"
+                  placeholder="כאן כותבים"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  variant="outlined"
+                  multiline
+                  rows={4}
+                  fullWidth
+                  margin="normal"
+                  required
+                />
+                <Button type="submit" variant="contained" color="primary" className="contact__button">שלח</Button>
+              </form>
+              {error && <p className="error-message">{error}</p>}
+              {success && <p className="success-message">{success}</p>}
+            </div>
           </section>
         </div>
         <Rights />
@@ -142,4 +213,3 @@ function AccountPanel() {
 }
 
 export default AccountPanel;
-
